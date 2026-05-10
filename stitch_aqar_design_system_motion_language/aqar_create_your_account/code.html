@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aqar Home - Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400..700&amp;family=DM+Sans:ital,wght@0,400..700;1,400..700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#90d689",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#fcab28",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "surface-variant": "#e4e2e1",
+                    "tertiary-container": "#055f18",
+                    "surface-tint": "#2a6b2c",
+                    "surface-bright": "#fbf9f8",
+                    "inverse-surface": "#303030",
+                    "on-primary-fixed": "#002203",
+                    "inverse-primary": "#91d78a",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#acf4a4",
+                    "primary-container": "#1b5e20",
+                    "surface-container-highest": "#e4e2e1",
+                    "surface-container": "#f0eded",
+                    "surface": "#fbf9f8",
+                    "on-surface-variant": "#41493e",
+                    "on-surface": "#1b1c1c",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#00450d",
+                    "outline": "#717a6d",
+                    "surface-container-high": "#eae8e7",
+                    "secondary-fixed": "#ffddb5",
+                    "on-secondary-container": "#694300",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#002204",
+                    "secondary": "#835400",
+                    "tertiary-fixed": "#a3f69c",
+                    "on-tertiary-container": "#86d881",
+                    "primary-fixed-dim": "#91d78a",
+                    "on-background": "#1b1c1c",
+                    "tertiary-fixed-dim": "#88d982",
+                    "primary": "#00450d",
+                    "outline-variant": "#c0c9bb",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "on-secondary-fixed": "#2a1800",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#0c5216",
+                    "inverse-on-surface": "#f2f0f0",
+                    "surface-container-low": "#f5f3f3",
+                    "secondary-fixed-dim": "#ffb957",
+                    "on-error-container": "#93000a",
+                    "background": "#fbf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "xl": "40px",
+                    "margin": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "ui-h4": ["DM Sans"],
+                    "display-h1": ["Playfair Display"],
+                    "body-sm": ["DM Sans"],
+                    "ui-h3": ["DM Sans"],
+                    "body-main": ["DM Sans"],
+                    "arabic-body": ["Cairo"],
+                    "label-caps": ["DM Sans"],
+                    "display-h2": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "ui-h4": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "ui-h3": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-main": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "arabic-body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "display-h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        .floating-input:focus-within label,
+        .floating-input input:not(:placeholder-shown) + label {
+            transform: translateY(-50%) scale(0.85);
+            top: 0;
+            background-color: theme('colors.surface');
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-main antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex">
+<!-- Left Panel (45%) -->
+<div class="hidden lg:flex lg:w-[45%] fixed inset-y-0 left-0 bg-gradient-to-b from-[#1B5E20] to-[#0A2E10] text-on-primary flex-col justify-between p-xl overflow-hidden">
+<!-- Subtle Pattern Overlay (Simulated with SVG background) -->
+<div class="absolute inset-0 opacity-[0.06] pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 10 L50 30 L50 50 L10 50 L10 30 Z\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\'/%3E%3C/svg%3E'); background-size: 60px 60px;"></div>
+<!-- Decorative Floating Cards (Simulated) -->
+<div class="absolute top-[20%] right-[-10%] w-64 h-32 bg-white/10 backdrop-blur-md rounded-xl border border-white/20 transform rotate-12 pointer-events-none"></div>
+<div class="absolute bottom-[30%] left-[-5%] w-48 h-48 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 pointer-events-none"></div>
+<!-- Top Content -->
+<div class="relative z-10 space-y-lg mt-xl">
+<!-- Logo area -->
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined filled text-display-h2">real_estate_agent</span>
+<span class="font-display-h2 text-display-h2 font-bold tracking-tight">Aqar Home</span>
+</div>
+<h2 class="font-display-h2 text-display-h2 text-on-primary mt-xl max-w-md">Join Egypt's Leading Property Platform</h2>
+<!-- Benefits -->
+<div class="space-y-md mt-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">home</span>
+</div>
+<div>
+<h4 class="font-ui-h4 text-ui-h4 font-medium">Verified Properties</h4>
+<p class="font-body-sm text-body-sm text-on-primary/80">Access exclusive, vetted listings across the country.</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<h4 class="font-ui-h4 text-ui-h4 font-medium">Smart Insights</h4>
+<p class="font-body-sm text-body-sm text-on-primary/80">Data-driven market analysis to guide your decisions.</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div>
+<h4 class="font-ui-h4 text-ui-h4 font-medium">Secure Transactions</h4>
+<p class="font-body-sm text-body-sm text-on-primary/80">Bank-level security for your peace of mind.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Testimonial -->
+<div class="relative z-10 mb-xl border-l-4 border-secondary-container pl-md">
+<p class="font-display-h2 text-[24px] italic text-on-primary/90">"Aqar Home made finding our dream villa in New Cairo seamless and secure. Highly recommended."</p>
+<p class="font-body-sm text-body-sm font-medium mt-sm text-on-primary/70">— Sara M., Cairo</p>
+</div>
+</div>
+<!-- Right Panel (55%) -->
+<div class="w-full lg:w-[55%] lg:ml-auto min-h-screen bg-surface flex flex-col items-center justify-center py-xl px-margin sm:px-xl relative">
+<!-- Header / Sign In Link -->
+<div class="absolute top-0 right-0 w-full flex justify-between items-center p-margin">
+<div class="lg:hidden flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined filled text-ui-h3">real_estate_agent</span>
+<span class="font-display-h2 text-[20px] font-bold">Aqar Home</span>
+</div>
+<div class="ml-auto text-on-surface-variant font-body-sm">
+                Already have an account? <a class="text-primary font-medium hover:underline transition-colors" href="#">Sign In</a>
+</div>
+</div>
+<div class="w-full max-w-md mt-16 lg:mt-0">
+<h2 class="font-display-h2 text-display-h2 text-on-surface mb-xs">Create Your Account</h2>
+<p class="font-body-main text-body-main text-on-surface-variant mb-lg">Select how you want to use Aqar Home to personalize your experience.</p>
+<!-- Role Selector -->
+<div class="space-y-sm mb-lg">
+<!-- Selected Role -->
+<label class="relative flex items-center p-md rounded-lg border-2 border-primary bg-[#E8F5E9] cursor-pointer transition-colors shadow-sm">
+<input checked="" class="sr-only" name="role" type="radio" value="find"/>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mr-md">
+<span class="material-symbols-outlined filled">search</span>
+</div>
+<div class="flex-1">
+<span class="block font-ui-h4 text-[16px] font-medium text-on-surface">Find a Property</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">I am looking to buy or rent.</span>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</label>
+<!-- Unselected Role 1 -->
+<label class="relative flex items-center p-md rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="sr-only" name="role" type="radio" value="list"/>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant shrink-0 mr-md">
+<span class="material-symbols-outlined">add_home</span>
+</div>
+<div class="flex-1">
+<span class="block font-ui-h4 text-[16px] font-medium text-on-surface">List My Property</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">I am an owner looking to sell/rent.</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+</label>
+<!-- Unselected Role 2 -->
+<label class="relative flex items-center p-md rounded-lg border border-outline-variant bg-surface hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="sr-only" name="role" type="radio" value="manage"/>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant shrink-0 mr-md">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<div class="flex-1">
+<span class="block font-ui-h4 text-[16px] font-medium text-on-surface">Manage Listings</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">I am an agent or developer.</span>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+</label>
+</div>
+<!-- Form -->
+<form class="space-y-gutter">
+<!-- Full Name (Valid State) -->
+<div class="relative floating-input">
+<input class="block w-full px-md py-3 bg-surface border-2 border-primary rounded-md text-on-surface focus:outline-none focus:ring-0 peer" id="fullname" name="fullname" placeholder=" " type="text" value="Ahmed Hassan"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-main transition-all duration-200 pointer-events-none" for="fullname">Full Name</label>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-primary pointer-events-none">check</span>
+</div>
+<!-- Email (Error State) -->
+<div class="relative floating-input">
+<input class="block w-full px-md py-3 bg-surface border-2 border-error rounded-md text-on-surface focus:outline-none focus:ring-0 peer" id="email" name="email" placeholder=" " type="email" value="ahmed@invalid"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-error font-body-main transition-all duration-200 pointer-events-none" for="email">Email Address</label>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-error pointer-events-none">error</span>
+<p class="text-error font-body-sm text-[12px] mt-xs ml-1">Please enter a valid email address.</p>
+</div>
+<!-- Phone -->
+<div class="relative floating-input">
+<input class="block w-full px-md py-3 bg-surface border border-outline rounded-md text-on-surface focus:border-primary focus:outline-none focus:ring-0 peer" id="phone" name="phone" placeholder=" " type="tel"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-main transition-all duration-200 pointer-events-none" for="phone">Phone Number</label>
+</div>
+<!-- Password -->
+<div class="relative floating-input">
+<input class="block w-full px-md py-3 bg-surface border border-outline rounded-md text-on-surface focus:border-primary focus:outline-none focus:ring-0 peer pr-12" id="password" name="password" placeholder=" " type="password"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-main transition-all duration-200 pointer-events-none" for="password">Password</label>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface focus:outline-none" type="button">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+<!-- Strength Bar -->
+<div class="absolute -bottom-2 left-0 w-full h-1 bg-surface-variant rounded-b-md overflow-hidden flex gap-[2px]">
+<div class="h-full bg-secondary-container w-1/3"></div>
+<div class="h-full bg-surface-variant w-1/3"></div>
+<div class="h-full bg-surface-variant w-1/3"></div>
+</div>
+</div>
+<!-- Confirm Password -->
+<div class="relative floating-input pt-2">
+<input class="block w-full px-md py-3 bg-surface border border-outline rounded-md text-on-surface focus:border-primary focus:outline-none focus:ring-0 peer" id="confirm_password" name="confirm_password" placeholder=" " type="password"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-main transition-all duration-200 pointer-events-none" for="confirm_password">Confirm Password</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full mt-lg bg-secondary-container hover:bg-secondary-fixed-dim text-on-secondary-container font-ui-h4 text-[16px] py-3 rounded-md shadow-sm hover:shadow-md transition-all transform hover:-translate-y-[2px]" type="submit">
+                    Create Account
+                </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center my-lg">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="mx-md text-on-surface-variant font-body-sm text-body-sm">— or —</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Google Sign In -->
+<button class="w-full bg-surface border border-outline-variant hover:bg-surface-container-low text-on-surface font-ui-h4 text-[16px] py-3 rounded-md shadow-sm transition-colors flex items-center justify-center gap-sm" type="button">
+<!-- Using a generic icon for Google representation as per constraints -->
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+                Sign in with Google
+            </button>
+<p class="mt-lg text-center font-body-sm text-[12px] text-on-surface-variant">
+                By creating an account, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+            </p>
+</div>
+</div>
+</body></html>

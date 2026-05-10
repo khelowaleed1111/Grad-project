@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Aqar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c0c9bb",
+                        "on-background": "#1b1c1c",
+                        "tertiary-fixed-dim": "#88d982",
+                        "on-tertiary-container": "#86d881",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary-fixed-dim": "#91d78a",
+                        "primary-fixed": "#acf4a4",
+                        "on-primary-fixed": "#002203",
+                        "inverse-surface": "#303030",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "surface-tint": "#2a6b2c",
+                        "secondary-fixed": "#ffddb5",
+                        "primary-container": "#1b5e20",
+                        "secondary-container": "#fcab28",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "error": "#ba1a1a",
+                        "tertiary": "#00450d",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#835400",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-low": "#f5f3f3",
+                        "outline": "#717a6d",
+                        "error-container": "#ffdad6",
+                        "background": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#91d78a",
+                        "surface": "#fbf9f8",
+                        "on-surface": "#1b1c1c",
+                        "tertiary-container": "#055f18",
+                        "surface-bright": "#fbf9f8",
+                        "secondary-fixed-dim": "#ffb957",
+                        "primary": "#00450d",
+                        "on-surface-variant": "#41493e",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e4e2e1",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-primary-container": "#90d689",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary-fixed": "#2a1800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#694300",
+                        "surface-container": "#f0eded",
+                        "tertiary-fixed": "#a3f69c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "ui-h3": ["DM Sans"],
+                        "display-h1": ["Playfair Display"],
+                        "arabic-body": ["Cairo"],
+                        "display-h2": ["Playfair Display"],
+                        "body-main": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "ui-h4": ["DM Sans"],
+                        "label-caps": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "ui-h3": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "display-h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "arabic-body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                        "display-h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-main": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "ui-h4": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased min-h-screen flex flex-col md:flex-row">
+<!-- LEFT PANEL: Branding -->
+<div class="w-full md:w-[45%] bg-gradient-to-br from-primary-container to-primary relative overflow-hidden flex flex-col p-xl justify-between hidden md:flex" style="background-image: linear-gradient(to bottom right, #1B5E20, #0A2E10);">
+<!-- Subtle Pattern Overlay (Simulated with simple CSS pattern) -->
+<div class="absolute inset-0 opacity-[0.06] pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;">
+</div>
+<!-- Floating Stat Pills (Simulated static layout for design representation) -->
+<div class="absolute top-1/4 left-10 bg-white/10 backdrop-blur-sm px-md py-sm rounded-full border border-white/20 text-white flex items-center gap-sm">
+<span class="material-symbols-outlined text-inverse-primary text-[20px]">apartment</span>
+<span class="font-ui-h4 text-ui-h4 text-white">10K+ Properties</span>
+</div>
+<div class="absolute top-1/2 right-10 bg-white/10 backdrop-blur-sm px-md py-sm rounded-full border border-white/20 text-white flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">verified_user</span>
+<span class="font-ui-h4 text-ui-h4 text-white">Trusted by 50K+</span>
+</div>
+<div class="relative z-10 flex flex-col items-start gap-xl">
+<!-- Logo area -->
+<div class="flex items-center gap-sm text-white">
+<span class="material-symbols-outlined text-[40px] filled text-inverse-primary" data-icon="real_estate_agent">real_estate_agent</span>
+<span class="font-display-h2 text-display-h2">Aqar</span>
+</div>
+<!-- Welcome Text -->
+<div class="max-w-md mt-xl">
+<h2 class="font-display-h1 text-display-h1 text-white mb-md leading-tight">Welcome Back to Aqar</h2>
+<p class="font-body-main text-body-main text-primary-fixed-dim">Your next property is just a search away. Sign in to access your saved listings, personalized recommendations, and expert market insights.</p>
+</div>
+</div>
+<!-- Isometric Illustration Image Placeholder -->
+<div class="relative z-10 w-full mt-auto flex justify-center opacity-90">
+<img alt="Aqar Home Skyline Illustration" class="w-full max-w-[400px] h-auto object-contain mix-blend-screen" data-alt="An isometric stylized line-art illustration of the Cairo skyline in bright white and vibrant primary green (#1B5E20). The digital art piece features clean, architectural geometric shapes representing modern and heritage real estate buildings on a transparent or dark green background. The style is modern, corporate, and minimalist, conveying stability and premium investment potential, aligned with a polished, high-end user interface design aesthetic." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+</div>
+<!-- RIGHT PANEL: Form -->
+<div class="w-full md:w-[55%] bg-surface flex flex-col items-center justify-center p-margin md:p-xl min-h-screen">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(27,94,32,0.04)] p-margin border border-surface-variant flex flex-col gap-lg">
+<!-- Header -->
+<div class="flex flex-col gap-xs text-center md:text-left">
+<h2 class="font-display-h2 text-display-h2 text-on-surface">Sign In</h2>
+<p class="font-body-main text-body-main text-on-surface-variant">Don't have an account? <a class="text-primary font-medium hover:text-tertiary-container transition-colors" href="#">Register Free →</a></p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-md mt-sm">
+<!-- Email Input (Floating Label Simulation) -->
+<div class="relative">
+<input class="peer w-full h-[56px] px-md pt-[16px] pb-xs rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors outline-none font-body-main text-body-main" id="email" placeholder=" " required="" type="email"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-main text-body-main transition-all peer-focus:top-[12px] peer-focus:text-label-caps peer-focus:font-label-caps peer-focus:text-primary-container peer-[:not(:placeholder-shown)]:top-[12px] peer-[:not(:placeholder-shown)]:text-label-caps peer-[:not(:placeholder-shown)]:font-label-caps pointer-events-none" for="email">Email Address</label>
+</div>
+<!-- Password Input -->
+<div class="relative">
+<input class="peer w-full h-[56px] px-md pt-[16px] pb-xs pr-[48px] rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors outline-none font-body-main text-body-main" id="password" placeholder=" " required="" type="password"/>
+<label class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-body-main text-body-main transition-all peer-focus:top-[12px] peer-focus:text-label-caps peer-focus:font-label-caps peer-focus:text-primary-container peer-[:not(:placeholder-shown)]:top-[12px] peer-[:not(:placeholder-shown)]:text-label-caps peer-[:not(:placeholder-shown)]:font-label-caps pointer-events-none" for="password">Password</label>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Remember Me & Forgot Password -->
+<div class="flex items-center justify-between mt-xs">
+<label class="flex items-center gap-sm cursor-pointer group">
+<input class="w-4 h-4 rounded border-outline-variant text-primary-container focus:ring-primary-container bg-surface-container-lowest cursor-pointer" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant group-hover:text-on-surface transition-colors">Remember Me</span>
+</label>
+<a class="font-body-sm text-body-sm text-secondary-container hover:text-secondary-fixed-dim transition-colors font-medium" href="#">Forgot Password?</a>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-primary-container text-white h-[56px] rounded-lg font-ui-h4 text-ui-h4 hover:bg-tertiary-container transition-all hover:-translate-y-[2px] shadow-sm flex items-center justify-center gap-sm mt-sm" type="submit">
+                    Sign In
+                    <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Social Sign In -->
+<div class="flex flex-col gap-md mt-sm">
+<div class="flex items-center gap-md">
+<div class="h-px bg-surface-variant flex-1"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant uppercase tracking-wider">or</span>
+<div class="h-px bg-surface-variant flex-1"></div>
+</div>
+<button class="w-full h-[56px] rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors font-ui-h4 text-ui-h4 flex items-center justify-center gap-sm" type="button">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Sign in with Google
+                </button>
+</div>
+</div>
+<!-- Mobile Footer Links (Visible only on mobile) -->
+<div class="mt-lg flex gap-md text-on-surface-variant font-body-sm text-body-sm md:hidden">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</body></html>

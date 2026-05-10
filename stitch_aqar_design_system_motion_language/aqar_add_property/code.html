@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aqar Home - Add Property</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Cairo:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f8",
+                        "primary-container": "#1b5e20",
+                        "primary": "#00450d",
+                        "surface-tint": "#2a6b2c",
+                        "primary-fixed-dim": "#91d78a",
+                        "on-secondary-fixed": "#2a1800",
+                        "tertiary": "#00450d",
+                        "on-primary-container": "#90d689",
+                        "on-surface-variant": "#41493e",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-container-high": "#eae8e7",
+                        "on-background": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#ffb957",
+                        "surface": "#fbf9f8",
+                        "primary-fixed": "#acf4a4",
+                        "secondary-fixed": "#ffddb5",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303030",
+                        "tertiary-fixed": "#a3f69c",
+                        "surface-variant": "#e4e2e1",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fcab28",
+                        "surface-container-low": "#f5f3f3",
+                        "on-surface": "#1b1c1c",
+                        "surface-bright": "#fbf9f8",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "secondary": "#835400",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "on-primary-fixed": "#002203",
+                        "inverse-primary": "#91d78a",
+                        "outline": "#717a6d",
+                        "outline-variant": "#c0c9bb",
+                        "on-tertiary-container": "#86d881",
+                        "on-secondary-container": "#694300",
+                        "tertiary-container": "#055f18",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005312"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "ui-h3": ["DM Sans"],
+                        "label-caps": ["DM Sans"],
+                        "display-h1": ["Playfair Display"],
+                        "ui-h4": ["DM Sans"],
+                        "display-h2": ["Playfair Display"],
+                        "body-main": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "arabic-body": ["Cairo"]
+                    },
+                    "fontSize": {
+                        "ui-h3": ["24px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "display-h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "ui-h4": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "display-h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-main": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "arabic-body": ["16px", {"lineHeight": "1.8", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .custom-shadow-card {
+            box-shadow: 0px 4px 20px rgba(27, 94, 32, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-background font-body-main text-on-surface h-screen flex overflow-hidden">
+<!-- Dashboard Sidebar -->
+<aside class="w-64 bg-surface-container-lowest border-r border-outline-variant flex flex-col hidden md:flex">
+<div class="p-margin border-b border-outline-variant">
+<h1 class="font-display-h2 text-display-h2 text-primary font-bold">Aqar Home</h1>
+</div>
+<nav class="flex-1 py-md px-sm overflow-y-auto">
+<ul class="space-y-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-ui-h4 text-ui-h4">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">real_estate_agent</span>
+<span class="font-ui-h4 text-ui-h4">My Properties</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary-container text-on-primary-container font-medium" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-ui-h4 text-ui-h4">Add Property</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-ui-h4 text-ui-h4">Insights</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-margin border-t border-outline-variant">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-ui-h4 text-ui-h4">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto relative">
+<!-- Decorative Header Banner -->
+<div class="w-full h-40 bg-surface-container-high relative overflow-hidden shrink-0">
+<img alt="A serene, abstract digital representation of modern real estate structures rendered in deep forest green and pristine white. The composition features sharp geometric lines intersecting with soft, organic curves, illuminated by a sophisticated, directional light that highlights the premium, corporate aesthetic. The mood is stable, authoritative, and elegant, perfectly aligned with a high-end property investment platform." class="w-full h-full object-cover opacity-80 mix-blend-multiply" data-alt="A serene, abstract digital representation of modern real estate structures rendered in deep forest green and pristine white. The composition features sharp geometric lines intersecting with soft, organic curves, illuminated by a sophisticated, directional light that highlights the premium, corporate aesthetic. The mood is stable, authoritative, and elegant, perfectly aligned with a high-end property investment platform." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+<div class="max-w-[800px] w-full mx-auto px-margin py-xl flex-1 -mt-20 relative z-10">
+<!-- Breadcrumbs -->
+<div class="mb-lg flex items-center text-on-surface-variant font-body-sm text-body-sm">
+<a class="hover:text-primary" href="#">Dashboard</a>
+<span class="material-symbols-outlined mx-xs text-[16px]">chevron_right</span>
+<span class="text-primary font-medium">Add Property</span>
+</div>
+<!-- Sticky Wizard Progress -->
+<div class="bg-surface-container-lowest custom-shadow-card rounded-xl p-md mb-lg sticky top-lg z-20">
+<div class="flex items-center justify-between relative">
+<!-- Connecting Line Background -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -z-10 transform -translate-y-1/2 mx-lg" style="width: calc(100% - 48px);"></div>
+<!-- Connecting Line Progress -->
+<div class="absolute top-1/2 left-0 h-[2px] bg-primary-container -z-10 transform -translate-y-1/2 mx-lg transition-all duration-300" style="width: 33%;"></div>
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center gap-sm bg-surface-container-lowest px-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary-container">Basic Info</span>
+</div>
+<!-- Step 2: Active -->
+<div class="flex flex-col items-center gap-sm bg-surface-container-lowest px-sm">
+<div class="w-8 h-8 rounded-full border-2 border-primary-container bg-surface-container-lowest text-primary-container font-bold flex items-center justify-center">
+                            2
+                        </div>
+<span class="font-label-caps text-label-caps text-primary">Details</span>
+</div>
+<!-- Step 3: Upcoming -->
+<div class="flex flex-col items-center gap-sm bg-surface-container-lowest px-sm">
+<div class="w-8 h-8 rounded-full border-2 border-surface-variant bg-surface-container-lowest text-on-surface-variant flex items-center justify-center">
+                            3
+                        </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Location</span>
+</div>
+<!-- Step 4: Upcoming -->
+<div class="flex flex-col items-center gap-sm bg-surface-container-lowest px-sm">
+<div class="w-8 h-8 rounded-full border-2 border-surface-variant bg-surface-container-lowest text-on-surface-variant flex items-center justify-center">
+                            4
+                        </div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Photos</span>
+</div>
+</div>
+</div>
+<!-- Main Content Card -->
+<div class="bg-surface-container-lowest custom-shadow-card rounded-xl p-xl">
+<div class="mb-lg">
+<h2 class="font-display-h2 text-display-h2 text-on-surface mb-xs">Specifications</h2>
+<p class="font-body-main text-body-main text-on-surface-variant">Provide the physical details and amenities of the property.</p>
+</div>
+<!-- 2-Column Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg mb-xl">
+<!-- Price Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Listing Price</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 transform -translate-y-1/2 text-on-surface-variant font-medium">$</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg pl-xl pr-md py-sm font-body-main text-body-main text-on-surface focus:border-surface-tint focus:ring-1 focus:ring-surface-tint outline-none transition-colors" placeholder="0.00" type="text"/>
+</div>
+</div>
+<!-- Area Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Total Area</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm pr-xl font-body-main text-body-main text-on-surface focus:border-surface-tint focus:ring-1 focus:ring-surface-tint outline-none transition-colors" placeholder="e.g. 1500" type="text"/>
+<span class="absolute right-md top-1/2 transform -translate-y-1/2 text-on-surface-variant font-medium text-sm">sq ft</span>
+</div>
+</div>
+<!-- Bedrooms Stepper -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Bedrooms</label>
+<div class="flex items-center justify-between border border-outline-variant rounded-lg bg-surface p-xs">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-body-main text-body-main font-medium">3</span>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Bathrooms Stepper -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Bathrooms</label>
+<div class="flex items-center justify-between border border-outline-variant rounded-lg bg-surface p-xs">
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="font-body-main text-body-main font-medium">2.5</span>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Floor Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Floor Level</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-main text-body-main text-on-surface focus:border-surface-tint focus:ring-1 focus:ring-surface-tint outline-none transition-colors" placeholder="e.g. Ground, 3rd" type="text"/>
+</div>
+<!-- Furnishing Segmented Control -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant">Furnishing</label>
+<div class="flex bg-surface-container rounded-lg p-xs border border-outline-variant">
+<button class="flex-1 py-sm rounded-md font-body-sm text-body-sm font-medium bg-surface-container-lowest text-primary shadow-sm">Unfurnished</button>
+<button class="flex-1 py-sm rounded-md font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Semi</button>
+<button class="flex-1 py-sm rounded-md font-body-sm text-body-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Fully</button>
+</div>
+</div>
+</div>
+<!-- Amenities Section -->
+<div class="border-t border-outline-variant pt-lg">
+<h3 class="font-ui-h4 text-ui-h4 text-on-surface mb-md">Amenities</h3>
+<div class="flex flex-wrap gap-sm">
+<!-- Chips -->
+<button class="px-md py-sm rounded-full border border-primary-container bg-primary-container/10 text-primary-container font-body-sm text-body-sm font-medium flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">done</span>
+                            Swimming Pool
+                        </button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface text-on-surface-variant font-body-sm text-body-sm hover:border-primary-container hover:text-primary-container transition-colors">
+                            Balcony
+                        </button>
+<button class="px-md py-sm rounded-full border border-primary-container bg-primary-container/10 text-primary-container font-body-sm text-body-sm font-medium flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">done</span>
+                            Central A/C
+                        </button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface text-on-surface-variant font-body-sm text-body-sm hover:border-primary-container hover:text-primary-container transition-colors">
+                            Covered Parking
+                        </button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface text-on-surface-variant font-body-sm text-body-sm hover:border-primary-container hover:text-primary-container transition-colors">
+                            Security
+                        </button>
+<button class="px-md py-sm rounded-full border border-primary-container bg-primary-container/10 text-primary-container font-body-sm text-body-sm font-medium flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">done</span>
+                            Built-in Wardrobes
+                        </button>
+<button class="px-md py-sm rounded-full border border-outline-variant bg-surface text-on-surface-variant font-body-sm text-body-sm hover:border-primary-container hover:text-primary-container transition-colors">
+                            Gym
+                        </button>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="mt-xl pt-lg border-t border-outline-variant flex justify-between items-center">
+<button class="px-lg py-sm rounded-lg border border-outline text-on-surface font-ui-h4 text-ui-h4 hover:bg-surface-container transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        Previous
+                    </button>
+<button class="px-lg py-sm rounded-lg bg-primary-container text-on-primary-container font-ui-h4 text-ui-h4 hover:bg-primary hover:shadow-md transition-all duration-200 transform hover:-translate-y-0.5 flex items-center gap-xs">
+                        Next Step
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottom padding for scrollability -->
+<div class="h-xl"></div>
+</div>
+</main>
+</body></html>

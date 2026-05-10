@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Saved Properties - Aqar Home</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&amp;family=Playfair+Display:wght@600;700&amp;family=Cairo:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "on-background": "#1b1c1c",
+                        "surface-variant": "#e4e2e1",
+                        "surface-container-low": "#f5f3f3",
+                        "error": "#ba1a1a",
+                        "primary": "#00450d",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#ffddb5",
+                        "surface": "#fbf9f8",
+                        "on-primary-container": "#90d689",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0eded",
+                        "tertiary": "#00450d",
+                        "primary-fixed-dim": "#91d78a",
+                        "outline": "#717a6d",
+                        "secondary": "#835400",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-container": "#694300",
+                        "secondary-fixed-dim": "#ffb957",
+                        "tertiary-fixed": "#a3f69c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "tertiary-fixed-dim": "#88d982",
+                        "primary-fixed": "#acf4a4",
+                        "primary-container": "#1b5e20",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#91d78a",
+                        "on-primary-fixed": "#002203",
+                        "surface-tint": "#2a6b2c",
+                        "outline-variant": "#c0c9bb",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary-fixed": "#2a1800",
+                        "inverse-surface": "#303030",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#86d881",
+                        "tertiary-container": "#055f18",
+                        "on-surface-variant": "#41493e",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#fcab28",
+                        "background": "#fbf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin": "24px",
+                        "xs": "4px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["DM Sans"],
+                        "display-h2": ["Playfair Display"],
+                        "body-sm": ["DM Sans"],
+                        "arabic-body": ["Cairo"],
+                        "ui-h4": ["DM Sans"],
+                        "display-h1": ["Playfair Display"],
+                        "body-main": ["DM Sans"],
+                        "ui-h3": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-h2": ["36px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "arabic-body": ["16px", { "lineHeight": "1.8", "fontWeight": "400" }],
+                        "ui-h4": ["20px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-h1": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "body-main": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "ui-h3": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Dashboard Layout Adjustments */
+        body { margin: 0; background-color: var(--color-background); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased flex h-screen overflow-hidden">
+<!-- Sidebar (Reused from Buyer Dashboard styling) -->
+<aside class="w-64 bg-primary-container text-on-primary-container hidden md:flex flex-col h-full flex-shrink-0 shadow-lg relative z-20">
+<div class="p-lg border-b border-primary-fixed/20 flex items-center justify-center">
+<!-- Brand Logo Substitute -->
+<img alt="Aqar Home Logo" class="h-10 object-contain" data-alt="Aqar Home corporate logo featuring a sophisticated geometric real estate icon in gold and white against a deep forest green background. The typography is elegant serif. The mood is premium, trustworthy, and established. Corporate Modern style." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+<nav class="flex-1 py-lg px-md overflow-y-auto flex flex-col gap-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-primary/20 transition-colors text-on-primary-container/80 hover:text-on-primary-container" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-main text-body-main font-medium">Dashboard</span>
+</a>
+<div class="mt-md mb-xs px-md">
+<span class="font-label-caps text-label-caps text-on-primary-container/60">PROPERTY HUNTING</span>
+</div>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary/30 text-tertiary-fixed border-l-4 border-tertiary-fixed shadow-sm" href="#">
+<span class="material-symbols-outlined icon-fill">favorite</span>
+<span class="font-body-main text-body-main font-medium">Saved Properties</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-primary/20 transition-colors text-on-primary-container/80 hover:text-on-primary-container" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-body-main text-body-main font-medium">Viewing History</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-primary/20 transition-colors text-on-primary-container/80 hover:text-on-primary-container" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-body-main text-body-main font-medium">Alerts</span>
+</a>
+<div class="mt-md mb-xs px-md">
+<span class="font-label-caps text-label-caps text-on-primary-container/60">ACCOUNT</span>
+</div>
+<a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-primary/20 transition-colors text-on-primary-container/80 hover:text-on-primary-container" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-main text-body-main font-medium">Profile</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-primary/20 transition-colors text-on-primary-container/80 hover:text-on-primary-container" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-main text-body-main font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-md border-t border-primary-fixed/20">
+<a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-error/20 transition-colors text-error-container hover:text-error-container" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-main text-body-main font-medium">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-surface-container-lowest relative">
+<!-- Top App Bar (Mobile) & Header Area -->
+<header class="bg-surface-container-lowest pt-xl px-xl pb-md flex-shrink-0 z-10 sticky top-0 border-b border-surface-variant/50">
+<!-- Mobile Menu Toggle (Visible only on small screens) -->
+<div class="md:hidden flex items-center mb-lg">
+<button class="text-on-surface p-sm -ml-sm rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-display-h2 text-ui-h4 ml-sm text-primary-container font-bold">Aqar Home</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-md">
+<div class="flex items-center gap-md">
+<h2 class="font-display-h2 text-display-h2 text-primary-container m-0">Saved Properties</h2>
+<span class="bg-primary-container/10 text-primary-container font-label-caps text-label-caps px-sm py-xs rounded-full inline-flex items-center border border-primary-container/20">
+                        8 SAVED
+                    </span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sort by:</span>
+<button class="flex items-center gap-xs px-md py-sm bg-surface rounded-lg border border-outline-variant hover:border-outline text-on-surface font-body-sm text-body-sm transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-container/50">
+                        Date Saved
+                        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Toast Notification (Absolute positioning within main) -->
+<div class="absolute top-xl right-xl z-50 bg-inverse-surface text-inverse-on-surface px-md py-sm rounded-lg shadow-[0px_12px_40px_rgba(0,0,0,0.12)] flex items-center gap-md transform translate-y-0 opacity-100 transition-all">
+<span class="material-symbols-outlined text-secondary-fixed">info</span>
+<span class="font-body-sm text-body-sm">Property unsaved.</span>
+<button class="text-secondary-fixed hover:text-secondary-fixed-dim font-label-caps text-label-caps ml-sm uppercase tracking-wider">Undo</button>
+<button class="text-inverse-on-surface/60 hover:text-inverse-on-surface ml-xs rounded-full p-xs flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-xl bg-surface-container-lowest">
+<!-- Property Grid (Bento/Card layout) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg max-w-[1400px] mx-auto pb-xl">
+<!-- Card 1 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(27,94,32,0.04)] hover:shadow-[0px_8px_30px_rgba(27,94,32,0.08)] transition-shadow duration-300 group flex flex-col border border-outline-variant/30">
+<div class="relative h-64 overflow-hidden bg-surface-variant">
+<!-- Image placeholder - using gradient for now as requested no data URI, but normally an image -->
+<div class="w-full h-full bg-gradient-to-br from-surface-variant to-surface-dim" data-alt="A luxurious modern villa interior featuring floor-to-ceiling windows overlooking a landscaped garden. Sunlight streams in, illuminating rich hardwood floors and minimalist beige furniture. The overall mood is upscale, serene, and spacious, adhering to a high-end corporate modern aesthetic. High contrast, photorealistic styling."></div>
+<div class="absolute top-md left-md bg-primary-container text-on-primary px-sm py-xs rounded flex flex-col shadow-sm">
+<span class="font-label-caps text-[10px] opacity-80 leading-none mb-xs">PRICE</span>
+<span class="font-display-h2 text-ui-h4 leading-none">AED 4.5M</span>
+</div>
+<button class="absolute top-md right-md bg-surface/90 backdrop-blur-sm p-sm rounded-full text-error hover:scale-110 transition-transform shadow-sm focus:outline-none">
+<span class="material-symbols-outlined icon-fill">favorite</span>
+</button>
+<div class="absolute bottom-md left-md flex gap-xs">
+<span class="bg-surface/90 backdrop-blur-sm text-on-surface font-label-caps text-label-caps px-sm py-xs rounded border border-outline-variant/50">VILLA</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex items-start justify-between gap-sm mb-sm">
+<h3 class="font-ui-h4 text-ui-h4 text-on-surface font-medium line-clamp-1 group-hover:text-primary-container transition-colors">The Palm Signature Residence</h3>
+<div class="flex items-center gap-xs text-secondary-container bg-secondary-container/10 px-xs py-[2px] rounded text-xs font-medium shrink-0">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>4.9</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container/70">location_on</span>
+<span class="truncate">Palm Jumeirah, Dubai</span>
+</div>
+<div class="flex flex-wrap gap-sm mt-auto border-t border-surface-variant pt-md">
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bed</span>
+<span>4 Beds</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bathtub</span>
+<span>5 Baths</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">square_foot</span>
+<span>4,200 sqft</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(27,94,32,0.04)] hover:shadow-[0px_8px_30px_rgba(27,94,32,0.08)] transition-shadow duration-300 group flex flex-col border border-outline-variant/30">
+<div class="relative h-64 overflow-hidden bg-surface-variant">
+<div class="w-full h-full bg-gradient-to-tr from-surface-dim to-surface-variant" data-alt="A sleek, high-rise apartment living room with panoramic views of a modern city skyline at twilight. The room features dark, elegant furniture with subtle gold accents, reflecting a premium urban lifestyle. Lighting is warm and atmospheric, contrasting with the cool blue tones of the city outside. Corporate modern aesthetic."></div>
+<div class="absolute top-md left-md bg-primary-container text-on-primary px-sm py-xs rounded flex flex-col shadow-sm">
+<span class="font-label-caps text-[10px] opacity-80 leading-none mb-xs">PRICE</span>
+<span class="font-display-h2 text-ui-h4 leading-none">AED 2.1M</span>
+</div>
+<button class="absolute top-md right-md bg-surface/90 backdrop-blur-sm p-sm rounded-full text-error hover:scale-110 transition-transform shadow-sm focus:outline-none">
+<span class="material-symbols-outlined icon-fill">favorite</span>
+</button>
+<div class="absolute bottom-md left-md flex gap-xs">
+<span class="bg-surface/90 backdrop-blur-sm text-on-surface font-label-caps text-label-caps px-sm py-xs rounded border border-outline-variant/50">APARTMENT</span>
+<span class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-sm py-xs rounded shadow-sm">NEW</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex items-start justify-between gap-sm mb-sm">
+<h3 class="font-ui-h4 text-ui-h4 text-on-surface font-medium line-clamp-1 group-hover:text-primary-container transition-colors">Marina Skyline Penthouse</h3>
+<div class="flex items-center gap-xs text-secondary-container bg-secondary-container/10 px-xs py-[2px] rounded text-xs font-medium shrink-0">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container/70">location_on</span>
+<span class="truncate">Dubai Marina, Dubai</span>
+</div>
+<div class="flex flex-wrap gap-sm mt-auto border-t border-surface-variant pt-md">
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bed</span>
+<span>2 Beds</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bathtub</span>
+<span>3 Baths</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">square_foot</span>
+<span>1,850 sqft</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(27,94,32,0.04)] hover:shadow-[0px_8px_30px_rgba(27,94,32,0.08)] transition-shadow duration-300 group flex flex-col border border-outline-variant/30">
+<div class="relative h-64 overflow-hidden bg-surface-variant">
+<div class="w-full h-full bg-gradient-to-bl from-surface-dim to-surface-variant" data-alt="An exterior view of a contemporary townhouse featuring a crisp white facade with natural wood accents and large geometric windows. A neatly paved driveway leads to an elegant dark wooden door. The landscaping is manicured and lush, reinforcing a premium, grounded real estate aesthetic. Bright, natural daylight."></div>
+<div class="absolute top-md left-md bg-primary-container text-on-primary px-sm py-xs rounded flex flex-col shadow-sm">
+<span class="font-label-caps text-[10px] opacity-80 leading-none mb-xs">PRICE</span>
+<span class="font-display-h2 text-ui-h4 leading-none">AED 3.2M</span>
+</div>
+<button class="absolute top-md right-md bg-surface/90 backdrop-blur-sm p-sm rounded-full text-error hover:scale-110 transition-transform shadow-sm focus:outline-none">
+<span class="material-symbols-outlined icon-fill">favorite</span>
+</button>
+<div class="absolute bottom-md left-md flex gap-xs">
+<span class="bg-surface/90 backdrop-blur-sm text-on-surface font-label-caps text-label-caps px-sm py-xs rounded border border-outline-variant/50">TOWNHOUSE</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex items-start justify-between gap-sm mb-sm">
+<h3 class="font-ui-h4 text-ui-h4 text-on-surface font-medium line-clamp-1 group-hover:text-primary-container transition-colors">Oasis Golf Estate Home</h3>
+<div class="flex items-center gap-xs text-secondary-container bg-secondary-container/10 px-xs py-[2px] rounded text-xs font-medium shrink-0">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>4.7</span>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary-container/70">location_on</span>
+<span class="truncate">Jumeirah Golf Estates, Dubai</span>
+</div>
+<div class="flex flex-wrap gap-sm mt-auto border-t border-surface-variant pt-md">
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bed</span>
+<span>3 Beds</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">bathtub</span>
+<span>4 Baths</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface font-body-sm text-body-sm px-sm py-xs rounded-full border border-primary-fixed/50 bg-primary-fixed/10">
+<span class="material-symbols-outlined text-[16px] text-primary-container">pool</span>
+<span>Private Pool</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Empty State (Hidden by default, structure provided as requested) -->
+<div class="hidden flex-col items-center justify-center text-center py-24 px-md max-w-lg mx-auto">
+<div class="w-32 h-32 mb-lg rounded-full bg-primary-fixed/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[64px] font-light">favorite</span>
+</div>
+<h3 class="font-display-h2 text-ui-h3 text-on-surface mb-sm">No saved properties yet.</h3>
+<p class="font-body-main text-body-main text-on-surface-variant mb-xl">Tap ♡ on any listing to save it here for quick access later.</p>
+<button class="bg-secondary-container hover:bg-secondary text-on-secondary-container hover:text-on-secondary font-label-caps text-label-caps px-xl py-md rounded-lg shadow-sm hover:shadow-[0px_8px_30px_rgba(27,94,32,0.08)] transition-all flex items-center gap-sm group">
+                    Start Searching
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Global Nav Components (Bottom Nav for Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-surface-variant z-50">
+<ul class="flex justify-around items-center py-sm px-md">
+<li class="flex-1">
+<a class="flex flex-col items-center gap-xs p-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">search</span>
+<span class="font-label-caps text-[10px]">Search</span>
+</a>
+</li>
+<li class="flex-1">
+<a class="flex flex-col items-center gap-xs p-sm text-primary-container border-t-2 border-primary-container -mt-[1px]" href="#">
+<span class="material-symbols-outlined icon-fill text-[24px]">favorite</span>
+<span class="font-label-caps text-[10px] font-bold">Saved</span>
+</a>
+</li>
+<li class="flex-1">
+<a class="flex flex-col items-center gap-xs p-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-label-caps text-[10px]">Dashboard</span>
+</a>
+</li>
+<li class="flex-1">
+<a class="flex flex-col items-center gap-xs p-sm text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-caps text-[10px]">Profile</span>
+</a>
+</li>
+</ul>
+</nav>
+</body></html>

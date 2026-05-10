@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aqar Home - Forgot Password</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;family=Cairo:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c0c9bb",
+                        "on-background": "#1b1c1c",
+                        "tertiary-fixed-dim": "#88d982",
+                        "on-tertiary-container": "#86d881",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary-fixed-dim": "#91d78a",
+                        "primary-fixed": "#acf4a4",
+                        "on-primary-fixed": "#002203",
+                        "inverse-surface": "#303030",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "surface-tint": "#2a6b2c",
+                        "secondary-fixed": "#ffddb5",
+                        "primary-container": "#1b5e20",
+                        "secondary-container": "#fcab28",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "error": "#ba1a1a",
+                        "tertiary": "#00450d",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#835400",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-low": "#f5f3f3",
+                        "outline": "#717a6d",
+                        "error-container": "#ffdad6",
+                        "background": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#91d78a",
+                        "surface": "#fbf9f8",
+                        "on-surface": "#1b1c1c",
+                        "tertiary-container": "#055f18",
+                        "surface-bright": "#fbf9f8",
+                        "secondary-fixed-dim": "#ffb957",
+                        "primary": "#00450d",
+                        "on-surface-variant": "#41493e",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e4e2e1",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-primary-container": "#90d689",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary-fixed": "#2a1800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#694300",
+                        "surface-container": "#f0eded",
+                        "tertiary-fixed": "#a3f69c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin": "24px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "ui-h3": ["DM Sans"],
+                        "display-h1": ["Playfair Display"],
+                        "arabic-body": ["Cairo"],
+                        "display-h2": ["Playfair Display"],
+                        "body-main": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "ui-h4": ["DM Sans"],
+                        "label-caps": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "ui-h3": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "display-h1": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "arabic-body": ["16px", { "lineHeight": "1.8", "fontWeight": "400" }],
+                        "display-h2": ["36px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-main": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "ui-h4": ["20px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Floating Label Styles */
+        .input-wrapper {
+            position: relative;
+            padding-top: 20px;
+        }
+        .float-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #c0c9bb; /* outline-variant */
+            border-radius: 0.5rem; /* lg */
+            background-color: transparent;
+            color: #1b1c1c; /* on-surface */
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .float-input:focus {
+            border-color: #1b5e20; /* primary-container */
+        }
+        .float-label {
+            position: absolute;
+            top: 32px;
+            left: 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            color: #717a6d; /* outline */
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+        .float-input:focus + .float-label,
+        .float-input:not(:placeholder-shown) + .float-label {
+            top: 0;
+            left: 12px;
+            font-size: 12px;
+            color: #1b5e20; /* primary-container */
+            background-color: #fbf9f8; /* surface */
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-main">
+<!-- Suppressed Header for Transactional Page -->
+<main class="flex-grow flex items-center justify-center p-margin md:p-xl">
+<div class="w-full max-w-[1140px] flex flex-col md:flex-row bg-surface rounded-xl shadow-[0px_12px_40px_rgba(0,0,0,0.12)] overflow-hidden">
+<!-- Left Branding Panel -->
+<div class="md:w-1/2 bg-primary-container text-on-primary relative flex flex-col justify-between p-xl overflow-hidden min-h-[300px] md:min-h-auto">
+<div class="absolute inset-0 z-0">
+<img alt="Abstract architectural details in a corporate modern style." class="w-full h-full object-cover opacity-30 mix-blend-overlay" data-alt="A close-up, abstract view of modern architectural elements, featuring clean lines and subtle textures. The lighting is soft and natural, casting gentle shadows that emphasize depth and structure. The color palette is heavily influenced by deep greens and natural tones, creating a grounded, prestigious atmosphere suited for high-end real estate." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+<div class="relative z-10">
+<div class="font-display-h2 text-display-h2 font-bold mb-md">Aqar Home</div>
+<div class="font-ui-h4 text-ui-h4 font-medium mb-sm">Secure Your Legacy</div>
+<p class="font-body-main text-body-main text-primary-fixed-dim">Access your portfolio of premium real estate investments and manage your properties with confidence.</p>
+</div>
+<div class="relative z-10 mt-xl md:mt-0">
+<p class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">Trusted by Industry Leaders</p>
+</div>
+</div>
+<!-- Right Panel: Forgot Password Form -->
+<div class="md:w-1/2 bg-surface p-xl flex flex-col justify-center">
+<div class="w-full max-w-md mx-auto">
+<a class="inline-flex items-center gap-sm text-surface-tint hover:text-primary transition-colors duration-200 font-body-sm text-body-sm mb-lg" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                        Back to Sign In
+                    </a>
+<h3 class="font-ui-h3 text-ui-h3 text-on-surface mb-sm">Reset Your Password</h3>
+<p class="font-body-main text-body-main text-on-surface-variant mb-xl">Enter your registered email and we'll send you a reset link.</p>
+<form action="#" class="flex flex-col gap-md" method="POST">
+<div class="input-wrapper">
+<input class="float-input" id="email" name="email" placeholder=" " required="" type="email"/>
+<label class="float-label" for="email">Email Address</label>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-ui-h4 text-ui-h4 py-md px-lg rounded-lg hover:-translate-y-[2px] transition-transform duration-200 shadow-[0px_4px_20px_rgba(27,94,32,0.04)] mt-sm" type="submit">
+                            Send Reset Link
+                        </button>
+</form>
+<!-- Preview of Success State (Normally hidden until form submission) -->
+<div class="mt-xl pt-xl border-t border-surface-variant flex flex-col items-center text-center opacity-50">
+<div class="w-20 h-20 bg-[#E8F5E9] rounded-full flex items-center justify-center mb-md shadow-[0px_4px_20px_rgba(27,94,32,0.04)]">
+<span class="material-symbols-outlined fill text-[40px] text-primary-container" data-icon="drafts" data-weight="fill">drafts</span>
+</div>
+<h3 class="font-ui-h3 text-ui-h3 text-primary-container mb-sm">Check Your Inbox!</h3>
+<p class="font-body-main text-body-main text-on-surface-variant mb-md">We sent a reset link to your email. Check your spam if you don't see it.</p>
+<button class="font-ui-h4 text-ui-h4 text-secondary-container hover:text-secondary transition-colors duration-200">
+                            Resend Link
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Suppressed Footer for Transactional Page -->
+</body></html>

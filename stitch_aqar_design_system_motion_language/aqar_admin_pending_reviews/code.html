@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aqar Home - Pending Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#fcab28",
+                        "on-surface-variant": "#41493e",
+                        "on-tertiary-container": "#86d881",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f8",
+                        "on-primary-fixed": "#002203",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-container": "#055f18",
+                        "primary-fixed-dim": "#91d78a",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#ffddb5",
+                        "outline": "#717a6d",
+                        "surface": "#fbf9f8",
+                        "tertiary-fixed": "#a3f69c",
+                        "surface-bright": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#2a1800",
+                        "surface-tint": "#2a6b2c",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002204",
+                        "on-secondary-container": "#694300",
+                        "tertiary": "#00450d",
+                        "primary-fixed": "#acf4a4",
+                        "on-surface": "#1b1c1c",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#91d78a",
+                        "surface-container-highest": "#e4e2e1",
+                        "secondary": "#835400",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed-dim": "#ffb957",
+                        "on-primary-container": "#90d689",
+                        "primary": "#00450d",
+                        "primary-container": "#1b5e20",
+                        "inverse-surface": "#303030",
+                        "on-background": "#1b1c1c",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "surface-variant": "#e4e2e1",
+                        "outline-variant": "#c0c9bb",
+                        "inverse-on-surface": "#f2f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "xl": "40px",
+                        "margin": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-main": ["DM Sans"],
+                        "ui-h4": ["DM Sans"],
+                        "display-h2": ["Playfair Display"],
+                        "ui-h3": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "arabic-body": ["Cairo"],
+                        "display-h1": ["Playfair Display"],
+                        "label-caps": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "body-main": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "ui-h4": ["20px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-h2": ["36px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "ui-h3": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "arabic-body": ["16px", { "lineHeight": "1.8", "fontWeight": "400" }],
+                        "display-h1": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main flex h-screen overflow-hidden">
+<!-- Admin Left Sidebar -->
+<aside class="w-64 bg-[#0D3B14] flex-shrink-0 flex flex-col h-full text-white">
+<div class="p-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-display-h2">real_estate_agent</span>
+<span class="font-display-h2 text-ui-h3 text-white">Aqar Admin</span>
+</div>
+<nav class="flex-1 px-md py-sm flex flex-col gap-xs overflow-y-auto">
+<a class="flex items-center gap-md p-md rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-ui-h4 text-body-main">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg bg-white/20 text-white font-medium shadow-sm" href="#">
+<span class="material-symbols-outlined" data-weight="fill">pending_actions</span>
+<span class="font-ui-h4 text-body-main">Pending Review</span>
+<span class="ml-auto bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-full">18</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">apartment</span>
+<span class="font-ui-h4 text-body-main">All Properties</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-ui-h4 text-body-main">Users &amp; Roles</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-ui-h4 text-body-main">Reports</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-ui-h4 text-body-main">Settings</span>
+</a>
+</nav>
+<div class="p-md mt-auto border-t border-white/10">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center font-ui-h4">A</div>
+<div class="flex flex-col">
+<span class="font-body-main text-body-sm font-medium text-white">Admin User</span>
+<span class="font-body-sm text-label-caps text-white/60">System Admin</span>
+</div>
+<button class="ml-auto text-white/60 hover:text-white">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 bg-surface-container-low overflow-y-auto relative flex flex-col">
+<!-- Header -->
+<header class="bg-surface sticky top-0 z-10 px-xl py-lg flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<h2 class="font-display-h2 text-display-h2 text-on-surface">Pending Review</h2>
+<div class="flex items-center gap-xs bg-secondary-container/20 text-secondary border border-secondary-container px-sm py-xs rounded-full relative overflow-hidden">
+<div class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-on-secondary-container">18 Pending</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container border-none rounded-lg font-body-main text-body-sm focus:ring-1 focus:ring-primary-container transition-shadow" placeholder="Search pending listings..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container border-none rounded-lg pl-md pr-xl py-sm font-body-main text-body-sm text-on-surface focus:ring-1 focus:ring-primary-container cursor-pointer">
+<option>Newest First</option>
+<option>Oldest First</option>
+<option>Highest Price</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 p-xl max-w-[1200px] mx-auto w-full flex flex-col gap-md">
+<!-- Card 1 -->
+<div class="bg-surface rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex overflow-hidden group cursor-pointer border border-outline-variant/30">
+<div class="w-[180px] h-[140px] flex-shrink-0 bg-surface-variant overflow-hidden relative">
+<img alt="A striking digital installation art piece featuring glowing, generative geometric shapes suspended in a vast, minimalist gallery space. The room is illuminated by high-key, soft white lighting that creates a bright, modern light-mode aesthetic. The artwork relies on a sophisticated palette of deep blacks and pristine whites, punctuated by intense accents of vibrant red. The mood is serene yet technologically advanced." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A striking digital installation art piece featuring glowing, generative geometric shapes suspended in a vast, minimalist gallery space. The room is illuminated by high-key, soft white lighting that creates a bright, modern light-mode aesthetic. The artwork relies on a sophisticated palette of deep blacks and pristine whites, punctuated by intense accents of vibrant red. The mood is serene yet technologically advanced." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+<div class="absolute top-xs left-xs bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-primary-container font-label-caps text-[10px] uppercase tracking-wider font-bold shadow-sm">ID: AQ-892</div>
+</div>
+<div class="flex-1 p-md flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-ui-h4 text-ui-h4 text-on-surface group-hover:text-primary transition-colors">Luxury Skyline Penthouse</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Submitted 2 hours ago</span>
+</div>
+<div class="flex items-center gap-sm mb-sm">
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Mohammed Al-Fayed</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] font-label-caps text-on-surface-variant">Developer</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">location_on</span> Dubai Marina</div>
+<div class="flex items-center gap-xs font-medium text-on-surface">2,450,000 AED</div>
+<div class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">bed</span> 3</div>
+<div class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">bathtub</span> 2</div>
+</div>
+</div>
+</div>
+<div class="w-[140px] flex-shrink-0 bg-surface-container-low p-md flex flex-col justify-center gap-sm border-l border-outline-variant/30">
+<button class="w-full bg-primary-container text-on-primary py-sm rounded-lg font-ui-h4 text-body-sm shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Approve
+                    </button>
+<button class="w-full bg-transparent border border-error text-error py-sm rounded-lg font-ui-h4 text-body-sm hover:bg-error/5 transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">cancel</span> Reject
+                    </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex overflow-hidden group cursor-pointer border border-outline-variant/30">
+<div class="w-[180px] h-[140px] flex-shrink-0 bg-surface-variant overflow-hidden relative">
+<div class="w-full h-full bg-surface-container-high flex items-center justify-center text-on-surface-variant/50">
+<span class="material-symbols-outlined text-display-h1">image</span>
+</div>
+<div class="absolute top-xs left-xs bg-surface/90 backdrop-blur-sm px-2 py-1 rounded text-primary-container font-label-caps text-[10px] uppercase tracking-wider font-bold shadow-sm">ID: AQ-891</div>
+</div>
+<div class="flex-1 p-md flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-ui-h4 text-ui-h4 text-on-surface group-hover:text-primary transition-colors">Modern Family Villa</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Submitted 4 hours ago</span>
+</div>
+<div class="flex items-center gap-sm mb-sm">
+<span class="font-body-sm text-body-sm font-medium text-on-surface">Sarah Connor</span>
+<span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] font-label-caps text-on-surface-variant">Agent</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">location_on</span> Arabian Ranches</div>
+<div class="flex items-center gap-xs font-medium text-on-surface">5,100,000 AED</div>
+<div class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">bed</span> 5</div>
+<div class="flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">bathtub</span> 6</div>
+</div>
+</div>
+</div>
+<div class="w-[140px] flex-shrink-0 bg-surface-container-low p-md flex flex-col justify-center gap-sm border-l border-outline-variant/30">
+<button class="w-full bg-primary-container text-on-primary py-sm rounded-lg font-ui-h4 text-body-sm shadow-sm hover:-translate-y-0.5 hover:shadow-md transition-all flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Approve
+                    </button>
+<button class="w-full bg-transparent border border-error text-error py-sm rounded-lg font-ui-h4 text-body-sm hover:bg-error/5 transition-colors flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">cancel</span> Reject
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

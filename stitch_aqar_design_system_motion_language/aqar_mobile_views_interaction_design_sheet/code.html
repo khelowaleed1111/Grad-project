@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aqar Component &amp; State Sheet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-low": "#f5f3f3",
+                        "secondary-fixed-dim": "#ffb957",
+                        "on-error-container": "#93000a",
+                        "background": "#fbf9f8",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "tertiary-fixed-dim": "#88d982",
+                        "primary": "#00450d",
+                        "outline-variant": "#c0c9bb",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "on-secondary-fixed": "#2a1800",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#835400",
+                        "tertiary-fixed": "#a3f69c",
+                        "on-tertiary-container": "#86d881",
+                        "primary-fixed-dim": "#91d78a",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#41493e",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#00450d",
+                        "outline": "#717a6d",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#ffddb5",
+                        "on-secondary-container": "#694300",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-fixed": "#002203",
+                        "inverse-primary": "#91d78a",
+                        "surface-dim": "#dcd9d9",
+                        "primary-fixed": "#acf4a4",
+                        "primary-container": "#1b5e20",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-container": "#f0eded",
+                        "surface": "#fbf9f8",
+                        "secondary-container": "#fcab28",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "surface-variant": "#e4e2e1",
+                        "tertiary-container": "#055f18",
+                        "surface-tint": "#2a6b2c",
+                        "surface-bright": "#fbf9f8",
+                        "inverse-surface": "#303030",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#90d689",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "40px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "arabic-body": ["Cairo"],
+                        "label-caps": ["DM Sans"],
+                        "display-h2": ["Playfair Display"],
+                        "ui-h3": ["DM Sans"],
+                        "body-main": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "ui-h4": ["DM Sans"],
+                        "display-h1": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "arabic-body": ["16px", { "lineHeight": "1.8", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-h2": ["36px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "ui-h3": ["24px", { "lineHeight": "1.4", "fontWeight": "700" }],
+                        "body-main": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "ui-h4": ["20px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "display-h1": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .ambient-shadow-1 { box-shadow: 0px 4px 20px rgba(27, 94, 32, 0.04); }
+        .ambient-shadow-2 { box-shadow: 0px 8px 30px rgba(27, 94, 32, 0.08); }
+        .ambient-shadow-3 { box-shadow: 0px 12px 40px rgba(0, 0, 0, 0.12); }
+        
+        .mockup-frame {
+            width: 375px;
+            height: 812px;
+            background: #fff;
+            border-radius: 40px;
+            border: 12px solid #1b1c1c;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .mockup-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #1b1c1c;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-main p-xl antialiased">
+<div class="max-w-[1440px] mx-auto">
+<header class="mb-xl pb-lg border-b border-surface-variant">
+<h1 class="font-display-h1 text-display-h1 text-primary mb-sm">Aqar Component &amp; State Sheet</h1>
+<p class="font-ui-h4 text-ui-h4 text-on-surface-variant">Comprehensive UI pattern library and state definitions.</p>
+</header>
+<!-- SECTION A: MOBILE SCREEN FRAMES -->
+<section class="mb-[80px]">
+<h2 class="font-display-h2 text-display-h2 text-primary border-b-2 border-primary pb-sm mb-xl inline-block">SECTION A: MOBILE SCREEN FRAMES</h2>
+<div class="flex gap-lg overflow-x-auto pb-xl snap-x snap-mandatory hide-scrollbar">
+<!-- 1. HOME -->
+<div class="mockup-frame shrink-0 snap-start bg-background">
+<div class="mockup-notch"></div>
+<!-- Top Nav / Header -->
+<div class="pt-[50px] px-md pb-md bg-surface-container-lowest flex justify-between items-center z-10 relative">
+<span class="font-display-h2 text-display-h2 font-bold text-primary">Aqar Home</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">menu</span></button>
+</div>
+<div class="flex-1 overflow-y-auto pb-[80px]">
+<!-- Hero / Search -->
+<div class="px-md py-lg bg-surface-container-lowest border-b border-surface-variant">
+<h2 class="font-display-h2 text-[28px] leading-tight text-primary mb-md">Find Your Perfect Investment.</h2>
+<div class="relative mb-md">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-md rounded-full bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container text-body-main placeholder:text-outline-variant" placeholder="Search by location or property type..." type="text"/>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container font-ui-h4 py-md rounded-full hover:bg-secondary-fixed transition-colors">Search Properties</button>
+</div>
+<!-- Horizontal Property Types -->
+<div class="py-lg">
+<h3 class="font-ui-h4 text-ui-h4 px-md mb-md">Property Types</h3>
+<div class="flex gap-sm overflow-x-auto px-md pb-sm hide-scrollbar">
+<div class="shrink-0 w-[120px] h-[100px] rounded-xl bg-primary-container/10 flex flex-col items-center justify-center border border-primary-container/20">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-xs">apartment</span>
+<span class="font-label-caps text-label-caps text-on-surface">Apartments</span>
+</div>
+<div class="shrink-0 w-[120px] h-[100px] rounded-xl bg-surface-container-highest flex flex-col items-center justify-center border border-surface-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px] mb-xs">villa</span>
+<span class="font-label-caps text-label-caps text-on-surface">Villas</span>
+</div>
+<div class="shrink-0 w-[120px] h-[100px] rounded-xl bg-surface-container-highest flex flex-col items-center justify-center border border-surface-variant">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px] mb-xs">storefront</span>
+<span class="font-label-caps text-label-caps text-on-surface">Commercial</span>
+</div>
+</div>
+</div>
+<!-- Featured Properties -->
+<div class="px-md pb-lg">
+<h3 class="font-ui-h4 text-ui-h4 mb-md flex justify-between items-center">
+                            Featured
+                            <span class="font-body-sm text-primary">View All</span>
+</h3>
+<div class="bg-surface-container-lowest rounded-xl ambient-shadow-1 overflow-hidden">
+<div class="h-[160px] bg-surface-variant relative">
+<div class="absolute top-sm left-sm bg-primary-container text-on-primary font-display-h2 text-[18px] px-sm py-xs rounded">AED 2.5M</div>
+<button class="absolute top-sm right-sm w-8 h-8 bg-surface-container-lowest/80 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-outline">favorite</span></button>
+</div>
+<div class="p-md">
+<h4 class="font-ui-h4 text-ui-h4 mb-xs">Marina Pearl Tower</h4>
+<p class="text-body-sm text-on-surface-variant flex items-center gap-xs mb-sm"><span class="material-symbols-outlined text-[16px]">location_on</span> Dubai Marina</p>
+<div class="flex gap-sm">
+<span class="text-label-caps px-sm py-xs rounded-full border border-primary-fixed-dim text-on-surface-variant">2 Beds</span>
+<span class="text-label-caps px-sm py-xs rounded-full border border-primary-fixed-dim text-on-surface-variant">3 Baths</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Nav -->
+<div class="absolute bottom-0 w-full bg-surface-container-lowest border-t border-surface-variant pt-sm pb-lg px-md flex justify-between">
+<button class="flex flex-col items-center text-primary-container"><span class="material-symbols-outlined mb-xs" style="font-variation-settings: 'FILL' 1;">home</span><span class="font-label-caps text-[10px]">Home</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">search</span><span class="font-label-caps text-[10px]">Search</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">favorite</span><span class="font-label-caps text-[10px]">Saved</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">person</span><span class="font-label-caps text-[10px]">Profile</span></button>
+</div>
+</div>
+<!-- 2. SEARCH -->
+<div class="mockup-frame shrink-0 snap-start bg-background">
+<div class="mockup-notch"></div>
+<!-- Header / Search Bar -->
+<div class="pt-[50px] px-md pb-sm bg-surface-container-lowest z-10 relative">
+<div class="relative mb-sm">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-sm rounded-full bg-surface-container-low border-none text-body-main" type="text" value="Dubai Marina"/>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant">tune</span>
+</div>
+<!-- Tabs -->
+<div class="flex border-b border-surface-variant">
+<button class="flex-1 py-sm font-ui-h4 text-primary border-b-2 border-primary text-center">List</button>
+<button class="flex-1 py-sm font-ui-h4 text-on-surface-variant text-center">Map</button>
+</div>
+</div>
+<!-- Filter Pills -->
+<div class="px-md py-sm flex gap-sm overflow-x-auto hide-scrollbar bg-surface-container-lowest border-b border-surface-variant">
+<span class="shrink-0 text-body-sm px-md py-sm rounded-full border border-primary text-primary bg-primary-container/5">Apartment <span class="material-symbols-outlined text-[14px] ml-xs align-middle">close</span></span>
+<span class="shrink-0 text-body-sm px-md py-sm rounded-full border border-outline text-on-surface-variant">Price Range</span>
+<span class="shrink-0 text-body-sm px-md py-sm rounded-full border border-outline text-on-surface-variant">2+ Beds</span>
+</div>
+<div class="flex-1 overflow-y-auto p-md pb-[80px] bg-background">
+<!-- Compact Cards -->
+<div class="flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-xl ambient-shadow-1 overflow-hidden flex h-[120px]">
+<div class="w-[120px] bg-surface-variant relative shrink-0">
+<button class="absolute top-xs right-xs w-6 h-6 bg-surface-container-lowest/80 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-outline text-[16px]">favorite</span></button>
+</div>
+<div class="p-sm flex-1 flex flex-col justify-center">
+<div class="font-display-h2 text-[16px] text-primary mb-xs">AED 1.8M</div>
+<h4 class="font-ui-h4 text-[14px] mb-xs truncate">Marina Gate 1</h4>
+<p class="text-body-sm text-on-surface-variant truncate">Dubai Marina</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl ambient-shadow-1 overflow-hidden flex h-[120px]">
+<div class="w-[120px] bg-surface-variant relative shrink-0">
+<button class="absolute top-xs right-xs w-6 h-6 bg-surface-container-lowest/80 rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-outline text-[16px]">favorite</span></button>
+</div>
+<div class="p-sm flex-1 flex flex-col justify-center">
+<div class="font-display-h2 text-[16px] text-primary mb-xs">AED 3.2M</div>
+<h4 class="font-ui-h4 text-[14px] mb-xs truncate">Bluewaters Residences</h4>
+<p class="text-body-sm text-on-surface-variant truncate">Bluewaters Island</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Map Button -->
+<button class="absolute bottom-[24px] left-1/2 -translate-x-1/2 bg-on-surface text-surface-container-lowest px-lg py-sm rounded-full font-ui-h4 flex items-center gap-xs ambient-shadow-2">
+<span class="material-symbols-outlined text-[18px]">map</span> Show Map
+                </button>
+</div>
+<!-- 3. PROPERTY DETAIL -->
+<div class="mockup-frame shrink-0 snap-start bg-surface-container-lowest">
+<div class="mockup-notch"></div>
+<!-- Back Button -->
+<div class="absolute top-[50px] left-md z-20 w-10 h-10 bg-surface-container-lowest/80 rounded-full flex items-center justify-center ambient-shadow-1">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="absolute top-[50px] right-md z-20 w-10 h-10 bg-surface-container-lowest/80 rounded-full flex items-center justify-center ambient-shadow-1">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div class="flex-1 overflow-y-auto pb-[90px]">
+<!-- Gallery -->
+<div class="h-[300px] bg-surface-variant relative">
+<!-- Dots -->
+<div class="absolute bottom-sm left-1/2 -translate-x-1/2 flex gap-xs">
+<div class="w-2 h-2 rounded-full bg-surface-container-lowest"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-lowest/50"></div>
+<div class="w-2 h-2 rounded-full bg-surface-container-lowest/50"></div>
+</div>
+</div>
+<div class="p-md">
+<div class="font-display-h2 text-[24px] text-primary mb-xs">AED 4.5M</div>
+<h1 class="font-ui-h4 text-[20px] mb-sm">Luxury Palm Villa</h1>
+<p class="text-body-main text-on-surface-variant flex items-center gap-xs mb-md pb-md border-b border-surface-variant"><span class="material-symbols-outlined text-[18px]">location_on</span> Palm Jumeirah</p>
+<!-- Features -->
+<div class="flex justify-between mb-md pb-md border-b border-surface-variant">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary-container mb-xs">bed</span>
+<p class="font-label-caps text-on-surface">4 BEDS</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary-container mb-xs">bathtub</span>
+<p class="font-label-caps text-on-surface">5 BATHS</p>
+</div>
+<div class="text-center">
+<span class="material-symbols-outlined text-primary-container mb-xs">straighten</span>
+<p class="font-label-caps text-on-surface">4,500 SQFT</p>
+</div>
+</div>
+<!-- Accordions -->
+<div class="border border-surface-variant rounded-xl overflow-hidden mb-sm">
+<button class="w-full px-md py-sm flex justify-between items-center bg-surface-container-low font-ui-h4 text-[16px]">
+                                Description <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+<div class="border border-surface-variant rounded-xl overflow-hidden mb-sm">
+<button class="w-full px-md py-sm flex justify-between items-center bg-surface-container-low font-ui-h4 text-[16px]">
+                                Amenities <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="absolute bottom-0 w-full bg-surface-container-lowest border-t border-surface-variant p-md flex gap-md items-center ambient-shadow-3">
+<button class="w-12 h-12 rounded-xl border border-outline flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-outline">favorite_border</span></button>
+<button class="flex-1 bg-secondary-container text-on-secondary-container font-ui-h4 py-md rounded-xl hover:bg-secondary-fixed transition-colors">Contact Owner</button>
+</div>
+</div>
+<!-- 4. REGISTER -->
+<div class="mockup-frame shrink-0 snap-start bg-surface-container-lowest">
+<div class="mockup-notch"></div>
+<div class="pt-[80px] px-md pb-lg flex flex-col h-full">
+<!-- Centered Logo/Title -->
+<div class="text-center mb-xl">
+<span class="font-display-h2 text-display-h2 font-bold text-primary block mb-sm">Aqar</span>
+<h1 class="font-ui-h3 text-ui-h3">Create an Account</h1>
+<p class="text-body-sm text-on-surface-variant mt-xs">Join the premier real estate platform.</p>
+</div>
+<!-- Role Selector -->
+<p class="font-label-caps text-label-caps text-outline mb-sm">I AM A...</p>
+<div class="flex gap-sm mb-lg">
+<button class="flex-1 border-2 border-primary-container bg-primary-container/5 rounded-xl py-md flex flex-col items-center">
+<span class="material-symbols-outlined text-primary-container mb-xs">person</span>
+<span class="font-ui-h4 text-[14px] text-primary-container">Buyer/Renter</span>
+</button>
+<button class="flex-1 border border-outline rounded-xl py-md flex flex-col items-center opacity-70">
+<span class="material-symbols-outlined text-on-surface-variant mb-xs">real_estate_agent</span>
+<span class="font-ui-h4 text-[14px] text-on-surface-variant">Agent</span>
+</button>
+</div>
+<!-- Stacked Inputs -->
+<div class="flex flex-col gap-md mb-xl flex-1">
+<div class="relative">
+<input class="peer w-full border-b-2 border-outline-variant bg-transparent pt-lg pb-sm px-0 text-body-main focus:border-primary-container focus:ring-0 placeholder-transparent" id="reg-name" placeholder="Full Name" type="text"/>
+<label class="absolute left-0 top-sm text-label-caps text-outline-variant transition-all peer-placeholder-shown:top-lg peer-placeholder-shown:text-body-main peer-focus:top-sm peer-focus:text-label-caps peer-focus:text-primary-container" for="reg-name">Full Name</label>
+</div>
+<div class="relative">
+<input class="peer w-full border-b-2 border-outline-variant bg-transparent pt-lg pb-sm px-0 text-body-main focus:border-primary-container focus:ring-0 placeholder-transparent" id="reg-email" placeholder="Email Address" type="email"/>
+<label class="absolute left-0 top-sm text-label-caps text-outline-variant transition-all peer-placeholder-shown:top-lg peer-placeholder-shown:text-body-main peer-focus:top-sm peer-focus:text-label-caps peer-focus:text-primary-container" for="reg-email">Email Address</label>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-primary-container text-on-primary font-ui-h4 py-md rounded-full mb-md hover:bg-primary transition-colors ambient-shadow-2">Create Account</button>
+<p class="text-center text-body-sm text-on-surface-variant">Already have an account? <span class="text-primary font-medium">Log in</span></p>
+</div>
+</div>
+<!-- 5. DASHBOARD -->
+<div class="mockup-frame shrink-0 snap-start bg-background">
+<div class="mockup-notch"></div>
+<!-- Header -->
+<div class="pt-[50px] px-md pb-md bg-surface-container-lowest border-b border-surface-variant flex justify-between items-center z-10 relative">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">WELCOME BACK</p>
+<h1 class="font-ui-h3 text-ui-h3 text-primary">Ahmed M.</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-variant"></div>
+</div>
+<div class="flex-1 overflow-y-auto p-md pb-[80px]">
+<!-- Stat Grid -->
+<div class="grid grid-cols-2 gap-sm mb-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl ambient-shadow-1 border border-surface-variant">
+<span class="material-symbols-outlined text-secondary-container mb-xs">visibility</span>
+<div class="font-display-h2 text-[24px] text-primary">1,240</div>
+<p class="text-body-sm text-on-surface-variant">Profile Views</p>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl ambient-shadow-1 border border-surface-variant">
+<span class="material-symbols-outlined text-primary-container mb-xs">favorite</span>
+<div class="font-display-h2 text-[24px] text-primary">85</div>
+<p class="text-body-sm text-on-surface-variant">Saves</p>
+</div>
+</div>
+<h2 class="font-ui-h4 text-ui-h4 mb-md">Active Listings</h2>
+<!-- Vertical Listing Cards -->
+<div class="flex flex-col gap-md">
+<div class="bg-surface-container-lowest rounded-xl ambient-shadow-1 overflow-hidden border border-surface-variant">
+<div class="flex p-sm gap-sm">
+<div class="w-[80px] h-[80px] bg-surface-variant rounded-lg shrink-0"></div>
+<div class="flex-1 flex flex-col justify-center">
+<h4 class="font-ui-h4 text-[14px] mb-xs">Downtown Penthouse</h4>
+<div class="font-display-h2 text-[14px] text-primary mb-xs">AED 8.5M</div>
+<span class="text-label-caps text-tertiary-container bg-tertiary-fixed px-sm py-xs rounded inline-block w-max">ACTIVE</span>
+</div>
+</div>
+<div class="border-t border-surface-variant p-sm flex justify-between bg-surface-container-low">
+<span class="text-body-sm text-on-surface-variant"><span class="material-symbols-outlined text-[14px] align-middle mr-xs">visibility</span> 450 views</span>
+<span class="text-primary text-body-sm font-medium">Edit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 5-icon Bottom Nav -->
+<div class="absolute bottom-0 w-full bg-surface-container-lowest border-t border-surface-variant pt-sm pb-lg px-md flex justify-between">
+<button class="flex flex-col items-center text-primary-container"><span class="material-symbols-outlined mb-xs" style="font-variation-settings: 'FILL' 1;">dashboard</span><span class="font-label-caps text-[10px]">Dashboard</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">list_alt</span><span class="font-label-caps text-[10px]">Listings</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">add_circle</span><span class="font-label-caps text-[10px]">Add</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">chat</span><span class="font-label-caps text-[10px]">Messages</span></button>
+<button class="flex flex-col items-center text-on-surface-variant"><span class="material-symbols-outlined mb-xs">person</span><span class="font-label-caps text-[10px]">Profile</span></button>
+</div>
+</div>
+<!-- 6. CREATE LISTING -->
+<div class="mockup-frame shrink-0 snap-start bg-surface-container-lowest">
+<div class="mockup-notch"></div>
+<!-- Header & Progress -->
+<div class="pt-[50px] px-md pb-md bg-surface-container-lowest border-b border-surface-variant z-10 relative">
+<div class="flex items-center gap-md mb-sm">
+<button class="w-8 h-8 rounded-full flex items-center justify-center bg-surface-container-low"><span class="material-symbols-outlined text-[18px]">close</span></button>
+<h1 class="font-ui-h4 text-ui-h4">Add Listing</h1>
+</div>
+<div class="flex gap-xs">
+<div class="h-1 flex-1 bg-primary-container rounded-full"></div>
+<div class="h-1 flex-1 bg-primary-container rounded-full"></div>
+<div class="h-1 flex-1 bg-primary-container rounded-full"></div>
+<div class="h-1 flex-1 bg-surface-variant rounded-full"></div>
+</div>
+<p class="text-label-caps text-outline-variant mt-sm">STEP 3 OF 4: LOCATION</p>
+</div>
+<div class="flex-1 overflow-y-auto p-md pb-[90px]">
+<h2 class="font-display-h2 text-[24px] text-primary mb-md">Where is it located?</h2>
+<!-- Map Pin Picker Dummy -->
+<div class="h-[200px] bg-surface-variant rounded-xl mb-md relative overflow-hidden border border-surface-variant">
+<!-- Simulated map center pin -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full pb-1">
+<span class="material-symbols-outlined text-primary-container text-[36px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<!-- Stacked Inputs -->
+<div class="flex flex-col gap-md">
+<div class="relative">
+<input class="peer w-full border-b-2 border-outline-variant bg-transparent pt-lg pb-sm px-0 text-body-main focus:border-primary-container focus:ring-0" id="loc-city" placeholder="City" type="text" value="Dubai"/>
+<label class="absolute left-0 top-sm text-label-caps text-primary-container transition-all" for="loc-city">City</label>
+</div>
+<div class="relative">
+<input class="peer w-full border-b-2 border-outline-variant bg-transparent pt-lg pb-sm px-0 text-body-main focus:border-primary-container focus:ring-0" id="loc-area" placeholder="Area / Neighborhood" type="text" value="Dubai Marina"/>
+<label class="absolute left-0 top-sm text-label-caps text-primary-container transition-all" for="loc-area">Area / Neighborhood</label>
+</div>
+<div class="relative">
+<input class="peer w-full border-b-2 border-outline-variant bg-transparent pt-lg pb-sm px-0 text-body-main focus:border-primary-container focus:ring-0 placeholder-transparent" id="loc-street" placeholder="Street Address (Optional)" type="text"/>
+<label class="absolute left-0 top-sm text-label-caps text-outline-variant transition-all peer-placeholder-shown:top-lg peer-placeholder-shown:text-body-main peer-focus:top-sm peer-focus:text-label-caps peer-focus:text-primary-container" for="loc-street">Street Address (Optional)</label>
+</div>
+</div>
+</div>
+<!-- Sticky Continue -->
+<div class="absolute bottom-0 w-full bg-surface-container-lowest border-t border-surface-variant p-md ambient-shadow-3">
+<button class="w-full bg-primary-container text-on-primary font-ui-h4 py-md rounded-full hover:bg-primary transition-colors">Continue</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION B: EMPTY STATES -->
+<section class="mb-[80px]">
+<h2 class="font-display-h2 text-display-h2 text-primary border-b-2 border-primary pb-sm mb-xl inline-block">SECTION B: EMPTY STATES</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-md">
+<!-- 1. NO SEARCH RESULTS -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-surface-variant flex flex-col items-center text-center aspect-square justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline mb-md opacity-50">search_off</span>
+<h3 class="font-ui-h4 text-ui-h4 mb-xs">No properties found</h3>
+<button class="text-primary font-ui-h4 text-sm mt-sm px-md py-xs rounded-full border border-primary">Clear Filters</button>
+</div>
+<!-- 2. NO SAVED -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-surface-variant flex flex-col items-center text-center aspect-square justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline mb-md opacity-50">heart_broken</span>
+<h3 class="font-ui-h4 text-ui-h4 mb-xs">No saved properties</h3>
+<button class="bg-primary-container text-on-primary font-ui-h4 text-sm mt-sm px-md py-sm rounded-full">Start Searching</button>
+</div>
+<!-- 3. NO LISTINGS -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-surface-variant flex flex-col items-center text-center aspect-square justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline mb-md opacity-50">architecture</span>
+<h3 class="font-ui-h4 text-ui-h4 mb-xs">No active listings</h3>
+<button class="text-primary font-ui-h4 text-sm mt-sm px-md py-xs rounded-full border border-primary">Add First Property</button>
+</div>
+<!-- 4. PENDING -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-surface-variant flex flex-col items-center text-center aspect-square justify-center">
+<span class="material-symbols-outlined text-[48px] text-secondary-container mb-md opacity-80">pending_actions</span>
+<h3 class="font-ui-h4 text-ui-h4 mb-xs">Account Pending</h3>
+<span class="mt-sm bg-secondary-fixed text-on-secondary-fixed-variant text-label-caps px-sm py-xs rounded">Awaiting Review</span>
+</div>
+<!-- 5. NO MESSAGES -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-surface-variant flex flex-col items-center text-center aspect-square justify-center">
+<span class="material-symbols-outlined text-[48px] text-outline mb-md opacity-50">chat_bubble_outline</span>
+<h3 class="font-ui-h4 text-ui-h4 mb-xs">No messages yet</h3>
+<p class="text-body-sm text-on-surface-variant mt-xs">Inquiries will appear here.</p>
+</div>
+</div>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Listings - Aqar Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-fixed": "#002203",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f8",
+                        "on-tertiary-container": "#86d881",
+                        "on-surface-variant": "#41493e",
+                        "secondary-container": "#fcab28",
+                        "tertiary-fixed": "#a3f69c",
+                        "surface": "#fbf9f8",
+                        "outline": "#717a6d",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#ffddb5",
+                        "tertiary-container": "#055f18",
+                        "primary-fixed-dim": "#91d78a",
+                        "on-secondary-container": "#694300",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-tint": "#2a6b2c",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#2a1800",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface": "#1b1c1c",
+                        "primary-fixed": "#acf4a4",
+                        "tertiary": "#00450d",
+                        "surface-container": "#f0eded",
+                        "secondary": "#835400",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#91d78a",
+                        "on-background": "#1b1c1c",
+                        "inverse-surface": "#303030",
+                        "primary-container": "#1b5e20",
+                        "primary": "#00450d",
+                        "secondary-fixed-dim": "#ffb957",
+                        "on-primary-container": "#90d689",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c0c9bb",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-variant": "#e4e2e1",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "on-secondary-fixed-variant": "#643f00",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-fixed-variant": "#0c5216",
+                        "on-error": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        gutter: "16px",
+                        sm: "8px",
+                        xs: "4px",
+                        xl: "40px",
+                        margin: "24px",
+                        base: "4px",
+                        md: "16px",
+                        lg: "24px"
+                    },
+                    fontFamily: {
+                        "ui-h3": ["DM Sans"],
+                        "body-sm": ["DM Sans"],
+                        "arabic-body": ["Cairo"],
+                        "display-h1": ["Playfair Display"],
+                        "label-caps": ["DM Sans"],
+                        "body-main": ["DM Sans"],
+                        "ui-h4": ["DM Sans"],
+                        "display-h2": ["Playfair Display"]
+                    },
+                    fontSize: {
+                        "ui-h3": ["24px", { lineHeight: "1.4", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+                        "arabic-body": ["16px", { lineHeight: "1.8", fontWeight: "400" }],
+                        "display-h1": ["48px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "label-caps": ["12px", { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-main": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "ui-h4": ["20px", { lineHeight: "1.4", fontWeight: "500" }],
+                        "display-h2": ["36px", { lineHeight: "1.3", fontWeight: "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<nav class="bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center w-full px-margin py-sm max-w-[1140px] mx-auto docked full-width top-0 sticky z-50">
+<div class="flex items-center gap-margin">
+<a class="font-display-h2 text-display-h2 font-bold text-primary dark:text-inverse-primary" href="#">Aqar Home</a>
+<div class="hidden md:flex gap-gutter items-center ml-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">Properties</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">Developers</a>
+<a class="text-primary dark:text-inverse-primary border-b-2 border-primary dark:border-inverse-primary pb-1 scale-95 transition-transform" href="#">Investments</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">Market Insights</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-colors duration-200" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<button class="font-label-caps text-label-caps font-bold text-primary dark:text-inverse-primary bg-primary-container/10 px-md py-sm rounded hover:bg-primary-container/20 transition-colors">Sign In</button>
+</div>
+</nav>
+<div class="flex flex-1 max-w-[1140px] mx-auto w-full pt-lg pb-xl gap-xl px-margin">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 hidden lg:block">
+<div class="bg-primary text-on-primary rounded-xl p-margin h-full sticky top-[100px] shadow-[0px_12px_40px_rgba(0,0,0,0.12)]">
+<div class="flex items-center gap-md mb-xl">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-bold text-ui-h4 border border-outline-variant/30">
+                        AH
+                    </div>
+<div>
+<div class="font-ui-h4 text-ui-h4 font-bold">Ahmed Hassan</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim">Owner</div>
+</div>
+</div>
+<nav class="flex flex-col gap-sm">
+<a class="flex items-center gap-md p-sm rounded hover:bg-primary-container/50 transition-colors text-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-main text-body-main">Dashboard Overview</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded bg-primary-container/80 text-on-primary border-l-4 border-secondary-container" href="#">
+<span class="material-symbols-outlined fill">real_estate_agent</span>
+<span class="font-body-main text-body-main font-bold">My Listings</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded hover:bg-primary-container/50 transition-colors text-surface-variant" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-body-main text-body-main flex-1">Messages</span>
+<span class="bg-secondary text-on-secondary text-xs rounded-full px-2 py-1 font-bold">3</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded hover:bg-primary-container/50 transition-colors text-surface-variant" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-body-main text-body-main">Saved Properties</span>
+</a>
+<a class="flex items-center gap-md p-sm rounded hover:bg-primary-container/50 transition-colors text-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-main text-body-main">Account Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 min-w-0">
+<!-- Header section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-xl gap-md">
+<h2 class="font-display-h2 text-display-h2 text-primary">My Listings</h2>
+<button class="bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed-dim font-label-caps text-label-caps px-margin py-sm rounded-lg flex items-center gap-sm transition-all duration-300 shadow-[0px_4px_20px_rgba(27,94,32,0.04)] hover:shadow-[0px_8px_30px_rgba(27,94,32,0.08)] group translate-y-[-2px]">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform duration-300">add</span>
+                    Add New Property
+                </button>
+</div>
+<!-- Tabs and View Toggle -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-surface-container-high mb-lg gap-md pb-sm">
+<div class="flex gap-lg relative w-full sm:w-auto overflow-x-auto no-scrollbar">
+<button class="font-ui-h4 text-ui-h4 text-primary border-b-2 border-primary pb-sm px-xs whitespace-nowrap">All (12)</button>
+<button class="font-ui-h4 text-ui-h4 text-on-surface-variant hover:text-primary transition-colors pb-sm px-xs whitespace-nowrap">Active (9)</button>
+<button class="font-ui-h4 text-ui-h4 text-on-surface-variant hover:text-primary transition-colors pb-sm px-xs whitespace-nowrap">Pending (2)</button>
+<button class="font-ui-h4 text-ui-h4 text-on-surface-variant hover:text-primary transition-colors pb-sm px-xs whitespace-nowrap">Rejected (1)</button>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-low p-xs rounded-lg">
+<button aria-label="Table View" class="p-xs rounded bg-surface shadow-sm text-primary">
+<span class="material-symbols-outlined">table_rows</span>
+</button>
+<button aria-label="Grid View" class="p-xs rounded text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+</div>
+</div>
+<!-- Table View -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0px_4px_20px_rgba(27,94,32,0.04)] overflow-hidden border border-surface-container-highest">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-container-highest font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">
+<th class="p-md w-12 text-center"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></th>
+<th class="p-md">Property</th>
+<th class="p-md">Type</th>
+<th class="p-md">Price</th>
+<th class="p-md">Status</th>
+<th class="p-md">Views</th>
+<th class="p-md">Date</th>
+<th class="p-md text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="border-b border-surface-container-highest hover:bg-[#E8F5E9] transition-colors group">
+<td class="p-md text-center"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-md flex items-center gap-md">
+<div class="w-16 h-12 rounded bg-surface-container overflow-hidden flex-shrink-0">
+<img alt="A wide, panoramic hero image displaying an expansive, minimalist living room with floor-to-ceiling windows overlooking a serene, lush green forest. The room is styled with high-end, modern corporate aesthetic furniture in neutral tones, illuminated by soft, natural light that reflects off polished hardwood floors. The overall mood is grounded, calm, and authoritative, emphasizing stability and premium real estate investment." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+<span class="font-bold text-on-surface truncate max-w-[200px]" title="Luxury Villa in New Cairo">Luxury Villa in New Cairo</span>
+</td>
+<td class="p-md text-on-surface-variant">Villa</td>
+<td class="p-md font-bold text-primary">EGP 15,000,000</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-primary-container/10 text-primary-container font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                                        Active
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">visibility</span> 1,245</td>
+<td class="p-md text-on-surface-variant">Oct 12, 2023</td>
+<td class="p-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-surface"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-xs text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="border-b border-surface-container-highest bg-[#FAFAFA] hover:bg-[#E8F5E9] transition-colors group">
+<td class="p-md text-center"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-md flex items-center gap-md">
+<div class="w-16 h-12 rounded bg-surface-container overflow-hidden flex-shrink-0 flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">image</span>
+</div>
+<span class="font-bold text-on-surface truncate max-w-[200px]" title="Modern Apartment Downtown">Modern Apartment Downtown</span>
+</td>
+<td class="p-md text-on-surface-variant">Apartment</td>
+<td class="p-md font-bold text-primary">EGP 3,500,000</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-secondary-container/10 text-on-secondary-container font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">visibility</span> 0</td>
+<td class="p-md text-on-surface-variant">Nov 01, 2023</td>
+<td class="p-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-surface"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-xs text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="border-b border-surface-container-highest hover:bg-[#E8F5E9] transition-colors group">
+<td class="p-md text-center"><input class="rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/></td>
+<td class="p-md flex items-center gap-md">
+<div class="w-16 h-12 rounded bg-surface-container overflow-hidden flex-shrink-0 flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined">image</span>
+</div>
+<span class="font-bold text-on-surface truncate max-w-[200px]" title="Retail Space in Mall">Retail Space in Mall</span>
+</td>
+<td class="p-md text-on-surface-variant">Commercial</td>
+<td class="p-md font-bold text-primary">EGP 8,200,000</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs px-2 py-1 rounded-full bg-error-container/20 text-on-error-container font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                                        Rejected
+                                    </span>
+</td>
+<td class="p-md text-on-surface-variant flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">visibility</span> 45</td>
+<td class="p-md text-on-surface-variant">Sep 15, 2023</td>
+<td class="p-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors rounded hover:bg-surface"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-xs text-on-surface-variant hover:text-error transition-colors rounded hover:bg-error-container"><span class="material-symbols-outlined">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md border-t border-surface-container-highest flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Showing 1 to 3 of 12 entries</span>
+<div class="flex items-center gap-xs">
+<button class="p-xs rounded hover:bg-surface-container transition-colors disabled:opacity-50"><span class="material-symbols-outlined text-[20px]">chevron_left</span></button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-bold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container transition-colors flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container transition-colors flex items-center justify-center">3</button>
+<span class="px-xs">...</span>
+<button class="p-xs rounded hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[20px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest w-full px-margin py-xl flex flex-col items-center gap-md full-width bottom-0 flat no shadows opacity-80 hover:opacity-100 transition-opacity mt-auto">
+<div class="font-display-h2 text-display-h2 font-bold text-inverse-on-surface dark:text-on-surface">Aqar Home</div>
+<div class="flex gap-lg">
+<a class="text-surface-variant dark:text-on-surface-variant font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">Privacy Policy</a>
+<a class="text-surface-variant dark:text-on-surface-variant font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">Terms of Service</a>
+<a class="text-surface-variant dark:text-on-surface-variant font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">Cookie Policy</a>
+<a class="text-surface-variant dark:text-on-surface-variant font-body-sm text-body-sm hover:text-secondary-fixed-dim transition-colors" href="#">Sitemap</a>
+</div>
+<div class="font-body-sm text-body-sm text-surface-variant dark:text-on-surface-variant mt-sm">© 2024 Aqar Home. Built for Excellence.</div>
+</footer>
+</body></html>

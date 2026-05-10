@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Inquiries - Aqar Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#717a6d",
+                    "secondary": "#835400",
+                    "surface-dim": "#dcd9d9",
+                    "on-secondary-container": "#694300",
+                    "surface-container": "#f0eded",
+                    "tertiary": "#00450d",
+                    "primary-fixed-dim": "#91d78a",
+                    "tertiary-fixed": "#a3f69c",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary-fixed-dim": "#88d982",
+                    "primary-fixed": "#acf4a4",
+                    "primary-container": "#1b5e20",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#91d78a",
+                    "secondary-fixed-dim": "#ffb957",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "on-primary-fixed-variant": "#0c5216",
+                    "on-background": "#1b1c1c",
+                    "surface-variant": "#e4e2e1",
+                    "surface-container-low": "#f5f3f3",
+                    "secondary-fixed": "#ffddb5",
+                    "surface": "#fbf9f8",
+                    "on-primary-container": "#90d689",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "primary": "#00450d",
+                    "surface-container-high": "#eae8e7",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#86d881",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fcab28",
+                    "background": "#fbf9f8",
+                    "tertiary-container": "#055f18",
+                    "on-surface-variant": "#41493e",
+                    "surface-container-highest": "#e4e2e1",
+                    "outline-variant": "#c0c9bb",
+                    "on-primary-fixed": "#002203",
+                    "surface-tint": "#2a6b2c",
+                    "on-surface": "#1b1c1c",
+                    "on-secondary-fixed": "#2a1800",
+                    "inverse-surface": "#303030",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "on-tertiary-fixed": "#002204"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "md": "16px",
+                    "gutter": "16px",
+                    "base": "4px",
+                    "xl": "40px",
+                    "sm": "8px",
+                    "margin": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-main": [
+                            "DM Sans"
+                    ],
+                    "ui-h3": [
+                            "DM Sans"
+                    ],
+                    "label-caps": [
+                            "DM Sans"
+                    ],
+                    "display-h2": [
+                            "Playfair Display"
+                    ],
+                    "body-sm": [
+                            "DM Sans"
+                    ],
+                    "arabic-body": [
+                            "Cairo"
+                    ],
+                    "ui-h4": [
+                            "DM Sans"
+                    ],
+                    "display-h1": [
+                            "Playfair Display"
+                    ]
+            },
+            "fontSize": {
+                    "body-main": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "ui-h3": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-h2": [
+                            "36px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "arabic-body": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.8",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "ui-h4": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-h1": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased h-screen flex overflow-hidden">
+<!-- TopNavBar (Web Only) -->
+<header class="hidden md:flex flex-col w-full absolute top-0 z-50 shadow-sm bg-surface">
+<div class="flex justify-between items-center w-full px-margin py-sm max-w-[1140px] mx-auto">
+<a class="font-display-h2 text-display-h2 font-bold text-primary" href="#">Aqar Home</a>
+<nav class="flex items-center gap-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Properties</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Developers</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Investments</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Market Insights</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">About</a>
+</nav>
+<button class="bg-primary-container text-on-primary px-lg py-sm rounded hover:bg-primary transition-colors">Sign In</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex flex-1 pt-[72px] h-full w-full max-w-[1140px] mx-auto px-margin">
+<!-- Sidebar (Placeholder for context, assuming structural integration) -->
+<aside class="w-64 flex-shrink-0 border-r border-outline-variant pr-lg py-lg hidden md:block h-full">
+<h2 class="font-ui-h4 text-ui-h4 text-primary mb-lg">Dashboard</h2>
+<ul class="space-y-sm">
+<li><a class="block px-md py-sm rounded hover:bg-surface-container text-on-surface-variant" href="#">Overview</a></li>
+<li><a class="block px-md py-sm rounded hover:bg-surface-container text-on-surface-variant" href="#">Saved Properties</a></li>
+<li><a class="block px-md py-sm rounded bg-surface-container text-primary font-bold" href="#">My Inquiries</a></li>
+<li><a class="block px-md py-sm rounded hover:bg-surface-container text-on-surface-variant" href="#">Account Settings</a></li>
+</ul>
+</aside>
+<!-- Inquiries Layout -->
+<main class="flex-1 flex border-l border-outline-variant ml-lg bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden h-[calc(100vh-120px)] mt-lg">
+<!-- Thread List -->
+<div class="w-[320px] flex-shrink-0 border-r border-outline-variant flex flex-col bg-surface h-full">
+<div class="p-md border-b border-outline-variant">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-ui-h3 text-ui-h3 text-primary">Inquiries <span class="bg-primary-container text-on-primary text-body-sm px-sm rounded-full ml-sm">12</span></h3>
+<button><span class="material-symbols-outlined text-on-surface-variant">filter_list</span></button>
+</div>
+<div class="flex border-b border-outline-variant mb-md relative">
+<button class="flex-1 pb-sm text-primary font-bold text-body-sm relative">
+                            All
+                            <div class="absolute bottom-[-1px] left-0 w-full h-[2px] bg-primary-container"></div>
+</button>
+<button class="flex-1 pb-sm text-on-surface-variant text-body-sm hover:text-primary transition-colors">Unread (3)</button>
+<button class="flex-1 pb-sm text-on-surface-variant text-body-sm hover:text-primary transition-colors">Sent</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-sm py-sm rounded border border-outline-variant bg-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container text-body-sm" placeholder="Search messages..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<!-- Thread Card 1 (Active/Unread) -->
+<button class="w-full text-left p-md border-b border-outline-variant border-l-4 border-l-primary-container bg-[#E8F5E9] hover:bg-surface-container transition-colors relative flex items-start gap-md">
+<div class="w-12 h-12 rounded bg-surface-dim flex-shrink-0 overflow-hidden relative">
+<img alt="A stunning modern villa exterior with expansive glass windows, illuminated beautifully at dusk against a clear, deep blue sky. The home exudes luxury and heritage, utilizing a muted, premium color palette of deep greens and warm architectural lighting. The mood is serene, secure, and highly aspirational." class="w-full h-full object-cover" data-alt="A stunning modern villa exterior with expansive glass windows, illuminated beautifully at dusk against a clear, deep blue sky. The home exudes luxury and heritage, utilizing a muted, premium color palette of deep greens and warm architectural lighting. The mood is serene, secure, and highly aspirational." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+<div class="absolute top-1 right-1 w-3 h-3 bg-primary-container rounded-full animate-pulse border-2 border-surface"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h4 class="font-bold text-body-main text-on-surface truncate pr-sm">Al Raha Beach Villa</h4>
+<span class="text-label-caps text-on-surface-variant flex-shrink-0">10:42 AM</span>
+</div>
+<p class="text-body-sm text-on-surface-variant font-medium truncate">Agent: We can schedule a viewing for tomorrow...</p>
+</div>
+</button>
+<!-- Thread Card 2 -->
+<button class="w-full text-left p-md border-b border-outline-variant border-l-4 border-l-transparent hover:bg-surface-container transition-colors flex items-start gap-md">
+<div class="w-12 h-12 rounded bg-surface-dim flex-shrink-0 overflow-hidden">
+<img alt="A luxurious high-rise apartment balcony overlooking a vibrant, glowing cityscape at night. The scene feels premium and authoritative, featuring subtle gold and dark green architectural details that align with a modern corporate real estate aesthetic." class="w-full h-full object-cover grayscale opacity-80" data-alt="A luxurious high-rise apartment balcony overlooking a vibrant, glowing cityscape at night. The scene feels premium and authoritative, featuring subtle gold and dark green architectural details that align with a modern corporate real estate aesthetic." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h4 class="font-bold text-body-main text-on-surface truncate pr-sm">Downtown Penthouse</h4>
+<span class="text-label-caps text-on-surface-variant flex-shrink-0">Yesterday</span>
+</div>
+<p class="text-body-sm text-on-surface-variant truncate">You: Is the price negotiable?</p>
+</div>
+</button>
+<!-- Thread Card 3 -->
+<button class="w-full text-left p-md border-b border-outline-variant border-l-4 border-l-transparent hover:bg-surface-container transition-colors flex items-start gap-md">
+<div class="w-12 h-12 rounded bg-surface-dim flex-shrink-0 flex items-center justify-center text-outline">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h4 class="font-bold text-body-main text-on-surface truncate pr-sm">Marina Retail Space</h4>
+<span class="text-label-caps text-on-surface-variant flex-shrink-0">Oct 12</span>
+</div>
+<p class="text-body-sm text-on-surface-variant truncate">Agent: The floor plans are attached.</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Message View -->
+<div class="flex-1 flex flex-col bg-surface-bright h-full relative">
+<!-- Header -->
+<div class="p-md border-b border-outline-variant bg-surface flex items-center justify-between shadow-[0px_4px_20px_rgba(27,94,32,0.04)] z-10">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded bg-surface-dim overflow-hidden shadow-sm">
+<img alt="Close up detail of premium dark wood paneling and marble countertops in a luxury estate kitchen. The lighting is soft and natural, emphasizing the high-end textures and the brand's heritage identity." class="w-full h-full object-cover" data-alt="Close up detail of premium dark wood paneling and marble countertops in a luxury estate kitchen. The lighting is soft and natural, emphasizing the high-end textures and the brand's heritage identity." src="https://lh3.googleusercontent.com/aida/ADBb0ugrOCNUmxzshyDUDu57y6Np6IW6-1SqVLavnKSPCkkVGJpAX0VeCJCW7FBtCfuvMu6jVaG6PCN-C-wW3uXOFHR0tre3i6QbQrsb8O8mWD0_N_ZqBmE-R2fulfaRYKYphsFenIhiwcNTgQjLgVnlxKQegpYSiQzfZbDm_PEdQy-oxAA1Z77BJqqnvZ1eJC-oURcS8ohD6l0mjbXknEXjNxwEgwIMkO7-_sGGZIFzMbJUTZd_iSxEc8tc5agP"/>
+</div>
+<div>
+<h2 class="font-display-h2 text-ui-h4 text-primary">Al Raha Beach Villa</h2>
+<p class="text-body-sm text-on-surface-variant">Listing Ref: #AQ-4920</p>
+</div>
+</div>
+<a class="text-secondary font-bold text-body-sm hover:text-secondary-container transition-colors flex items-center gap-xs" href="#">
+                        View Listing <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Conversation -->
+<div class="flex-1 overflow-y-auto p-lg flex flex-col gap-lg bg-surface-container-lowest">
+<div class="text-center">
+<span class="text-label-caps text-outline-variant bg-surface-container px-sm py-xs rounded-full">Today</span>
+</div>
+<!-- Sent Message -->
+<div class="flex flex-col items-end w-full">
+<div class="bg-primary-container text-on-primary p-md rounded-lg rounded-tr-none max-w-[80%] shadow-[0px_4px_20px_rgba(27,94,32,0.04)]">
+<p class="text-body-main">Hello, I am interested in this property. Can we schedule a viewing for tomorrow afternoon?</p>
+</div>
+<span class="text-label-caps text-on-surface-variant mt-xs">10:30 AM</span>
+</div>
+<!-- Received Message -->
+<div class="flex flex-col items-start w-full">
+<div class="flex items-end gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-body-sm shrink-0">
+                                AR
+                            </div>
+<div class="bg-surface text-on-surface p-md rounded-lg rounded-tl-none max-w-[80%] border border-outline-variant shadow-[0px_4px_20px_rgba(27,94,32,0.04)]">
+<p class="text-body-sm font-bold text-primary mb-xs">Aqar Representative</p>
+<p class="text-body-main">Thank you for reaching out. Yes, we can schedule a viewing for tomorrow. Does 3:00 PM work for you?</p>
+</div>
+</div>
+<span class="text-label-caps text-on-surface-variant mt-xs ml-10">10:42 AM</span>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-md bg-surface border-t border-outline-variant z-10">
+<div class="flex items-end gap-md">
+<div class="flex-1 bg-surface-container-lowest border border-outline-variant rounded-lg focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all shadow-sm">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none p-md text-body-main max-h-32 min-h-[48px]" placeholder="Type your message..." rows="1" style="overflow-y: hidden;"></textarea>
+</div>
+<button class="bg-primary-container text-on-primary h-12 px-lg rounded hover:bg-primary transition-colors flex items-center gap-xs font-bold shrink-0 shadow-[0px_4px_20px_rgba(27,94,32,0.04)]">
+<span>Send</span>
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

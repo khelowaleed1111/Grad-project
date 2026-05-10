@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1B5E20",
+                        "secondary": "#F9A825",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "aqar-green": "#1B5E20",
+                        "aqar-gold": "#F9A825",
+                    },
+                    fontFamily: {
+                        "display": ["Playfair Display", "serif"],
+                        "sans": ["DM Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+        }
+    </style>
+</head>
+<body class="bg-background-light font-sans text-slate-900">
+<!-- Navigation (Shared Component Integration) -->
+<div class="relative flex h-auto w-full flex-col bg-[#240f1b] dark group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-10 lg:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#4b2038] px-4 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-aqar-gold">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Aqar Design System</h2>
+</div>
+<div class="hidden md:flex items-center gap-9">
+<a class="text-white text-sm font-medium leading-normal border-b-2 border-aqar-gold" href="#">Spec</a>
+<a class="text-white text-sm font-medium leading-normal opacity-70 hover:opacity-100" href="#">Animation</a>
+<a class="text-white text-sm font-medium leading-normal opacity-70 hover:opacity-100" href="#">Assets</a>
+<a class="text-white text-sm font-medium leading-normal opacity-70 hover:opacity-100" href="#">Library</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#ce8db1] flex border-none bg-[#4b2038] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#4b2038] h-full placeholder:text-[#ce8db1] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal" placeholder="Search spec..." value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 bg-aqar-gold text-aqar-green text-sm font-bold">
+<span class="truncate">Export Specs</span>
+</button>
+</div>
+</header>
+</div>
+</div>
+</div>
+</div>
+<main class="max-w-[1200px] mx-auto px-6 py-12">
+<!-- Header: Identity -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-12 border-b border-slate-200 pb-12">
+<div>
+<span class="text-aqar-green font-bold tracking-widest uppercase text-xs">Aqar Documentation</span>
+<h1 class="font-display text-5xl font-black text-aqar-green mt-2">Design Spec &amp; Animation Library</h1>
+<p class="text-slate-600 mt-4 max-w-2xl text-lg">Detailed motion principles and component states for the Aqar real estate ecosystem. Defining how space, time, and luxury interact in the digital environment.</p>
+</div>
+<div class="flex gap-4">
+<div class="p-6 bg-white rounded-xl shadow-sm border border-slate-100">
+<p class="text-[10px] uppercase font-bold text-slate-400 mb-2">Primary Palette</p>
+<div class="flex gap-2">
+<div class="size-10 rounded-full bg-aqar-green border border-black/5" title="Aqar Green"></div>
+<div class="size-10 rounded-full bg-aqar-gold border border-black/5" title="Aqar Gold"></div>
+<div class="size-10 rounded-full bg-white border border-slate-200" title="Aqar Paper"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- 1. Fade-up entrance -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">01. Fade-up Entrance</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Core Transition</span>
+</div>
+<div class="p-8 flex flex-col items-center justify-center flex-grow min-h-[200px] space-y-3">
+<div class="w-full text-center">
+<div class="opacity-20 translate-y-4 font-display text-lg text-aqar-green">Initial State</div>
+<div class="my-4 flex justify-center"><span class="material-symbols-outlined text-slate-300">arrow_downward</span></div>
+<div class="font-display text-2xl text-aqar-green font-bold">Luxury Real Estate</div>
+<p class="text-sm text-slate-500">Staggered text reveal</p>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600 leading-relaxed">
+<strong>Logic:</strong> Stagger delay: 100ms. Duration: 0.6s. Curve: <code>cubic-bezier(0.21, 1.02, 0.73, 1)</code>.
+                    <br/><strong>Usage:</strong> All top-level page headers and main intro paragraphs.
+                </div>
+</div>
+<!-- 2. Card stagger cascade -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">02. Card Stagger Cascade</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">List View</span>
+</div>
+<div class="p-6 flex flex-col gap-3 flex-grow bg-slate-100/50">
+<div class="h-20 bg-white rounded-lg shadow-sm border border-slate-200 p-3 flex gap-4 items-center">
+<div class="size-14 rounded bg-slate-100"></div>
+<div class="space-y-2 flex-1"><div class="h-3 w-3/4 bg-slate-100"></div><div class="h-2 w-1/2 bg-slate-100"></div></div>
+</div>
+<div class="h-20 bg-white rounded-lg shadow-sm border border-slate-200 p-3 flex gap-4 items-center scale-[0.98] opacity-80 translate-y-1">
+<div class="size-14 rounded bg-slate-100"></div>
+<div class="space-y-2 flex-1"><div class="h-3 w-3/4 bg-slate-100"></div><div class="h-2 w-1/2 bg-slate-100"></div></div>
+</div>
+<div class="h-20 bg-white rounded-lg shadow-sm border border-slate-200 p-3 flex gap-4 items-center scale-[0.96] opacity-60 translate-y-2">
+<div class="size-14 rounded bg-slate-100"></div>
+<div class="space-y-2 flex-1"><div class="h-3 w-3/4 bg-slate-100"></div><div class="h-2 w-1/2 bg-slate-100"></div></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Stagger: 50ms per item. 0.5s duration. <code>ease-out</code>.
+                    <br/><strong>Usage:</strong> Search results, property listings, and dashboard widgets.
+                </div>
+</div>
+<!-- 3. Hero parallax diagram -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">03. Hero Parallax Diagram</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Visual Depth</span>
+</div>
+<div class="relative h-[200px] overflow-hidden bg-aqar-green">
+<img class="absolute inset-0 w-full h-full object-cover opacity-50 scale-125 translate-y-[-10%]" data-alt="A high-end architectural shot of a modern luxury villa during sunset. The image is framed with a professional real estate photography style, featuring warm golden light hitting clean concrete lines and large glass facades. The overall mood is sophisticated and aspirational, reflecting the Aqar brand's premium identity and commitment to excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB95OOJQsbQMV48vq-jlJWGHFiP4GdfdBQV6XqiqS09uNd53llXAnhfKkxSDhRgp0igJuoNdXyirMOxTXYteOldheP3YnpaOByyDvbunrT9kPvRfwFltrsMT52kQS-bauzq5F1Opem34CNlVqO8rxqKWetXDHeDd5PKEG_UjIB4D9FO7rRYLB6Q4TvzVdYUA9bDdHpZpCU13rjNBQeaXTxhdH_OtgMdWRUqWEQjjPVw6Cf5JQBWo2yXMOl87J2ZOXD__E1K72JBuC8L"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/90 backdrop-blur p-4 rounded-lg shadow-xl translate-y-4">
+<p class="font-display font-bold text-aqar-green">Parallax Foreground</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Background Y-speed: 0.2x. Foreground Y-speed: 1.0x.
+                    <br/><strong>Usage:</strong> Homepage hero and high-impact editorial property pages.
+                </div>
+</div>
+<!-- 4. Number count-up stats -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">04. Number Count-up Stats</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Engagement</span>
+</div>
+<div class="p-8 flex flex-col items-center justify-center flex-grow text-center">
+<div class="text-4xl font-display font-black text-aqar-gold">2,840+</div>
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest mt-2">Active Listings</p>
+<div class="mt-4 flex gap-1">
+<div class="h-1 w-8 bg-aqar-gold rounded"></div>
+<div class="h-1 w-2 bg-slate-200 rounded"></div>
+<div class="h-1 w-2 bg-slate-200 rounded"></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Duration: 2.0s. Linear-to-Ease-Out. Refresh rate: 60fps.
+                    <br/><strong>Usage:</strong> Dashboard statistics and company milestone trackers.
+                </div>
+</div>
+<!-- 5. Map pin drop -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">05. Map Pin Drop</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Geospatial</span>
+</div>
+<div class="h-[200px] bg-slate-200 relative flex items-center justify-center" data-location="Riyadh" style="">
+<div class="absolute inset-0 opacity-40">
+<!-- Map Placeholder -->
+<div class="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-300 to-slate-200"></div>
+</div>
+<div class="relative">
+<div class="text-aqar-green transform -translate-y-8 opacity-0">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="text-aqar-green animate-bounce">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="w-6 h-2 bg-black/10 rounded-full blur-[2px] mx-auto mt-[-4px]"></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Drop: 300ms. Bounce: 400ms. Cubic-bezier(0.175, 0.885, 0.32, 1.275).
+                    <br/><strong>Usage:</strong> Property location maps and neighborhood explorer.
+                </div>
+</div>
+<!-- 6. Filter slide-in panel -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">06. Filter Slide-in Panel</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Utility</span>
+</div>
+<div class="relative h-[200px] bg-slate-100 overflow-hidden">
+<div class="absolute inset-0 p-4">
+<div class="h-4 w-1/2 bg-slate-200 rounded mb-2"></div>
+<div class="h-4 w-1/3 bg-slate-200 rounded"></div>
+</div>
+<div class="absolute top-0 right-0 h-full w-2/3 bg-white shadow-2xl border-l border-slate-200 translate-x-4">
+<div class="p-4 border-b border-slate-100 font-bold text-xs text-aqar-green uppercase">Filters</div>
+<div class="p-4 space-y-3">
+<div class="h-2 w-full bg-slate-100 rounded"></div>
+<div class="h-2 w-full bg-slate-100 rounded"></div>
+<div class="h-8 w-full bg-aqar-green rounded"></div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Slide: 0.4s. Scrim Fade: 0.3s. <code>cubic-bezier(0.4, 0, 0.2, 1)</code>.
+                    <br/><strong>Usage:</strong> Mobile search filters and sorting options.
+                </div>
+</div>
+<!-- 7. Image gallery crossfade -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">07. Image Crossfade Slider</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Media</span>
+</div>
+<div class="h-[200px] relative">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A luxurious minimalist living room with floor-to-ceiling windows showing a desert landscape at dusk. The interior lighting is soft and recessed, casting a warm glow on designer furniture in neutral tones. The Aqar brand aesthetic is maintained through high-key lighting and a sense of calm, exclusive luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJGPpmm_5fgIhp6fQBkF5hYLv7zfIjrzzlaVhcv5Tqvvd_lZmSX5wR0DArdmd8tLxK_zJBYE41-9ZkVZFnuVBi6Q4-zaBb2JKY13HiQSiuk_XGn7T6DvVk8OFxtk4abDi2E30vB4wJeV8PqLLCxNKubDqD0vaPg3SiYhPBXhUbfHNCd3Fq7lmdW3yMffnQiqx0pK1QFr73FJ0XbGQss_9D5PgG7tmX4LW8XnzHZ2tgpAnqMy4W1mlJQVEKdRC2Uozrbi1e-O9IvcCx"/>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+<div class="w-8 h-1 bg-white rounded-full"></div>
+<div class="w-2 h-1 bg-white/50 rounded-full"></div>
+<div class="w-2 h-1 bg-white/50 rounded-full"></div>
+<div class="w-2 h-1 bg-white/50 rounded-full"></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Opacity change: 0.6s. Indicator stretch: 0.3s.
+                    <br/><strong>Usage:</strong> Property detail images and feature carousels.
+                </div>
+</div>
+<!-- 8. Modal scale-in (Pop) -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">08. Modal Scale-in</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Interaction</span>
+</div>
+<div class="h-[200px] bg-slate-800/20 flex items-center justify-center p-6">
+<div class="bg-white rounded-xl shadow-2xl p-6 w-full scale-110 border border-slate-100">
+<div class="size-8 rounded-full bg-aqar-green/10 text-aqar-green flex items-center justify-center mb-4">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="h-4 w-3/4 bg-slate-200 rounded mb-2"></div>
+<div class="h-10 w-full bg-aqar-green rounded"></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Scale from 0.95 to 1.05 back to 1.0. Duration: 0.4s. 
+                    <br/><strong>Usage:</strong> Confirmation dialogs and contact forms.
+                </div>
+</div>
+<!-- 9. Form field float label -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">09. Form Field Float Label</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Input</span>
+</div>
+<div class="p-8 flex-grow flex flex-col justify-center gap-6">
+<div class="relative pt-4">
+<label class="absolute top-0 left-0 text-[10px] font-bold text-aqar-green transition-all uppercase">Property Name</label>
+<input class="w-full border-0 border-b-2 border-aqar-green px-0 py-2 focus:ring-0 text-sm font-medium" type="text" value="Villa Al-Hamra"/>
+</div>
+<div class="relative pt-4 opacity-50">
+<label class="absolute top-5 left-0 text-sm text-slate-400 transition-all">Location Address</label>
+<input class="w-full border-0 border-b-2 border-slate-200 px-0 py-2 focus:ring-0 text-sm" type="text"/>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Label Y-transform: -20px. Font scale: 0.8x. Duration: 0.2s.
+                    <br/><strong>Usage:</strong> All user-entry text and number fields.
+                </div>
+</div>
+<!-- 10. Skeleton shimmer loading -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">10. Skeleton Shimmer Loading</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Feedback</span>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div class="h-32 w-full shimmer rounded-lg bg-slate-100"></div>
+<div class="h-4 w-3/4 shimmer rounded bg-slate-100"></div>
+<div class="h-4 w-1/2 shimmer rounded bg-slate-100"></div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Background-position x-axis animation. Loop: 1.5s. Infinite.
+                    <br/><strong>Usage:</strong> Pre-loading state for all data-heavy components.
+                </div>
+</div>
+<!-- 11. Toast notification -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">11. Toast Progress</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Feedback</span>
+</div>
+<div class="p-8 flex-grow flex items-center justify-center">
+<div class="bg-slate-900 text-white rounded-lg p-4 shadow-xl w-full max-w-[240px] relative overflow-hidden">
+<div class="flex gap-3 items-center">
+<span class="material-symbols-outlined text-aqar-gold">verified</span>
+<span class="text-xs font-medium">Property Saved</span>
+</div>
+<div class="absolute bottom-0 left-0 h-1 bg-aqar-gold w-3/4"></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> In: 0.3s Slide/Fade. Out: 0.5s Slide. Progress: 4s linear.
+                    <br/><strong>Usage:</strong> Success/Error alerts and quick system actions.
+                </div>
+</div>
+<!-- 12. Page route transition -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">12. Page Route Transition</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Navigation</span>
+</div>
+<div class="p-8 flex flex-col gap-4 flex-grow relative overflow-hidden">
+<div class="absolute top-0 left-0 h-1 bg-aqar-green w-full animate-pulse shadow-[0_0_10px_#1B5E20]"></div>
+<div class="h-8 w-1/3 bg-slate-100 rounded"></div>
+<div class="grid grid-cols-2 gap-2">
+<div class="h-20 bg-slate-50 border border-slate-200 rounded"></div>
+<div class="h-20 bg-slate-50 border border-slate-200 rounded"></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Top bar: indeterminate loop. Page content: 0.4s cross-fade.
+                    <br/><strong>Usage:</strong> Inter-page navigation and large data submissions.
+                </div>
+</div>
+<!-- 13. Scroll-reveal triggers -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">13. Scroll-reveal Triggers</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Experience</span>
+</div>
+<div class="p-6 flex flex-col items-center justify-end h-[200px] bg-slate-50 space-y-4">
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-xs">keyboard_arrow_up</span>
+<div class="w-1 h-8 bg-slate-300 rounded-full"></div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm translate-y-0 opacity-100">
+<p class="text-xs font-bold text-aqar-green">Revealed Content</p>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Intersection Observer at 20% threshold. 0.8s slide-up.
+                    <br/><strong>Usage:</strong> Marketing pages and long-scroll listing details.
+                </div>
+</div>
+<!-- 14. Heart save ripple -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">14. Heart Save Ripple</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Feedback</span>
+</div>
+<div class="p-8 flex-grow flex items-center justify-center gap-12">
+<div class="text-slate-300"><span class="material-symbols-outlined text-4xl">favorite</span></div>
+<div class="relative">
+<div class="absolute inset-0 bg-red-500/20 rounded-full animate-ping scale-150"></div>
+<div class="text-red-500 relative z-10"><span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">favorite</span></div>
+</div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Scale: 1.0 to 1.4 to 1.0 in 300ms. Ripple fade: 400ms.
+                    <br/><strong>Usage:</strong> Marking properties as favorite/saved.
+                </div>
+</div>
+<!-- 15. Map info pop-up -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col">
+<div class="p-4 border-b border-slate-100 bg-slate-50 flex justify-between items-center">
+<span class="text-xs font-bold uppercase text-slate-500">15. Map Info Window</span>
+<span class="text-[10px] bg-aqar-green text-white px-2 py-0.5 rounded">Geospatial</span>
+</div>
+<div class="h-[200px] bg-slate-200 flex items-center justify-center relative">
+<div class="absolute bottom-1/2 translate-y-[-10px] bg-white rounded-lg shadow-xl p-2 w-32 border border-slate-200">
+<div class="h-16 w-full rounded bg-slate-100 mb-1"></div>
+<div class="h-2 w-3/4 bg-slate-200 rounded"></div>
+<div class="absolute bottom-[-8px] left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45 border-r border-b border-slate-200"></div>
+</div>
+<div class="size-3 bg-aqar-green rounded-full border-2 border-white shadow-lg mt-12"></div>
+</div>
+<div class="p-4 bg-slate-50 text-[11px] border-t border-slate-100 text-slate-600">
+<strong>Logic:</strong> Grow from anchor point. 0.3s cubic-bezier. Fade: 0.2s.
+                    <br/><strong>Usage:</strong> Quick-view details on interactive map markers.
+                </div>
+</div>
+</div>
+</section>
+<!-- Typography & Brand Assets -->
+<section class="mt-20">
+<h2 class="font-display text-3xl font-bold text-aqar-green mb-8">Typography &amp; Core Foundations</h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div class="space-y-8">
+<div class="p-8 bg-white rounded-2xl border border-slate-100 shadow-sm">
+<h3 class="text-slate-400 font-bold text-[10px] uppercase mb-4 tracking-widest">Display Typeface</h3>
+<div class="space-y-4">
+<p class="font-display text-6xl text-aqar-green font-black">Playfair Display</p>
+<p class="text-slate-500 leading-relaxed max-w-md">Used exclusively for hero headlines, major section headers, and brand-defining statements. Evokes a sense of editorial prestige and timeless architecture.</p>
+</div>
+</div>
+<div class="p-8 bg-white rounded-2xl border border-slate-100 shadow-sm">
+<h3 class="text-slate-400 font-bold text-[10px] uppercase mb-4 tracking-widest">System Typeface</h3>
+<div class="space-y-4">
+<p class="font-sans text-4xl text-slate-800 font-bold">DM Sans Regular / Bold</p>
+<p class="text-slate-500 leading-relaxed max-w-md">The primary workhorse for the UI. Highly legible across all device sizes. Used for property details, search UI, and transactional flows.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="p-6 bg-aqar-green rounded-2xl text-white flex flex-col justify-between aspect-square">
+<p class="font-bold text-xs uppercase tracking-tighter opacity-70">Primary Brand Color</p>
+<div>
+<p class="text-4xl font-display font-black mb-1">#1B5E20</p>
+<p class="text-xs opacity-80">Forest Deep Green</p>
+</div>
+</div>
+<div class="p-6 bg-aqar-gold rounded-2xl text-aqar-green flex flex-col justify-between aspect-square">
+<p class="font-bold text-xs uppercase tracking-tighter opacity-70">Accent Identity</p>
+<div>
+<p class="text-4xl font-display font-black mb-1">#F9A825</p>
+<p class="text-xs opacity-80">Golden Sand</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Meta -->
+<footer class="mt-24 pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-slate-400 text-xs gap-6">
+<div class="flex items-center gap-4">
+<div class="size-6 text-aqar-green grayscale opacity-50">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<span>© 2024 Aqar Real Estate. Confidential Design Specifications.</span>
+</div>
+<div class="flex gap-8">
+<a class="hover:text-aqar-green transition-colors" href="#">Accessibility Guidelines</a>
+<a class="hover:text-aqar-green transition-colors" href="#">Engineering Handoff</a>
+<a class="hover:text-aqar-green transition-colors" href="#">V3.0 Beta</a>
+</div>
+</footer>
+</main>
+</body></html>

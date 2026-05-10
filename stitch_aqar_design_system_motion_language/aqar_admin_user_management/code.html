@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aqar Home - User Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;family=Cairo:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#1b5e20",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#643f00",
+                    "on-surface": "#1b1c1c",
+                    "surface-bright": "#fbf9f8",
+                    "on-background": "#1b1c1c",
+                    "surface-container": "#f0eded",
+                    "outline": "#717a6d",
+                    "secondary-fixed-dim": "#ffb957",
+                    "secondary": "#835400",
+                    "surface-container-highest": "#e4e2e1",
+                    "surface-container-high": "#eae8e7",
+                    "on-secondary-container": "#694300",
+                    "on-tertiary-container": "#86d881",
+                    "inverse-primary": "#91d78a",
+                    "tertiary": "#00450d",
+                    "primary-fixed": "#acf4a4",
+                    "primary": "#00450d",
+                    "inverse-surface": "#303030",
+                    "tertiary-fixed": "#a3f69c",
+                    "tertiary-fixed-dim": "#88d982",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#055f18",
+                    "on-secondary-fixed": "#2a1800",
+                    "on-primary-container": "#90d689",
+                    "on-primary-fixed-variant": "#0c5216",
+                    "surface": "#fbf9f8",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c0c9bb",
+                    "surface-tint": "#2a6b2c",
+                    "background": "#fbf9f8",
+                    "surface-variant": "#e4e2e1",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#f2f0f0",
+                    "secondary-container": "#fcab28",
+                    "secondary-fixed": "#ffddb5",
+                    "on-surface-variant": "#41493e",
+                    "surface-container-low": "#f5f3f3",
+                    "primary-fixed-dim": "#91d78a",
+                    "on-tertiary-fixed-variant": "#005312",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002203",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "on-tertiary-fixed": "#002204"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "xl": "40px",
+                    "lg": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "display-h1": [
+                            "Playfair Display"
+                    ],
+                    "body-main": [
+                            "DM Sans"
+                    ],
+                    "arabic-body": [
+                            "Cairo"
+                    ],
+                    "ui-h4": [
+                            "DM Sans"
+                    ],
+                    "ui-h3": [
+                            "DM Sans"
+                    ],
+                    "body-sm": [
+                            "DM Sans"
+                    ],
+                    "display-h2": [
+                            "Playfair Display"
+                    ],
+                    "label-caps": [
+                            "DM Sans"
+                    ]
+            },
+            "fontSize": {
+                    "display-h1": [
+                            "48px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-main": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "arabic-body": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.8",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "ui-h4": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "ui-h3": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-h2": [
+                            "36px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-main antialiased flex h-screen overflow-hidden">
+<!-- Admin Sidebar -->
+<aside class="w-64 bg-[#0D3B14] text-white flex flex-col hidden md:flex flex-shrink-0">
+<div class="p-lg flex items-center justify-center border-b border-white/10">
+<span class="font-display-h2 text-ui-h3 font-bold">Aqar Admin</span>
+</div>
+<nav class="flex-1 overflow-y-auto py-md space-y-sm px-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-ui-h4 text-body-main">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-white/20 text-white font-medium transition-colors" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="group">group</span>
+<span class="font-ui-h4 text-body-main">User Management</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="real_estate_agent">real_estate_agent</span>
+<span class="font-ui-h4 text-body-main">Properties</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-ui-h4 text-body-main">Reports</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-white/70 hover:bg-white/10 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-ui-h4 text-body-main">Settings</span>
+</a>
+</nav>
+<div class="p-lg border-t border-white/10">
+<div class="flex items-center gap-sm">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full border-2 border-white/20" data-alt="A small circular avatar image showing a professional headshot of an admin user. The image has a subtle white border and is set against a dark green background. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCt9B1NTLWmfYDQF3caSaCYJunBVvQJYEybZapo300O_p_0QOlaEpdMnr2ZOTimYU7KMVe7Ej9aJHRwRyrHihx0_tU7NOE2YB5j_tQjlNURlAB84IveVaU-PHaDTpdM0V7_uzOm60uyvFMohhhKc_8ZzuoGhwB_f9TIOcOnun-Hsg5Pm_fgtF_YafIezO8l8K41peofR3KHbZLnKTdMZMFsLFSWBjPLWgJyAFvCweuxxSXe88nCxuLhIeyYV2GZCJkmqrkGhBIxDufs"/>
+<div>
+<p class="font-ui-h4 text-body-sm font-medium">Super Admin</p>
+<p class="font-body-sm text-label-caps text-white/60">admin@aqar.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden relative">
+<!-- Header -->
+<header class="bg-surface px-xl py-lg border-b border-surface-variant flex justify-between items-end flex-shrink-0">
+<div>
+<h1 class="font-display-h2 text-display-h2 text-primary">User Management</h1>
+<p class="font-body-main text-body-main text-on-surface-variant mt-sm">8,523 total users</p>
+</div>
+<button class="bg-primary-container text-on-primary px-lg py-sm rounded-lg font-ui-h4 text-body-main shadow-sm hover:-translate-y-px hover:shadow-md transition-all flex items-center gap-sm">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                Add User
+            </button>
+</header>
+<!-- Toolbar -->
+<div class="px-xl py-md bg-surface-container-low flex flex-wrap gap-md items-center justify-between border-b border-surface-variant flex-shrink-0">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface border border-outline-variant rounded-lg font-body-main text-body-main focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Search users by name, email, or phone..." type="text"/>
+</div>
+<div class="flex gap-md">
+<select class="bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-main text-body-main text-on-surface focus:border-primary outline-none appearance-none pr-xl relative">
+<option>Role: All</option>
+<option>Role: Buyer</option>
+<option>Role: Owner</option>
+<option>Role: Agent</option>
+<option>Role: Admin</option>
+</select>
+<select class="bg-surface border border-outline-variant rounded-lg px-md py-sm font-body-main text-body-main text-on-surface focus:border-primary outline-none appearance-none pr-xl relative">
+<option>Status: All</option>
+<option>Status: Active</option>
+<option>Status: Suspended</option>
+</select>
+<button class="p-sm text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Table Area -->
+<div class="flex-1 overflow-auto bg-surface p-xl">
+<div class="bg-surface border border-surface-variant rounded-xl shadow-[0px_4px_20px_rgba(27,94,32,0.04)] overflow-hidden flex flex-col h-full">
+<table class="w-full text-left border-collapse relative">
+<thead class="bg-surface-container-low sticky top-0 z-10 shadow-sm border-b-2 border-primary/20">
+<tr>
+<th class="py-md px-md w-12 text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-md px-md font-ui-h4 text-body-sm text-on-surface-variant font-medium">User</th>
+<th class="py-md px-md font-ui-h4 text-body-sm text-on-surface-variant font-medium hidden md:table-cell">Contact</th>
+<th class="py-md px-md font-ui-h4 text-body-sm text-on-surface-variant font-medium">Role</th>
+<th class="py-md px-md font-ui-h4 text-body-sm text-on-surface-variant font-medium">Status</th>
+<th class="py-md px-md font-ui-h4 text-body-sm text-on-surface-variant font-medium hidden lg:table-cell">Joined</th>
+<th class="py-md px-md w-16 text-center font-ui-h4 text-body-sm text-on-surface-variant font-medium">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant font-body-main text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-[#F9FBE7] transition-colors group cursor-default">
+<td class="py-md px-md text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full bg-surface-variant object-cover" data-alt="A small circular user avatar showing a smiling professional headshot. Light mode aesthetic with natural, grounded tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqLI2f9lqeG524fGWDQeabGCoRPN8U2RdfWh6PQtHA4aeafMFuWw0dBE2IPVO1qUuaCdz1U6b_QzB7FhZVLMjWe7qR_D--nfmdPNkeU_U2Aq5UOhuLQJPMs0rV0VSFp0_48RE_kkb8esuPvC8UWMz2JhGgYyX2mUn7QeIzl48ixVOWhcmeh00qQ_uYjYTrBsaJrAeNPXs2OyT2w84Z-0EgmAGPaAboz0D_Se_fPWi5nEm-ATgig4vOzlSOQ4GTMzkhaM19TN-OlToj"/>
+<div>
+<p class="font-medium text-on-surface">Ahmed Al-Sayed</p>
+<p class="text-on-surface-variant text-xs md:hidden">ahmed@example.com</p>
+</div>
+</div>
+</td>
+<td class="py-md px-md hidden md:table-cell">
+<p class="text-on-surface">ahmed@example.com</p>
+<p class="text-on-surface-variant text-xs">+971 50 123 4567</p>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#E8F5E9] text-[#1B5E20] border border-[#C8E6C9]">Buyer</span>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-[#4CAF50]"></div>
+<span class="text-on-surface">Active</span>
+</div>
+</td>
+<td class="py-md px-md hidden lg:table-cell text-on-surface-variant">Oct 12, 2023</td>
+<td class="py-md px-md text-center">
+<button class="text-on-surface-variant hover:text-primary p-xs rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#F9FBE7] transition-colors group cursor-default">
+<td class="py-md px-md text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full bg-surface-variant object-cover" data-alt="A small circular user avatar showing a professional female headshot. Light mode aesthetic with clean lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfLI16x1EDhDjL9ulm2KnJo_7lZj-2IsVuTDNr-xOpK-xOjOdNcfGmGgCEnn2IOgFbqPZxZrFxM7NVU4e47iwB8hsdhmRWaU2Xjt2vETUhYIyk7J1pZkk2H8Y47xtafEikGY6lywA-_a5Vkfhp3ZTof3RmrCdLDrqEjjXAlFBlYjLX9EBxBYRgqtzKzueqCy5WMFs5P3tSFYbt0eQsqVyHKPfNoqkJ1XaODV6cUUrmtgaD8kC_Qcled6lULkkCIBNcJDZzh2PU0tL0"/>
+<div>
+<p class="font-medium text-on-surface">Fatima Hassan</p>
+<p class="text-on-surface-variant text-xs md:hidden">fatima@emaar.com</p>
+</div>
+</div>
+</td>
+<td class="py-md px-md hidden md:table-cell">
+<p class="text-on-surface">fatima@emaar.com</p>
+<p class="text-on-surface-variant text-xs">+971 55 987 6543</p>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#E3F2FD] text-[#0D47A1] border border-[#BBDEFB]">Owner</span>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-[#4CAF50]"></div>
+<span class="text-on-surface">Active</span>
+</div>
+</td>
+<td class="py-md px-md hidden lg:table-cell text-on-surface-variant">Sep 05, 2023</td>
+<td class="py-md px-md text-center">
+<button class="text-on-surface-variant hover:text-primary p-xs rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#F9FBE7] transition-colors group cursor-default">
+<td class="py-md px-md text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-ui-h4 font-bold border border-outline-variant">
+                                        KT
+                                    </div>
+<div>
+<p class="font-medium text-on-surface">Khalid Tariq</p>
+<p class="text-on-surface-variant text-xs md:hidden">khalid.t@aqar.com</p>
+</div>
+</div>
+</td>
+<td class="py-md px-md hidden md:table-cell">
+<p class="text-on-surface">khalid.t@aqar.com</p>
+<p class="text-on-surface-variant text-xs">+971 52 444 5555</p>
+</td>
+<td class="py-md px-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#FFF8E1] text-[#FF8F00] border border-[#FFECB3]">Admin</span>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-[#4CAF50]"></div>
+<span class="text-on-surface">Active</span>
+</div>
+</td>
+<td class="py-md px-md hidden lg:table-cell text-on-surface-variant">Jan 10, 2022</td>
+<td class="py-md px-md text-center">
+<button class="text-on-surface-variant hover:text-primary p-xs rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#F9FBE7] transition-colors group cursor-default bg-error-container/10">
+<td class="py-md px-md text-center">
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-md">
+<img alt="Avatar" class="w-10 h-10 rounded-full bg-surface-variant object-cover opacity-60 grayscale" data-alt="A small circular user avatar showing a male headshot, desaturated to indicate a suspended account state. Light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3BkiRTOmXAg0gGtWb4r3NOPPaZoXqQex388wyJCBe1bNJA9JSF77i2-n8hWgFH0EDckInQXeyNgCQ_IMGZ3pqJeiPOffdVTtRPn8UdrtmXygnMonzxNEUzkHaVCtg5nULnZhmLFMOsxd5OKrB5lWvSdcd8jDSuYZRE6okY8t6rga8b6jzOrto5QifNqhO7sIvFByqSHojGgH-SyTuvZfV4ugcnk3hFn1lJvyw7msAWO6cdmLz7BclOLPOuP5z-vxF8MZY3yJ4X-lE"/>
+<div>
+<p class="font-medium text-on-surface opacity-80">Omar Abdullah</p>
+<p class="text-on-surface-variant text-xs md:hidden">omar@suspicious.net</p>
+</div>
+</div>
+</td>
+<td class="py-md px-md hidden md:table-cell opacity-80">
+<p class="text-on-surface">omar@suspicious.net</p>
+<p class="text-on-surface-variant text-xs">+971 50 000 0000</p>
+</td>
+<td class="py-md px-md opacity-80">
+<span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-[#F3E5F5] text-[#6A1B9A] border border-[#E1BEE7]">Agent</span>
+</td>
+<td class="py-md px-md">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<span class="text-error font-medium">Suspended</span>
+</div>
+</td>
+<td class="py-md px-md hidden lg:table-cell text-on-surface-variant opacity-80">Nov 22, 2023</td>
+<td class="py-md px-md text-center">
+<button class="text-on-surface-variant hover:text-primary p-xs rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="bg-surface border-t border-surface-variant px-xl py-md flex items-center justify-between mt-auto">
+<p class="font-body-main text-body-sm text-on-surface-variant">Showing 1 to 10 of 8,523 results</p>
+<div class="flex gap-sm">
+<button class="px-sm py-xs border border-outline-variant rounded text-on-surface-variant hover:bg-surface-variant disabled:opacity-50">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="px-md py-xs rounded bg-primary-container text-on-primary font-body-main text-body-sm">1</button>
+<button class="px-md py-xs rounded border border-outline-variant text-on-surface hover:bg-surface-variant font-body-main text-body-sm">2</button>
+<button class="px-md py-xs rounded border border-outline-variant text-on-surface hover:bg-surface-variant font-body-main text-body-sm">3</button>
+<span class="px-sm py-xs text-on-surface-variant">...</span>
+<button class="px-md py-xs rounded border border-outline-variant text-on-surface hover:bg-surface-variant font-body-main text-body-sm">853</button>
+<button class="px-sm py-xs border border-outline-variant rounded text-on-surface hover:bg-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bulk Action Bar (Docked Bottom) -->
+<div class="absolute bottom-lg left-1/2 -translate-x-1/2 bg-inverse-surface shadow-[0px_12px_40px_rgba(0,0,0,0.12)] rounded-lg px-lg py-sm flex items-center gap-xl border border-outline/20">
+<span class="font-body-main text-body-main font-medium text-inverse-on-surface">3 users selected</span>
+<div class="flex gap-sm">
+<button class="px-md py-sm rounded bg-surface/10 text-inverse-on-surface hover:bg-surface/20 transition-colors font-ui-h4 text-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="manage_accounts">manage_accounts</span>
+                    Change Role
+                </button>
+<button class="px-md py-sm rounded bg-error/20 text-error-container hover:bg-error/30 transition-colors font-ui-h4 text-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="block">block</span>
+                    Suspend
+                </button>
+</div>
+<button class="p-xs text-outline hover:text-inverse-on-surface">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+</main>
+<!-- Visual Representation of Modals (Hidden by default, shown for design demonstration) -->
+<!-- Suspend Account Modal Overlay -->
+<div class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+<div class="bg-surface rounded-xl shadow-[0px_12px_40px_rgba(0,0,0,0.12)] max-w-md w-full overflow-hidden border border-outline-variant">
+<div class="bg-error-container/30 px-lg py-md border-b border-error-container flex items-center gap-sm">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<h3 class="font-display-h2 text-ui-h3 text-error">Suspend Account</h3>
+</div>
+<div class="p-lg">
+<p class="font-body-main text-body-main text-on-surface mb-md">Are you sure you want to suspend <strong>Omar Abdullah</strong>?</p>
+<p class="font-body-main text-body-sm text-on-surface-variant mb-lg">They will lose access to the platform immediately. Active listings will be paused.</p>
+<div class="space-y-sm mb-lg">
+<label class="font-body-main text-label-caps text-on-surface-variant">Reason for suspension</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg p-sm font-body-main text-body-sm text-on-surface focus:border-error focus:ring-1 focus:ring-error outline-none resize-none h-24" placeholder="Enter reason..."></textarea>
+</div>
+<div class="flex justify-end gap-md">
+<button class="px-lg py-sm rounded-lg font-ui-h4 text-body-main text-on-surface-variant hover:bg-surface-variant transition-colors border border-outline-variant">Cancel</button>
+<button class="px-lg py-sm rounded-lg font-ui-h4 text-body-main bg-error text-on-error hover:bg-error/90 transition-colors shadow-sm">Suspend User</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
