@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd aqar/client && npm install && npm run build",
-  "outputDirectory": "aqar/client/dist",
-  "installCommand": "cd aqar/client && npm install",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
-}
