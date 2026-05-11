@@ -3,10 +3,11 @@
   "outputDirectory": "aqar/client/dist",
   "installCommand": "cd aqar/client && npm install",
   "framework": "vite",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/[^.]+",
+      "dest": "/",
+      "status": 200
     }
   ]
 }
