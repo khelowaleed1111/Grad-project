@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API Response</title>
+</head>
+<body>
+    <h1>Testing API Response Structure</h1>
+    <button onclick="testAPI()">Test API</button>
+    <pre id="output"></pre>
+
+    <script>
+        async function testAPI() {
+            const output = document.getElementById('output');
+            output.textContent = 'Loading...';
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/properties?page=1&limit=3');
+                const json = await response.json();
+                
+                output.textContent = JSON.stringify(json, null, 2);
+                
+                console.log('Full response:', json);
+                console.log('json.data type:', Array.isArray(json.data) ? 'Array' : typeof json.data);
+                console.log('json.data length:', json.data?.length);
+                console.log('First property:', json.data?.[0]);
+            } catch (error) {
+                output.textContent = 'Error: ' + error.message;
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

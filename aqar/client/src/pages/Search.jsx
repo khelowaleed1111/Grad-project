@@ -94,9 +94,19 @@ export default function Search() {
     setKeywordInput('');
   }, []);
 
-  const properties = data?.data || [];
+  const properties = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
   const total = data?.total || 0;
   const totalPages = data?.pagination?.totalPages || 1;
+
+  // Debug logging
+  console.log('Search Page Debug:', {
+    hasData: !!data,
+    dataKeys: data ? Object.keys(data) : [],
+    dataDataIsArray: Array.isArray(data?.data),
+    propertiesLength: properties.length,
+    total,
+    firstProperty: properties[0]?.title
+  });
 
   return (
     <div className="min-h-screen bg-[#fbf9f8] pt-[72px]">

@@ -153,6 +153,7 @@ class APIFeatures {
   /**
    * Filter by map bounds using proper geospatial query
    * Uses MongoDB $geoWithin operator with 2dsphere index
+   * Made more lenient to show properties even with slight coordinate mismatches
    */
   geoFilter() {
     if (this.queryString.bounds) {
@@ -174,12 +175,16 @@ class APIFeatures {
             const minLat = Math.min(lat1, lat2);
             const maxLat = Math.max(lat1, lat2);
             
+            // Add 10% padding to bounds to be more lenient
+            const lngPadding = (maxLng - minLng) * 0.1;
+            const latPadding = (maxLat - minLat) * 0.1;
+            
             this.query = this.query.find({
               'location.coordinates': {
                 $geoWithin: {
                   $box: [
-                    [minLng, minLat], // bottom-left corner
-                    [maxLng, maxLat]  // top-right corner
+                    [minLng - lngPadding, minLat - latPadding], // bottom-left corner with padding
+                    [maxLng + lngPadding, maxLat + latPadding]  // top-right corner with padding
                   ]
                 }
               }
