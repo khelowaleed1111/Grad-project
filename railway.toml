@@ -1,0 +1,8 @@
+﻿[build]
+builder = "NIXPACKS"
+buildCommand = "cd aqar/server && npm install"
+
+[deploy]
+startCommand = "cd aqar/server && node server.js"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
