@@ -38,8 +38,8 @@ const PORT = process.env.PORT || 5000;
 
 // For Vercel serverless deployment
 if (process.env.VERCEL) {
-  // Connect to MongoDB once for serverless
-  connectDB().catch(err => console.error('MongoDB connection error:', err));
+  // Don't connect here - api/index.js handles the connection
+  console.log('Running in Vercel serverless mode');
 } else {
   // For local development
   const startServer = async () => {
