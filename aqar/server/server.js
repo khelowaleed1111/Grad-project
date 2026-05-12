@@ -36,31 +36,38 @@ app.use(errorHandler);
 // ── Start Server ────────────────────────────────────
 const PORT = process.env.PORT || 5000;
 
-const startServer = async () => {
-  try {
-    await connectDB();
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📍 API: http://localhost:${PORT}/api`);
-      console.log(`🏥 Health: http://localhost:${PORT}/api/health`);
-    });
-  } catch (error) {
-    console.error('💥 Failed to start server:', error.message);
-    process.exit(1);
-  }
-};
+// For Vercel serverless deployment
+if (process.env.VERCEL) {
+  // Connect to MongoDB once for serverless
+  connectDB().catch(err => console.error('MongoDB connection error:', err));
+} else {
+  // For local development
+  const startServer = async () => {
+    try {
+      await connectDB();
+      app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+        console.log(`📍 API: http://localhost:${PORT}/api`);
+        console.log(`🏥 Health: http://localhost:${PORT}/api/health`);
+      });
+    } catch (error) {
+      console.error('💥 Failed to start server:', error.message);
+      process.exit(1);
+    }
+  };
 
-startServer();
+  startServer();
 
-// Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('🛑 SIGTERM received. Closing MongoDB connection...');
-  process.exit(0);
-});
+  // Graceful shutdown
+  process.on('SIGTERM', () => {
+    console.log('🛑 SIGTERM received. Closing MongoDB connection...');
+    process.exit(0);
+  });
 
-process.on('SIGINT', () => {
-  console.log('🛑 SIGINT received. Closing MongoDB connection...');
-  process.exit(0);
-});
+  process.on('SIGINT', () => {
+    console.log('🛑 SIGINT received. Closing MongoDB connection...');
+    process.exit(0);
+  });
+}
 
 module.exports = app;
