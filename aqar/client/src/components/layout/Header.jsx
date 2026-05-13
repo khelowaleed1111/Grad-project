@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { useLanguage } from '../../context/LanguageContext';
+
 import { toast } from 'react-toastify';
-import { Menu, X, Home, Building2, Info, Mail, User, LogOut, LayoutDashboard, Shield, Languages } from 'lucide-react';
+import { Menu, X, Home, Building2, Info, Mail, User, LogOut, LayoutDashboard, Shield } from 'lucide-react';
 
 const NAV_LINKS = [
   { label: 'Home', to: '/', icon: Home },
@@ -14,7 +14,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
-  const { language, toggleLanguage } = useLanguage();
+
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -75,15 +75,7 @@ export default function Header() {
 
           {/* Desktop Auth Actions */}
           <div className="hidden md:flex items-center gap-3">
-            {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-green-700 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
-              title={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
-            >
-              <Languages className="w-4 h-4" />
-              <span className="uppercase">{language === 'en' ? 'AR' : 'EN'}</span>
-            </button>
+
             
             {isAuthenticated ? (
               <>
@@ -171,16 +163,7 @@ export default function Header() {
             
             <div className="border-t border-gray-200 my-2"></div>
             
-            {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-green-700 hover:bg-gray-50 rounded-lg transition-colors w-full"
-            >
-              <Languages className="w-4 h-4" />
-              <span>Language: {language === 'en' ? 'English' : 'العربية'}</span>
-            </button>
-            
-            <div className="border-t border-gray-200 my-2"></div>
+
             
             {/* Auth Actions */}
             {isAuthenticated ? (
