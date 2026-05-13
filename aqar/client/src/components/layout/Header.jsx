@@ -146,7 +146,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div className="md:hidden absolute w-full left-0 bg-white border-t border-gray-200 shadow-lg max-h-[calc(100vh-64px)] overflow-y-auto">
           <div className="flex flex-col py-3 px-4 space-y-1">
             {/* Navigation Links */}
             {NAV_LINKS.map((link) => (

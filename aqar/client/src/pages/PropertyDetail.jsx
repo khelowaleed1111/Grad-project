@@ -82,7 +82,7 @@ export default function PropertyDetail() {
         {/* ── Left: Content (8/12) ─────────────── */}
         <div className="lg:col-span-8 space-y-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-1 text-sm text-[#717a6d]">
+          <nav className="flex flex-wrap items-center gap-1 text-sm text-[#717a6d]">
             <Link to="/" className="hover:text-[#00450d] transition-colors">Home</Link>
             <span className="material-symbols-outlined text-[16px]">chevron_right</span>
             <Link to="/search" className="hover:text-[#00450d] transition-colors">Search</Link>
