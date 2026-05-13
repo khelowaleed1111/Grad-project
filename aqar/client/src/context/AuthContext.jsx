@@ -19,7 +19,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data } = await authApi.getMe();
       if (data.success) {
-        persist(data.data, storedToken);
+        const userData = data.user || data.data;
+        persist(userData, storedToken);
       } else {
         // Invalid token, clear storage
         logout();
