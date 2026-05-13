@@ -124,7 +124,7 @@ export default function AdminDashboard() {
           </button>
         </div>
 
-        <div className="flex gap-8">
+        <div className="flex flex-col md:flex-row gap-8">
           {/* Sidebar */}
           <aside className="w-56 flex-shrink-0 hidden md:block">
             <nav className="bg-white rounded-2xl border border-[#c0c9bb] overflow-hidden shadow-ambient-1">
@@ -157,6 +157,28 @@ export default function AdminDashboard() {
               })}
             </nav>
           </aside>
+
+          {/* Mobile tabs */}
+          <div className="md:hidden w-full mb-4 flex gap-2 overflow-x-auto pb-2">
+            {NAV_ITEMS.map((item) => {
+              const isExternal = item.id === 'pending' || item.id === 'users';
+              const Component = isExternal ? Link : 'button';
+              const props = isExternal ? { to: item.path } : { type: 'button', onClick: () => setTab(item.id) };
+              
+              return (
+                <Component
+                  key={item.id}
+                  {...props}
+                  className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
+                    tab === item.id ? 'bg-[#1b5e20] text-white' : 'border border-[#c0c9bb] text-[#41493e]'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[16px]">{item.icon}</span>
+                  {item.label}
+                </Component>
+              );
+            })}
+          </div>
 
           <main className="flex-1 min-w-0">
             {/* OVERVIEW */}
@@ -226,8 +248,8 @@ export default function AdminDashboard() {
               <div className="space-y-4">
                 <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">All Listings</h2>
                 {listingsLoading ? <Spinner center /> : (
-                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-hidden shadow-ambient-1">
-                    <table className="w-full text-sm">
+                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-x-auto shadow-ambient-1">
+                    <table className="w-full text-sm min-w-[800px]">
                       <thead>
                         <tr className="border-b border-[#c0c9bb] bg-[#f5f3f3]">
                           {['Property', 'Owner', 'Price', 'Status', 'Actions'].map((h) => (
@@ -306,12 +328,12 @@ export default function AdminDashboard() {
                   <div className="space-y-4">
                     {pending.map((p) => (
                       <div key={p._id} className="bg-white rounded-2xl border border-[#c0c9bb] p-5 shadow-ambient-1">
-                        <div className="flex gap-4">
-                          <div className="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-[#eae8e7]">
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          <div className="w-full sm:w-24 h-48 sm:h-24 rounded-xl overflow-hidden flex-shrink-0 bg-[#eae8e7]">
                             {p.images?.[0] && <img src={p.images[0]} alt="" className="w-full h-full object-cover" />}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between gap-4">
+                            <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4">
                               <div>
                                 <h3 className="font-semibold text-[#1b1c1c]">{p.title}</h3>
                                 <p className="text-sm text-[#41493e]">{p.location?.address}, {p.location?.city}</p>
@@ -321,7 +343,7 @@ export default function AdminDashboard() {
                                   {' · '}{new Date(p.createdAt).toLocaleDateString()}
                                 </p>
                               </div>
-                              <div className="flex gap-2 flex-shrink-0">
+                              <div className="flex flex-wrap gap-2 w-full xl:w-auto flex-shrink-0 mt-2 xl:mt-0 pt-2 xl:pt-0 border-t xl:border-t-0 border-[#e4e2e1]">
                                 <Link to={`/properties/${p._id}`}
                                   className="flex items-center gap-1 px-3 py-2 border border-[#c0c9bb] rounded-xl text-xs font-medium text-[#41493e] hover:bg-[#f5f3f3] transition-colors">
                                   <span className="material-symbols-outlined text-[16px]">visibility</span>View
@@ -355,8 +377,8 @@ export default function AdminDashboard() {
               <div className="space-y-4">
                 <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">User Management</h2>
                 {usersLoading ? <Spinner center /> : (
-                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-hidden shadow-ambient-1">
-                    <table className="w-full text-sm">
+                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-x-auto shadow-ambient-1">
+                    <table className="w-full text-sm min-w-[600px]">
                       <thead>
                         <tr className="border-b border-[#c0c9bb] bg-[#f5f3f3]">
                           {['User', 'Email', 'Role', 'Joined', 'Actions'].map((h) => (

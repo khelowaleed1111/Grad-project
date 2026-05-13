@@ -71,7 +71,7 @@ export default function UserDashboard() {
           )}
         </div>
 
-        <div className="flex gap-8">
+        <div className="flex flex-col md:flex-row gap-8">
           {/* Sidebar */}
           <aside className="w-56 flex-shrink-0 hidden md:block">
             <nav className="bg-white rounded-2xl border border-[#c0c9bb] overflow-hidden shadow-ambient-1">
@@ -174,18 +174,20 @@ export default function UserDashboard() {
                 ) : (
                   <div className="space-y-3">
                     {listings.map((p) => (
-                      <div key={p._id} className="bg-white rounded-2xl border border-[#c0c9bb] p-4 flex items-center gap-4 shadow-ambient-1">
-                        <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-[#eae8e7]">
-                          {p.images?.[0] && <img src={p.images[0]} alt="" className="w-full h-full object-cover" />}
+                      <div key={p._id} className="bg-white rounded-2xl border border-[#c0c9bb] p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-ambient-1">
+                        <div className="flex items-center gap-4 w-full sm:w-auto flex-1 min-w-0">
+                          <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-[#eae8e7]">
+                            {p.images?.[0] && <img src={p.images[0]} alt="" className="w-full h-full object-cover" />}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-[#1b1c1c] truncate">{p.title}</h3>
+                            <p className="text-sm text-[#41493e]">{p.location?.city}</p>
+                            <p className="font-bold text-[#00450d] text-sm">
+                              {new Intl.NumberFormat('en-EG', { style: 'currency', currency: 'EGP', maximumFractionDigits: 0 }).format(p.price)}
+                            </p>
+                          </div>
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-[#1b1c1c] truncate">{p.title}</h3>
-                          <p className="text-sm text-[#41493e]">{p.location?.city}</p>
-                          <p className="font-bold text-[#00450d] text-sm">
-                            {new Intl.NumberFormat('en-EG', { style: 'currency', currency: 'EGP', maximumFractionDigits: 0 }).format(p.price)}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2 flex-shrink-0">
+                        <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end sm:flex-shrink-0 border-t sm:border-t-0 border-[#e4e2e1] pt-3 sm:pt-0 mt-2 sm:mt-0">
                           <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${
                             p.isApproved ? 'bg-[#e8f5e9] text-[#1b5e20]' : 'bg-[#fff8e1] text-[#835400]'
                           }`}>
