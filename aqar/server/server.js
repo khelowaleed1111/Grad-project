@@ -34,6 +34,36 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // ── Routes ──────────────────────────────────────────
+
+// Root & API base — friendly welcome instead of 404
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Welcome to Aqar Real Estate API',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth',
+      properties: '/api/properties',
+      admin: '/api/admin',
+    },
+  });
+});
+
+app.get('/api', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Aqar API v1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/auth   (POST /login, POST /register)',
+      properties: '/api/properties',
+      admin: '/api/admin  (requires admin auth)',
+    },
+  });
+});
+
+// API routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/properties', require('./routes/propertyRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
