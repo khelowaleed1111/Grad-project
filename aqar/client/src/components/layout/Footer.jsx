@@ -162,8 +162,8 @@ export default function Footer() {
               Contact
             </h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Email: info@aqar.com</li>
-              <li>Phone: +20 123 456 7890</li>
+              <li>Email: khelowaleed@gmail.com</li>
+              <li>Phone: 01125474066</li>
               <li>Cairo, Egypt</li>
             </ul>
           </div>

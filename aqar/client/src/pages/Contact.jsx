@@ -16,7 +16,7 @@ export default function Contact() {
                 <Mail className="w-6 h-6 text-green-700 mt-1" />
                 <div>
                   <h3 className="font-medium text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@aqar.com</p>
+                  <p className="text-gray-600">khelowaleed@gmail.com</p>
                 </div>
               </div>
               
@@ -24,7 +24,7 @@ export default function Contact() {
                 <Phone className="w-6 h-6 text-green-700 mt-1" />
                 <div>
                   <h3 className="font-medium text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+20 123 456 7890</p>
+                  <p className="text-gray-600">01125474066</p>
                 </div>
               </div>
               
