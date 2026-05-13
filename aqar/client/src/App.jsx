@@ -15,6 +15,7 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
 import Search from './pages/Search';
 import PropertyDetail from './pages/PropertyDetail';
 import About from './pages/About';
@@ -53,6 +54,7 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/search" element={<Search />} />
               <Route path="/properties/:id" element={<PropertyDetail />} />
               <Route path="/about" element={<About />} />
