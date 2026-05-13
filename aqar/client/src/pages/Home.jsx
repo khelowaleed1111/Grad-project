@@ -96,7 +96,7 @@ export default function Home() {
               </select>
               <button
                 type="submit"
-                className="bg-[#fcab28] text-[#694300] rounded-full p-3 hover:bg-[#ffb957] transition-colors flex items-center justify-center hover:-translate-y-0.5 transform shadow-sm"
+                className="bg-[#fcab28] text-[#694300] rounded-full p-3 hover:bg-[#ffb957] transition-colors flex items-center justify-center hover:-translate-y-0.5 transform shadow-sm flex-shrink-0"
               >
                 <span className="material-symbols-outlined">search</span>
               </button>
@@ -202,16 +202,16 @@ export default function Home() {
           <p className="text-white/80 text-lg max-w-xl mx-auto mb-10">
             Reach thousands of verified buyers and renters across Egypt. Join Aqar and list your property for free.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center w-full px-4">
             <Link
               to="/register"
-              className="bg-[#fcab28] text-[#694300] px-8 py-4 rounded-full font-bold hover:bg-[#ffb957] transition-all hover:-translate-y-0.5 shadow-sm"
+              className="w-full sm:w-auto text-center bg-[#fcab28] text-[#694300] px-8 py-4 rounded-full font-bold hover:bg-[#ffb957] transition-all hover:-translate-y-0.5 shadow-sm"
             >
               Get Started Free
             </Link>
             <Link
               to="/search"
-              className="bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
+              className="w-full sm:w-auto text-center bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
             >
               Browse Properties
             </Link>
