@@ -175,9 +175,7 @@ export default function Footer() {
             <p className="text-sm text-gray-500">
               © {currentYear} Aqar. All rights reserved.
             </p>
-            <p className="text-sm text-gray-500">
-              Built with ❤️ for the Egyptian real estate market
-            </p>
+
           </div>
         </div>
       </div>
