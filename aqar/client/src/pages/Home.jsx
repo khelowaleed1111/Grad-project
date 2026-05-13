@@ -63,7 +63,7 @@ export default function Home() {
           {/* Search bar */}
           <form
             onSubmit={handleSearch}
-            className="w-full max-w-[800px] mt-4 bg-white rounded-full p-2 flex flex-col md:flex-row items-center gap-2 shadow-ambient-3"
+            className="w-full max-w-[800px] mt-4 bg-white rounded-2xl md:rounded-full p-3 md:p-2 flex flex-col md:flex-row items-center gap-3 md:gap-2 shadow-ambient-3"
           >
             <div className="flex-1 flex items-center px-4 py-2 w-full border-b md:border-b-0 md:border-r border-[#c0c9bb]">
               <span className="material-symbols-outlined text-[#717a6d] mr-2">search</span>

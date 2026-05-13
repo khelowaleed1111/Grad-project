@@ -112,8 +112,8 @@ export default function Search() {
     <div className="min-h-screen bg-[#fbf9f8] pt-[72px]">
       {/* Top search bar */}
       <div className="bg-white border-b border-[#c0c9bb] sticky top-[72px] z-30 shadow-ambient-1">
-        <div className="max-w-[1400px] mx-auto px-6 py-3 flex items-center gap-3 flex-wrap">
-          <div className="relative flex-1 min-w-[200px]">
+        <div className="max-w-[1400px] mx-auto px-6 py-3 flex flex-col md:flex-row items-center gap-3">
+          <div className="relative flex-1 min-w-[200px] w-full">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#717a6d] text-[20px]">search</span>
             <input
               type="text"
@@ -125,12 +125,12 @@ export default function Search() {
           </div>
 
           {/* Status toggle */}
-          <div className="flex rounded-full border border-[#c0c9bb] overflow-hidden">
+          <div className="flex rounded-full border border-[#c0c9bb] overflow-hidden w-full md:w-auto">
             {['', 'sale', 'rent'].map((s) => (
               <button
                 key={s}
                 onClick={() => setFilter('status', s)}
-                className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
+                className={`flex-1 md:flex-none px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
                   filters.status === s ? 'bg-[#1b5e20] text-white' : 'text-[#41493e] hover:bg-[#f0eded]'
                 }`}
               >
@@ -143,7 +143,7 @@ export default function Search() {
           <select
             value={filters.sort}
             onChange={(e) => setFilter('sort', e.target.value)}
-            className="px-4 py-2.5 border border-[#c0c9bb] rounded-full text-sm text-[#41493e] bg-white focus:outline-none focus:border-[#1b5e20]"
+            className="w-full md:w-auto px-4 py-2.5 border border-[#c0c9bb] rounded-full text-sm text-[#41493e] bg-white focus:outline-none focus:border-[#1b5e20]"
           >
             {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
           </select>
@@ -151,7 +151,7 @@ export default function Search() {
           {/* Map toggle */}
           <button
             onClick={() => setShowMap(!showMap)}
-            className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-colors ${
+            className={`flex items-center justify-center gap-1.5 w-full md:w-auto px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-colors ${
               showMap ? 'bg-[#1b5e20] text-white border-[#1b5e20]' : 'border-[#c0c9bb] text-[#41493e] hover:bg-[#f0eded]'
             }`}
           >
