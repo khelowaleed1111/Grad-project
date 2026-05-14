@@ -291,6 +291,11 @@ export default function AdminDashboard() {
                                   className="p-1.5 text-[#41493e] hover:text-[#1b5e20] rounded-lg hover:bg-[#e8f5e9] transition-colors">
                                   <span className="material-symbols-outlined text-[18px]">visibility</span>
                                 </Link>
+                                <Link to={`/dashboard/listings/edit/${l._id}`}
+                                  className="p-1.5 text-[#41493e] hover:text-[#1b5e20] rounded-lg hover:bg-[#e8f5e9] transition-colors"
+                                  title="Edit property">
+                                  <span className="material-symbols-outlined text-[18px]">edit</span>
+                                </Link>
                                 <button onClick={() => featureMutation.mutate(l._id)}
                                   title="Toggle featured"
                                   className={`p-1.5 rounded-lg transition-colors ${l.isFeatured ? 'text-[#835400] hover:bg-[#fff8e1]' : 'text-[#41493e] hover:bg-[#f0eded]'}`}>
@@ -347,6 +352,10 @@ export default function AdminDashboard() {
                                 <Link to={`/properties/${p._id}`}
                                   className="flex items-center gap-1 px-3 py-2 border border-[#c0c9bb] rounded-xl text-xs font-medium text-[#41493e] hover:bg-[#f5f3f3] transition-colors">
                                   <span className="material-symbols-outlined text-[16px]">visibility</span>View
+                                </Link>
+                                <Link to={`/dashboard/listings/edit/${p._id}`}
+                                  className="flex items-center gap-1 px-3 py-2 border border-[#c0c9bb] rounded-xl text-xs font-medium text-[#41493e] hover:bg-[#f5f3f3] transition-colors">
+                                  <span className="material-symbols-outlined text-[16px]">edit</span>Edit
                                 </Link>
                                 <button onClick={() => approveMutation.mutate(p._id)}
                                   disabled={approveMutation.isPending}

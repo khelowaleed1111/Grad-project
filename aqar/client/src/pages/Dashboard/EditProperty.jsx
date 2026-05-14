@@ -7,6 +7,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { propertiesApi } from '../../api/propertiesApi';
 import { toast } from 'react-toastify';
 import Spinner from '../../components/ui/Spinner';
+import { useAuth } from '../../context/AuthContext';
 
 const schema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters'),
@@ -69,11 +70,16 @@ export default function EditProperty() {
     }
   }, [propertyData, reset]);
 
+  const { user } = useAuth(); // Need to import useAuth
   const mutation = useMutation({
     mutationFn: (formData) => propertiesApi.update(id, formData),
     onSuccess: () => {
       toast.success('Property updated successfully!');
-      navigate('/dashboard');
+      if (user?.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/dashboard');
+      }
     },
     onError: (err) => toast.error(err.response?.data?.message || 'Failed to update property'),
   });

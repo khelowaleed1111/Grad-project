@@ -17,7 +17,7 @@ try {
 # Start Backend
 Write-Host ""
 Write-Host "📦 Starting Backend Server..." -ForegroundColor Yellow
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd 'c:\Users\Khaled\Desktop\Aqar project\aqar\server'; Write-Host '🔧 Backend Server' -ForegroundColor Green; npm run dev"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '.\aqar\server'; Write-Host '🔧 Backend Server' -ForegroundColor Green; npm run dev"
 
 # Wait a bit for backend to start
 Write-Host "⏳ Waiting for backend to initialize..." -ForegroundColor Gray
@@ -26,7 +26,7 @@ Start-Sleep -Seconds 5
 # Start Frontend
 Write-Host ""
 Write-Host "🎨 Starting Frontend Server..." -ForegroundColor Yellow
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd 'c:\Users\Khaled\Desktop\Aqar project\aqar\client'; Write-Host '🎨 Frontend Server' -ForegroundColor Cyan; npm run dev"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '.\aqar\client'; Write-Host '🎨 Frontend Server' -ForegroundColor Cyan; npm run dev"
 
 # Wait for frontend to start
 Write-Host "⏳ Waiting for frontend to initialize..." -ForegroundColor Gray
@@ -51,4 +51,4 @@ Write-Host "⚠️  Keep both windows open while using the platform" -Foreground
 Write-Host "🛑 Press Ctrl+C in each window to stop the servers" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Press any key to close this window..." -ForegroundColor Gray
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+Pause
