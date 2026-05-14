@@ -71,9 +71,14 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('aqar_user');
   }, []);
 
-  const updateUser = useCallback((updatedUser) => {
+  const updateUser = useCallback((updatedUser, newToken = null) => {
     setUser(updatedUser);
     localStorage.setItem('aqar_user', JSON.stringify(updatedUser));
+    // Also update token if provided by server
+    if (newToken) {
+      setToken(newToken);
+      localStorage.setItem('aqar_token', newToken);
+    }
   }, []);
 
   const isAuthenticated = !!token && !!user;
