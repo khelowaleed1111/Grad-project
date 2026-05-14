@@ -76,7 +76,7 @@ export default function PropertyDetail() {
     : null;
 
   return (
-    <div className="min-h-screen bg-[#fbf9f8] pt-[72px]">
+    <div className="min-h-screen bg-[#fbf9f8] pt-[72px] pb-24 lg:pb-0">
       <main className="max-w-[1140px] mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-12 gap-10">
 
         {/* ── Left: Content (8/12) ─────────────── */}
@@ -126,7 +126,7 @@ export default function PropertyDetail() {
 
           {/* Key features grid */}
           <div className="bg-[#f5f3f3] rounded-2xl p-6 border border-[#c0c9bb]/30">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
               {[
                 { icon: 'bed', label: 'Bedrooms', value: property.rooms ?? '—' },
                 { icon: 'shower', label: 'Bathrooms', value: property.bathrooms ?? '—' },
@@ -275,6 +275,21 @@ export default function PropertyDetail() {
           </div>
         </div>
       </main>
+
+      {/* Mobile Sticky Action Bar */}
+      {property.owner?.phone && (
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-[#c0c9bb] p-4 pb-safe shadow-ambient-3 flex gap-3">
+          <a href={`tel:${property.owner.phone}`}
+            className="flex-1 bg-[#1b5e20] text-white py-4 rounded-2xl font-bold hover:bg-[#00450d] transition-colors flex items-center justify-center gap-2 shadow-sm">
+            <span className="material-symbols-outlined text-[20px]">call</span>
+            Call
+          </a>
+          <a href={`https://wa.me/${property.owner.phone.replace(/\D/g, '')}`} target="_blank" rel="noreferrer"
+            className="flex-1 bg-[#25D366] text-white py-4 rounded-2xl font-bold hover:opacity-95 transition-opacity flex items-center justify-center gap-2 shadow-sm">
+            WhatsApp
+          </a>
+        </div>
+      )}
     </div>
   );
 }

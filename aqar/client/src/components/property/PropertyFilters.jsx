@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
  * PropertyFilters - Reusable filter component for property search
  * Emits filter changes to parent component
  */
-export default function PropertyFilters({ filters = {}, onFilterChange, onReset }) {
+export default function PropertyFilters({ filters = {}, onFilterChange, onReset, onApply }) {
   const [localFilters, setLocalFilters] = useState({
     status: '',
     type: '',
@@ -49,8 +49,8 @@ export default function PropertyFilters({ filters = {}, onFilterChange, onReset 
 
   const activeFilterCount = Object.values(localFilters).filter((v) => v !== '' && v !== null && v !== undefined).length;
 
-  const inputClass = "w-full px-3 py-2.5 border-2 border-[#c0c9bb] rounded-xl text-sm text-[#1b1c1c] focus:outline-none focus:border-[#1b5e20] transition-colors";
-  const labelClass = "block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-1.5";
+  const inputClass = "w-full px-4 py-3 md:py-2.5 border-2 border-[#c0c9bb] rounded-xl text-base md:text-sm text-[#1b1c1c] focus:outline-none focus:border-[#1b5e20] transition-colors bg-white";
+  const labelClass = "block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-1.5 ml-1";
 
   return (
     <div className="bg-white rounded-2xl border border-[#c0c9bb] shadow-ambient-1 overflow-hidden">
@@ -230,17 +230,27 @@ export default function PropertyFilters({ filters = {}, onFilterChange, onReset 
           </div>
         </div>
 
-        {/* Reset Button */}
-        {activeFilterCount > 0 && (
+        {/* Reset & Apply Buttons */}
+        <div className="flex flex-col gap-2 pt-2">
+          {activeFilterCount > 0 && (
+            <button
+              type="button"
+              onClick={handleReset}
+              className="w-full flex items-center justify-center gap-2 py-3 border-2 border-[#c0c9bb] rounded-xl text-sm font-semibold text-[#41493e] hover:bg-[#f0eded] transition-colors"
+            >
+              <span className="material-symbols-outlined text-[18px]">restart_alt</span>
+              Reset Filters
+            </button>
+          )}
+          
           <button
             type="button"
-            onClick={handleReset}
-            className="w-full flex items-center justify-center gap-2 py-3 border-2 border-[#c0c9bb] rounded-xl text-sm font-semibold text-[#41493e] hover:bg-[#f0eded] transition-colors"
+            onClick={onApply}
+            className="lg:hidden w-full flex items-center justify-center gap-2 py-3 bg-[#1b5e20] rounded-xl text-sm font-semibold text-white hover:bg-[#00450d] transition-colors shadow-sm"
           >
-            <span className="material-symbols-outlined text-[18px]">restart_alt</span>
-            Reset Filters
+            Apply Filters
           </button>
-        )}
+        </div>
       </div>
     </div>
   );

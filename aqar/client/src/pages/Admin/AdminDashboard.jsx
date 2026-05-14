@@ -188,7 +188,7 @@ export default function AdminDashboard() {
               <div className="space-y-6">
                 {statsLoading ? <Spinner center /> : (
                   <>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                       {[
                         { icon: 'people', label: 'Total Users', value: stats?.users?.total ?? 0, sub: `${stats?.users?.buyers ?? 0} buyers`, color: 'text-[#1b5e20]', bg: 'bg-[#e8f5e9]' },
                         { icon: 'home_work', label: 'Properties', value: stats?.properties?.total ?? 0, sub: `${stats?.properties?.featured ?? 0} featured`, color: 'text-[#835400]', bg: 'bg-[#fff8e1]' },
@@ -248,9 +248,15 @@ export default function AdminDashboard() {
             {/* ALL LISTINGS */}
             {tab === 'listings' && (
               <div className="space-y-4">
-                <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">All Listings</h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">All Listings</h2>
+                  <span className="md:hidden text-[10px] text-[#717a6d] flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[14px]">swipe_left</span>
+                    Scroll left
+                  </span>
+                </div>
                 {listingsLoading ? <Spinner center /> : (
-                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-x-auto shadow-ambient-1">
+                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-x-auto shadow-ambient-1 no-scrollbar">
                     <table className="w-full text-sm min-w-[800px]">
                       <thead>
                         <tr className="border-b border-[#c0c9bb] bg-[#f5f3f3]">
@@ -386,9 +392,15 @@ export default function AdminDashboard() {
             {/* USERS */}
             {tab === 'users' && (
               <div className="space-y-4">
-                <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">User Management</h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">User Management</h2>
+                  <span className="md:hidden text-[10px] text-[#717a6d] flex items-center gap-1">
+                    <span className="material-symbols-outlined text-[14px]">swipe_left</span>
+                    Scroll left
+                  </span>
+                </div>
                 {usersLoading ? <Spinner center /> : (
-                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-x-auto shadow-ambient-1">
+                  <div className="bg-white rounded-2xl border border-[#c0c9bb] overflow-x-auto shadow-ambient-1 no-scrollbar">
                     <table className="w-full text-sm min-w-[600px]">
                       <thead>
                         <tr className="border-b border-[#c0c9bb] bg-[#f5f3f3]">

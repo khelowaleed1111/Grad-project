@@ -16,6 +16,7 @@ const SORT_OPTIONS = [
 export default function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showMap, setShowMap] = useState(true);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [keywordInput, setKeywordInput] = useState(searchParams.get('keyword') || '');
 
   const [filters, setFilters] = useState({
@@ -92,6 +93,7 @@ export default function Search() {
       page: 1,
     });
     setKeywordInput('');
+    setMobileFiltersOpen(false);
   }, []);
 
   const properties = Array.isArray(data?.data) ? data.data : (Array.isArray(data) ? data : []);
@@ -112,66 +114,95 @@ export default function Search() {
     <div className="min-h-screen bg-[#fbf9f8] pt-[72px]">
       {/* Top search bar */}
       <div className="bg-white border-b border-[#c0c9bb] sticky top-[72px] z-30 shadow-ambient-1">
-        <div className="max-w-[1400px] mx-auto px-6 py-3 flex flex-col md:flex-row items-center gap-3">
-          <div className="relative flex-1 min-w-[200px] w-full">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-3 flex flex-wrap items-center gap-3">
+          <div className="relative flex-1 min-w-[200px] w-full md:w-auto">
             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#717a6d] text-[20px]">search</span>
             <input
               type="text"
               value={keywordInput}
               onChange={(e) => setKeywordInput(e.target.value)}
-              placeholder="Search by title, city, or keyword..."
+              placeholder="Search properties..."
               className="w-full pl-10 pr-4 py-2.5 border border-[#c0c9bb] rounded-full text-sm text-[#1b1c1c] focus:outline-none focus:border-[#1b5e20] bg-[#f5f3f3]"
             />
           </div>
 
-          {/* Status toggle */}
-          <div className="flex rounded-full border border-[#c0c9bb] overflow-hidden w-full md:w-auto">
-            {['', 'sale', 'rent'].map((s) => (
-              <button
-                key={s}
-                onClick={() => setFilter('status', s)}
-                className={`flex-1 md:flex-none px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors ${
-                  filters.status === s ? 'bg-[#1b5e20] text-white' : 'text-[#41493e] hover:bg-[#f0eded]'
-                }`}
-              >
-                {s === '' ? 'All' : s === 'sale' ? 'Buy' : 'Rent'}
-              </button>
-            ))}
+          <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 no-scrollbar">
+            {/* Mobile filter button */}
+            <button
+              onClick={() => setMobileFiltersOpen(true)}
+              className="lg:hidden flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-[#c0c9bb] text-xs font-bold uppercase tracking-wider text-[#41493e] hover:bg-[#f0eded] whitespace-nowrap"
+            >
+              <span className="material-symbols-outlined text-[18px]">tune</span>
+              Filters
+              {Object.values(filters).filter(v => v !== '' && v !== 1 && v !== 'newest' && v !== null).length > 0 && (
+                <span className="w-2 h-2 bg-[#1b5e20] rounded-full"></span>
+              )}
+            </button>
+
+            {/* Status toggle */}
+            <div className="flex rounded-full border border-[#c0c9bb] overflow-hidden flex-shrink-0">
+              {['', 'sale', 'rent'].map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setFilter('status', s)}
+                  className={`px-4 py-2 text-[10px] md:text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap ${
+                    filters.status === s ? 'bg-[#1b5e20] text-white' : 'text-[#41493e] hover:bg-[#f0eded]'
+                  }`}
+                >
+                  {s === '' ? 'All' : s === 'sale' ? 'Buy' : 'Rent'}
+                </button>
+              ))}
+            </div>
+
+            {/* Sort */}
+            <select
+              value={filters.sort}
+              onChange={(e) => setFilter('sort', e.target.value)}
+              className="px-4 py-2.5 border border-[#c0c9bb] rounded-full text-xs font-bold uppercase tracking-wider text-[#41493e] bg-white focus:outline-none focus:border-[#1b5e20] flex-shrink-0"
+            >
+              {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+            </select>
+
+            {/* Map toggle */}
+            <button
+              onClick={() => setShowMap(!showMap)}
+              className={`flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-colors flex-shrink-0 ${
+                showMap ? 'bg-[#1b5e20] text-white border-[#1b5e20]' : 'border-[#c0c9bb] text-[#41493e] hover:bg-[#f0eded]'
+              }`}
+            >
+              <span className="material-symbols-outlined text-[18px]">map</span>
+              Map
+            </button>
           </div>
-
-          {/* Sort */}
-          <select
-            value={filters.sort}
-            onChange={(e) => setFilter('sort', e.target.value)}
-            className="w-full md:w-auto px-4 py-2.5 border border-[#c0c9bb] rounded-full text-sm text-[#41493e] bg-white focus:outline-none focus:border-[#1b5e20]"
-          >
-            {SORT_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-          </select>
-
-          {/* Map toggle */}
-          <button
-            onClick={() => setShowMap(!showMap)}
-            className={`flex items-center justify-center gap-1.5 w-full md:w-auto px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-colors ${
-              showMap ? 'bg-[#1b5e20] text-white border-[#1b5e20]' : 'border-[#c0c9bb] text-[#41493e] hover:bg-[#f0eded]'
-            }`}
-          >
-            <span className="material-symbols-outlined text-[18px]">map</span>
-            Map
-          </button>
         </div>
       </div>
 
       {/* Main content: Filters + Map/List */}
       <main className="max-w-[1400px] mx-auto px-6 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Left sidebar: Filters */}
-          <aside className="lg:col-span-3">
-            <div className="sticky top-[140px]">
-              <PropertyFilters
-                filters={filters}
-                onFilterChange={handleFilterChange}
-                onReset={handleFilterReset}
-              />
+          {/* Left sidebar: Filters (Desktop) / Drawer (Mobile) */}
+          <aside className={`fixed inset-0 z-50 lg:relative lg:z-0 lg:block lg:col-span-3 transition-transform duration-300 ${mobileFiltersOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+            {/* Backdrop */}
+            <div 
+              className={`fixed inset-0 bg-black/50 lg:hidden transition-opacity duration-300 ${mobileFiltersOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              onClick={() => setMobileFiltersOpen(false)}
+            />
+            
+            <div className="relative w-[85%] max-w-[320px] h-full lg:w-full lg:max-w-none lg:h-auto bg-[#fbf9f8] lg:bg-transparent overflow-y-auto lg:overflow-visible shadow-xl lg:shadow-none flex flex-col">
+              <div className="sticky top-0 lg:top-[140px] p-6 lg:p-0 flex flex-col h-full lg:h-auto">
+                <div className="flex items-center justify-between mb-6 lg:hidden">
+                  <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">Filters</h2>
+                  <button onClick={() => setMobileFiltersOpen(false)} className="p-2 text-[#41493e] hover:bg-[#f0eded] rounded-full transition-colors">
+                    <span className="material-symbols-outlined">close</span>
+                  </button>
+                </div>
+                <PropertyFilters
+                  filters={filters}
+                  onFilterChange={handleFilterChange}
+                  onReset={handleFilterReset}
+                  onApply={() => setMobileFiltersOpen(false)}
+                />
+              </div>
             </div>
           </aside>
 
