@@ -17,7 +17,7 @@ const schema = z.object({
   category: z.string().optional(),
   rooms: z.coerce.number().int().min(0).optional(),
   bathrooms: z.coerce.number().int().min(0).optional(),
-  area: z.coerce.number().positive().optional(),
+  area: z.coerce.number().positive('Area must be positive'),
   'location.city': z.string().min(1, 'City is required'),
   'location.address': z.string().min(1, 'Address is required'),
   'location.district': z.string().optional(),

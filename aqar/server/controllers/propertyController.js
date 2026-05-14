@@ -95,42 +95,127 @@ const getProperty = asyncHandler(async (req, res) => {
  * @access  Private (Owner/Agent)
  */
 const createProperty = asyncHandler(async (req, res) => {
-  const { title, description, price, status, type, rooms, bathrooms, area, location } = req.body;
+  console.log('=== CREATE PROPERTY DEBUG ===');
+  console.log('Raw req.body:', req.body);
+  console.log('req.files:', req.files);
+  console.log('req.imageUrls:', req.imageUrls);
+  console.log('req.user:', req.user);
 
-  // Parse location if it's a string (from form data)
-  let parsedLocation = location;
-  if (typeof location === 'string') {
+  const { title, description, price, status, type, rooms, bathrooms, area, features } = req.body;
+
+  // Parse features if it's a JSON string
+  let parsedFeatures = [];
+  if (features) {
     try {
-      parsedLocation = JSON.parse(location);
+      parsedFeatures = typeof features === 'string' ? JSON.parse(features) : features;
     } catch (e) {
-      parsedLocation = location;
+      console.log('Features parsing error:', e);
+      parsedFeatures = [];
     }
+  }
+
+  // Handle location parsing - check for nested location fields
+  let parsedLocation = {};
+  
+  // Check if location is sent as nested fields (location[city], location[address], etc.)
+  if (req.body['location[city]'] || req.body['location[address]']) {
+    parsedLocation = {
+      city: req.body['location[city]'],
+      address: req.body['location[address]'],
+      district: req.body['location[district]'],
+    };
+    
+    // Parse coordinates if provided
+    if (req.body['location[coordinates]']) {
+      try {
+        parsedLocation.coordinates = JSON.parse(req.body['location[coordinates]']);
+      } catch (e) {
+        console.log('Coordinates parsing error:', e);
+      }
+    }
+  } else if (req.body.location) {
+    // Handle location as a single field
+    if (typeof req.body.location === 'string') {
+      try {
+        parsedLocation = JSON.parse(req.body.location);
+      } catch (e) {
+        console.log('Location parsing error:', e);
+        parsedLocation = req.body.location;
+      }
+    } else {
+      parsedLocation = req.body.location;
+    }
+    
+    // Parse nested coordinates if sent as JSON string within the location object
+    if (parsedLocation && typeof parsedLocation.coordinates === 'string') {
+      try {
+        parsedLocation.coordinates = JSON.parse(parsedLocation.coordinates);
+      } catch (e) {
+        console.log('Nested coordinates parsing error:', e);
+      }
+    }
+  }
+
+  console.log('Parsed location:', parsedLocation);
+  console.log('Parsed features:', parsedFeatures);
+
+  // Validate required fields
+  if (!title || !description || !price || !status || !type) {
+    console.log('Missing required fields');
+    res.status(400);
+    throw new Error('Missing required fields: title, description, price, status, type');
+  }
+
+  if (!parsedLocation.city || !parsedLocation.address) {
+    console.log('Missing location fields');
+    res.status(400);
+    throw new Error('Missing required location fields: city and address');
+  }
+
+  if (!parsedLocation.coordinates || !parsedLocation.coordinates.coordinates) {
+    console.log('Missing coordinates');
+    res.status(400);
+    throw new Error('Property coordinates are required. Please pin the location on the map.');
   }
 
   // Get uploaded image URLs from middleware
   const images = req.imageUrls || [];
+  console.log('Final images array:', images);
 
-  // Create property
-  const property = await Property.create({
+  // Prepare property data
+  const propertyData = {
     title,
     description,
-    price,
+    price: Number(price),
     status,
     type,
-    rooms: rooms || null,
-    bathrooms: bathrooms || null,
-    area,
+    rooms: rooms ? Number(rooms) : null,
+    bathrooms: bathrooms ? Number(bathrooms) : null,
+    area: area ? Number(area) : null,
+    features: parsedFeatures,
     location: parsedLocation,
     images,
     owner: req.user._id,
     isApproved: false, // Requires admin approval
-  });
+  };
 
-  res.status(201).json({
-    success: true,
-    message: 'Property submitted for approval',
-    data: property,
-  });
+  console.log('Final property data:', propertyData);
+
+  try {
+    // Create property
+    const property = await Property.create(propertyData);
+    console.log('Property created successfully:', property._id);
+
+    res.status(201).json({
+      success: true,
+      message: 'Property submitted for approval',
+      data: property,
+    });
+  } catch (error) {
+    console.log('Property creation error:', error);
+    res.status(400);
+    throw new Error(`Property creation failed: ${error.message}`);
+  }
 });
 
 /**
@@ -174,6 +259,15 @@ const updateProperty = asyncHandler(async (req, res) => {
       req.body.location = JSON.parse(req.body.location);
     } catch (e) {
       // Keep as is
+    }
+  }
+
+  // Parse nested coordinates if sent as JSON string
+  if (req.body.location && typeof req.body.location.coordinates === 'string') {
+    try {
+      req.body.location.coordinates = JSON.parse(req.body.location.coordinates);
+    } catch (e) {
+      // keep as-is
     }
   }
 

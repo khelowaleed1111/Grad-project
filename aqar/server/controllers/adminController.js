@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Property = require('../models/Property');
 const Inquiry = require('../models/Inquiry');
+const Notification = require('../models/Notification');
 const { asyncHandler } = require('../middleware/errorMiddleware');
 
 /**
@@ -182,7 +183,7 @@ const getPendingListings = asyncHandler(async (req, res) => {
  * @access  Private (Admin)
  */
 const approveListing = asyncHandler(async (req, res) => {
-  const property = await Property.findById(req.params.id);
+  const property = await Property.findById(req.params.id).populate('owner', 'name email');
 
   if (!property) {
     res.status(404);
@@ -191,6 +192,15 @@ const approveListing = asyncHandler(async (req, res) => {
 
   property.isApproved = true;
   await property.save();
+
+  // Create notification for property owner
+  await Notification.create({
+    user: property.owner._id,
+    type: 'property_approved',
+    title: 'Property Approved! 🎉',
+    message: `Your property "${property.title}" has been approved and is now live on the platform.`,
+    property: property._id,
+  });
 
   res.json({
     success: true,
@@ -205,12 +215,20 @@ const approveListing = asyncHandler(async (req, res) => {
  * @access  Private (Admin)
  */
 const rejectListing = asyncHandler(async (req, res) => {
-  const property = await Property.findById(req.params.id);
+  const property = await Property.findById(req.params.id).populate('owner', 'name email');
 
   if (!property) {
     res.status(404);
     throw new Error('Property not found');
   }
+
+  // Create notification for property owner before deleting
+  await Notification.create({
+    user: property.owner._id,
+    type: 'property_rejected',
+    title: 'Property Not Approved',
+    message: `Your property "${property.title}" was not approved. Please contact support for more information.`,
+  });
 
   await property.deleteOne();
 

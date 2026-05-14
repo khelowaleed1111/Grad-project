@@ -14,14 +14,8 @@ export const propertiesApi = {
   getById: (id) => api.get(`/properties/${id}`),
   getSimilar: (id) => api.get(`/properties/${id}/similar`),
   getMyListings: (params) => api.get('/properties/my-listings', { params: clean(params) }),
-  create: (data) =>
-    api.post('/properties', data, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
-  update: (id, data) =>
-    api.put(`/properties/${id}`, data, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
+  create: (data) => api.post('/properties', data),
+  update: (id, data) => api.put(`/properties/${id}`, data),
   delete: (id) => api.delete(`/properties/${id}`),
   sendInquiry: (id, data) => api.post(`/properties/${id}/inquire`, data),
 };

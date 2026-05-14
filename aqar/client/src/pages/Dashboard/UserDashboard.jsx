@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { propertiesApi } from '../../api/propertiesApi';
 import { authApi } from '../../api/authApi';
+import { notificationsApi } from '../../api/notificationsApi';
 import { useAuth } from '../../context/AuthContext';
 import PropertyCard from '../../components/property/PropertyCard';
 import Spinner from '../../components/ui/Spinner';
@@ -11,6 +12,7 @@ import { toast } from 'react-toastify';
 const TABS = [
   { id: 'overview', label: 'Overview', icon: 'dashboard' },
   { id: 'listings', label: 'My Listings', icon: 'home_work' },
+  { id: 'notifications', label: 'Notifications', icon: 'notifications' },
   { id: 'profile', label: 'Profile', icon: 'person' },
 ];
 
@@ -34,6 +36,13 @@ export default function UserDashboard() {
   const { data: listingsData, isLoading: listLoading } = useQuery({
     queryKey: ['my-listings'],
     queryFn: () => propertiesApi.getMyListings().then((r) => r.data),
+    enabled: !!user,
+  });
+
+  // Fetch notifications
+  const { data: notificationsData } = useQuery({
+    queryKey: ['notifications'],
+    queryFn: () => notificationsApi.getAll({ limit: 5 }).then((r) => r.data),
     enabled: !!user,
   });
 
@@ -221,6 +230,60 @@ export default function UserDashboard() {
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* NOTIFICATIONS */}
+            {tab === 'notifications' && (
+              <div className="space-y-4">
+                <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c] mb-4">Notifications</h2>
+                
+                {notificationsData?.data && notificationsData.data.length > 0 ? (
+                  <div className="space-y-3">
+                    {notificationsData.data.map((notification) => (
+                      <div
+                        key={notification._id}
+                        className={`bg-white rounded-xl border p-4 transition-colors ${
+                          notification.isRead
+                            ? 'border-[#c0c9bb]'
+                            : 'border-[#1b5e20] bg-[#e8f5e9]/30'
+                        }`}
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className={`material-symbols-outlined text-[24px] ${
+                            notification.type === 'property_approved'
+                              ? 'text-[#1b5e20]'
+                              : 'text-[#ba1a1a]'
+                          }`}>
+                            {notification.type === 'property_approved' ? 'check_circle' : 'cancel'}
+                          </span>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-[#1b1c1c] mb-1">{notification.title}</h3>
+                            <p className="text-sm text-[#41493e] mb-2">{notification.message}</p>
+                            <p className="text-xs text-[#717a6d]">
+                              {new Date(notification.createdAt).toLocaleDateString('en-US', {
+                                month: 'short',
+                                day: 'numeric',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })}
+                            </p>
+                          </div>
+                          {!notification.isRead && (
+                            <span className="w-2 h-2 bg-[#1b5e20] rounded-full flex-shrink-0 mt-2"></span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-xl border border-[#c0c9bb] p-12 text-center">
+                    <span className="material-symbols-outlined text-[64px] text-[#717a6d] mb-4">notifications_off</span>
+                    <p className="text-[#41493e] font-medium">No notifications yet</p>
+                    <p className="text-sm text-[#717a6d] mt-1">You'll be notified when your properties are approved</p>
                   </div>
                 )}
               </div>
