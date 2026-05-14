@@ -12,9 +12,12 @@ async function connectToDatabase() {
   }
 
   try {
-    const db = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    const uri = process.env.MONGO_URI || process.env.MONGODB_URI;
+    if (!uri) {
+      throw new Error('MongoDB URI not found in environment variables (MONGO_URI or MONGODB_URI)');
+    }
+
+    const db = await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 5000,
     });
     

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { propertiesApi } from '../../api/propertiesApi';
@@ -19,7 +19,17 @@ export default function UserDashboard() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [tab, setTab] = useState('overview');
-  const [profileForm, setProfileForm] = useState({ name: user?.name || '', phone: user?.phone || '' });
+  const [profileForm, setProfileForm] = useState({ name: '', phone: '' });
+
+  // Sync form with user data when it loads
+  useEffect(() => {
+    if (user) {
+      setProfileForm({
+        name: user.name || '',
+        phone: user.phone || '',
+      });
+    }
+  }, [user]);
 
   const { data: listingsData, isLoading: listLoading } = useQuery({
     queryKey: ['my-listings'],
@@ -231,6 +241,11 @@ export default function UserDashboard() {
                   </div>
                 </div>
                 <form onSubmit={(e) => { e.preventDefault(); profileMutation.mutate(profileForm); }} className="flex flex-col gap-4">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-2">Email Address</label>
+                    <input type="email" value={user?.email || ''} readOnly
+                      className="w-full px-4 py-3 border-2 border-[#c0c9bb] rounded-xl text-[#717a6d] bg-[#f5f3f3] cursor-not-allowed" />
+                  </div>
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-2">Full Name</label>
                     <input type="text" value={profileForm.name} onChange={(e) => setProfileForm(f => ({ ...f, name: e.target.value }))}

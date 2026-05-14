@@ -101,6 +101,15 @@ const uploadSingleImage = [
         return next();
       }
 
+      const isMock = !process.env.CLOUDINARY_CLOUD_NAME || 
+                     process.env.CLOUDINARY_CLOUD_NAME === 'your_cloud_name';
+
+      if (isMock) {
+        const b64 = req.file.buffer.toString('base64');
+        req.imageUrl = `data:${req.file.mimetype};base64,${b64}`;
+        return next();
+      }
+
       const imageUrl = await uploadToCloudinary(req.file.buffer);
       req.imageUrl = imageUrl;
       next();
@@ -155,6 +164,17 @@ const uploadMultipleImages = [
         return next();
       }
 
+      const isMock = !process.env.CLOUDINARY_CLOUD_NAME || 
+                     process.env.CLOUDINARY_CLOUD_NAME === 'your_cloud_name';
+
+      if (isMock) {
+        req.imageUrls = req.files.map(file => {
+          const b64 = file.buffer.toString('base64');
+          return `data:${file.mimetype};base64,${b64}`;
+        });
+        return next();
+      }
+
       const imageUrls = await uploadMultipleToCloudinary(req.files);
       req.imageUrls = imageUrls;
       next();
@@ -199,6 +219,20 @@ const uploadAvatar = [
   async (req, res, next) => {
     try {
       if (!req.file) {
+        return next();
+      }
+
+      // Check if Cloudinary is configured
+      const isMock = !process.env.CLOUDINARY_CLOUD_NAME || 
+                     process.env.CLOUDINARY_CLOUD_NAME === 'your_cloud_name';
+
+      if (isMock) {
+        // FALLBACK: Mock upload for development
+        // Convert buffer to base64 data URI
+        const b64 = req.file.buffer.toString('base64');
+        const dataURI = `data:${req.file.mimetype};base64,${b64}`;
+        req.avatarUrl = dataURI;
+        console.log('🚧 Using Mock Upload (Cloudinary not configured)');
         return next();
       }
 
