@@ -58,6 +58,7 @@ export default function AdminDashboard() {
     onSuccess: () => {
       toast.success('Listing approved!');
       queryClient.invalidateQueries({ queryKey: ['admin-pending'] });
+      queryClient.invalidateQueries({ queryKey: ['admin-listings'] });
       queryClient.invalidateQueries({ queryKey: ['admin-stats'] });
     },
     onError: (err) => toast.error(err.response?.data?.message || 'Approval failed'),
@@ -68,6 +69,7 @@ export default function AdminDashboard() {
     onSuccess: () => {
       toast.success('Listing rejected and removed');
       queryClient.invalidateQueries({ queryKey: ['admin-pending'] });
+      queryClient.invalidateQueries({ queryKey: ['admin-listings'] });
       queryClient.invalidateQueries({ queryKey: ['admin-stats'] });
     },
     onError: (err) => toast.error(err.response?.data?.message || 'Rejection failed'),
