@@ -28,8 +28,6 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 import PendingApprovals from './pages/Admin/PendingApprovals';
 import UserManagement from './pages/Admin/UserManagement';
 import Unauthorized from './pages/Unauthorized';
-import TestAuth from './pages/TestAuth';
-import TestAdminRole from './pages/TestAdminRole';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -85,13 +83,6 @@ export default function App() {
                 <RoleRoute roles={['admin']}><UserManagement /></RoleRoute>
               } />
 
-              {/* Test routes for new components */}
-              <Route path="/test-auth" element={
-                <ProtectedRoute><TestAuth /></ProtectedRoute>
-              } />
-              <Route path="/test-admin" element={
-                <RoleProtectedRoute allowedRoles="admin"><TestAdminRole /></RoleProtectedRoute>
-              } />
               <Route path="/unauthorized" element={<Unauthorized />} />
 
               {/* 404 */}
