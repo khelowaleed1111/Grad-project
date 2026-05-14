@@ -222,16 +222,18 @@ const rejectListing = asyncHandler(async (req, res) => {
     throw new Error('Property not found');
   }
 
-  // Create notification for property owner before deleting
-  const wasApproved = property.isApproved;
-  await Notification.create({
-    user: property.owner._id,
-    type: 'property_rejected',
-    title: wasApproved ? 'Property Removed' : 'Property Not Approved',
-    message: wasApproved 
-      ? `Your property "${property.title}" has been removed from the platform by an administrator. Please contact support for details.`
-      : `Your property "${property.title}" was not approved. Please contact support for more information.`,
-  });
+  // Create notification for property owner before deleting (if owner still exists)
+  if (property.owner) {
+    const wasApproved = property.isApproved;
+    await Notification.create({
+      user: property.owner._id,
+      type: 'property_rejected',
+      title: wasApproved ? 'Property Removed' : 'Property Not Approved',
+      message: wasApproved 
+        ? `Your property "${property.title}" has been removed from the platform by an administrator. Please contact support for details.`
+        : `Your property "${property.title}" was not approved. Please contact support for more information.`,
+    });
+  }
 
   await property.deleteOne();
 
