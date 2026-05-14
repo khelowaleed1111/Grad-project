@@ -16,12 +16,14 @@ const schema = z.object({
   category: z.string().optional(),
   rooms: z.coerce.number().int().min(0).optional(),
   bathrooms: z.coerce.number().int().min(0).optional(),
-  area: z.coerce.number().positive().optional(),
-  location: z.object({
-    city: z.string().min(1, 'City is required'),
-    address: z.string().min(1, 'Address is required'),
-    district: z.string().optional(),
-  }),
+  area: z.preprocess(
+    (v) => (v === '' || v === null || v === undefined ? undefined : v),
+    z.coerce.number().positive('Area must be positive').optional(),
+  ),
+  // Flat keys match register('location.*') + zodResolver partial trigger (same as EditProperty).
+  'location.city': z.string().min(1, 'City is required'),
+  'location.address': z.string().min(1, 'Address is required'),
+  'location.district': z.string().optional(),
 });
 
 const STEPS = ['Basic Info', 'Details', 'Location', 'Submit'];
@@ -36,7 +38,11 @@ export default function AddProperty() {
 
   const { register, handleSubmit, trigger, formState: { errors }, watch } = useForm({
     resolver: zodResolver(schema),
-    defaultValues: { status: 'sale', type: 'residential' },
+    defaultValues: { 
+      status: 'sale', 
+      type: 'residential',
+      'location.city': 'Cairo',
+    },
   });
 
   const mutation = useMutation({
@@ -68,10 +74,14 @@ export default function AddProperty() {
     const fieldGroups = [
       ['title', 'description', 'status', 'type'],
       ['price', 'rooms', 'bathrooms', 'area'],
-      ['location.city', 'location.address'],
+      ['location.city', 'location.address', 'location.district'],
     ];
     const valid = await trigger(fieldGroups[step]);
-    if (valid) setStep((s) => s + 1);
+    if (valid) {
+      setStep((s) => s + 1);
+    } else {
+      toast.error('Please fix the errors above before continuing');
+    }
   };
 
   const onSubmit = (data) => {
@@ -88,9 +98,9 @@ export default function AddProperty() {
       bathrooms: data.bathrooms,
       area: data.area,
       features: JSON.stringify(features),
-      'location[city]': data.location?.city || data['location.city'],
-      'location[address]': data.location?.address || data['location.address'],
-      'location[district]': data.location?.district || data['location.district'],
+      'location[city]': data['location.city'] ?? data.location?.city,
+      'location[address]': data['location.address'] ?? data.location?.address,
+      'location[district]': data['location.district'] ?? data.location?.district,
     };
     Object.entries(payload).forEach(([k, v]) => { if (v !== undefined && v !== '') fd.append(k, v); });
     images.forEach((img) => fd.append('images', img));
@@ -264,24 +274,24 @@ export default function AddProperty() {
                 <h2 className="font-semibold text-[#1b1c1c] text-lg">Location Details</h2>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-1.5">City *</label>
-                  <select {...register('location.city')} className={inputClass(errors.location?.city)}>
+                  <select {...register('location.city')} className={inputClass(errors['location.city'])}>
                     <option value="">Select city</option>
                     {['Cairo', 'Giza', 'Alexandria', 'Matrouh', '6th October', 'New Cairo', 'Maadi', 'Zamalek', 'Sheikh Zayed', 'Heliopolis'].map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
-                  {errors.location?.city && <p className="text-[#ba1a1a] text-xs mt-1">{errors.location.city.message}</p>}
+                  {errors['location.city'] && <p className="text-[#ba1a1a] text-xs mt-1">{errors['location.city'].message}</p>}
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-1.5">District / Neighborhood</label>
                   <input {...register('location.district')} type="text" placeholder="e.g. Maadi, Heliopolis"
-                    className={inputClass(errors.location?.district)} />
+                    className={inputClass(errors['location.district'])} />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-1.5">Street Address *</label>
                   <input {...register('location.address')} type="text" placeholder="e.g. 15 Ahmed Orabi Street"
-                    className={inputClass(errors.location?.address)} />
-                  {errors.location?.address && <p className="text-[#ba1a1a] text-xs mt-1">{errors.location.address.message}</p>}
+                    className={inputClass(errors['location.address'])} />
+                  {errors['location.address'] && <p className="text-[#ba1a1a] text-xs mt-1">{errors['location.address'].message}</p>}
                 </div>
               </>
             )}

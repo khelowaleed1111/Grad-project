@@ -105,7 +105,11 @@ export default function EditProperty() {
       ['location.city', 'location.address'],
     ];
     const valid = await trigger(fieldGroups[step]);
-    if (valid) setStep((s) => s + 1);
+    if (valid) {
+      setStep((s) => s + 1);
+    } else {
+      toast.error('Please fix the errors above before continuing');
+    }
   };
 
   const onSubmit = (data) => {
