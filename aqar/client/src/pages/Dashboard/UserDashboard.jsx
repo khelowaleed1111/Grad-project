@@ -34,7 +34,7 @@ export default function UserDashboard() {
   const { data: listingsData, isLoading: listLoading } = useQuery({
     queryKey: ['my-listings'],
     queryFn: () => propertiesApi.getMyListings().then((r) => r.data),
-    enabled: ['owner', 'agent'].includes(user?.role),
+    enabled: !!user,
   });
 
   const deleteMutation = useMutation({
@@ -72,7 +72,7 @@ export default function UserDashboard() {
             </h1>
             <p className="text-sm text-[#41493e] mt-1 capitalize">{user?.role} Account</p>
           </div>
-          {['owner', 'agent'].includes(user?.role) && (
+          {['owner', 'agent', 'buyer'].includes(user?.role) && (
             <Link to="/dashboard/listings/new"
               className="flex items-center gap-2 bg-[#1b5e20] text-white px-5 py-3 rounded-xl font-semibold hover:bg-[#00450d] transition-all hover:-translate-y-0.5 shadow-sm text-sm">
               <span className="material-symbols-outlined text-[18px]">add</span>
@@ -149,7 +149,7 @@ export default function UserDashboard() {
                   </div>
                 )}
 
-                {listings.length === 0 && ['owner', 'agent'].includes(user?.role) && (
+                {listings.length === 0 && ['owner', 'agent', 'buyer'].includes(user?.role) && (
                   <div className="bg-white rounded-2xl p-10 border border-[#c0c9bb] text-center">
                     <span className="material-symbols-outlined text-[64px] text-[#c0c9bb] block mb-4">add_home</span>
                     <h3 className="font-semibold text-[#1b1c1c] mb-2">No listings yet</h3>
@@ -168,7 +168,7 @@ export default function UserDashboard() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c]">My Listings</h2>
-                  {['owner', 'agent'].includes(user?.role) && (
+                  {['owner', 'agent', 'buyer'].includes(user?.role) && (
                     <Link to="/dashboard/listings/new"
                       className="flex items-center gap-1.5 text-sm font-medium text-[#1b5e20] hover:underline">
                       <span className="material-symbols-outlined text-[18px]">add</span>Add New

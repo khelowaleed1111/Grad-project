@@ -37,31 +37,31 @@ router.post(
   sendInquiry
 );
 
-// Create listing (Owner/Agent)
+// Create listing (All authenticated roles)
 router.post(
   '/',
   protect,
-  authorize('owner', 'agent'),
+  authorize('owner', 'agent', 'buyer'),
   uploadMultipleImages,
   handleMulterError,
   createProperty
 );
 
-// Update listing (Owner/Agent/Admin)
+// Update listing (All roles + Admin)
 router.put(
   '/:id',
   protect,
-  authorize('owner', 'agent', 'admin'),
+  authorize('owner', 'agent', 'buyer', 'admin'),
   uploadMultipleImages,
   handleMulterError,
   updateProperty
 );
 
-// Delete listing (Owner/Agent/Admin)
+// Delete listing (All roles + Admin)
 router.delete(
   '/:id',
   protect,
-  authorize('owner', 'agent', 'admin'),
+  authorize('owner', 'agent', 'buyer', 'admin'),
   deleteProperty
 );
 
