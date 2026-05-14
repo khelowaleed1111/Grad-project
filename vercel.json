@@ -4,9 +4,7 @@
     {
       "src": "aqar/client/package.json",
       "use": "@vercel/static-build",
-      "config": {
-        "distDir": "aqar/client/dist"
-      }
+      "config": { "distDir": "dist" }
     },
     {
       "src": "aqar/server/api/index.js",
@@ -20,11 +18,11 @@
     },
     {
       "src": "/assets/(.*)",
-      "dest": "aqar/client/dist/assets/$1"
+      "dest": "/assets/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "aqar/client/dist/index.html"
+      "dest": "/index.html"
     }
   ]
 }
