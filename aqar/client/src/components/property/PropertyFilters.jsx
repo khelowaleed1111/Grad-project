@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Button from '../ui/Button';
 
 /**
  * PropertyFilters - Reusable filter component for property search
@@ -49,8 +50,8 @@ export default function PropertyFilters({ filters = {}, onFilterChange, onReset,
 
   const activeFilterCount = Object.values(localFilters).filter((v) => v !== '' && v !== null && v !== undefined).length;
 
-  const inputClass = "w-full px-4 py-3 md:py-2.5 border-2 border-[#c0c9bb] rounded-xl text-base md:text-sm text-[#1b1c1c] focus:outline-none focus:border-[#1b5e20] transition-colors bg-white";
-  const labelClass = "block text-xs font-bold uppercase tracking-wider text-[#41493e] mb-1.5 ml-1";
+  const inputClass = "w-full px-4 py-3 border-2 border-[#c0c9bb] rounded-xl text-base md:text-sm text-[#1b1c1c] focus:outline-none focus:border-[#1b5e20] transition-colors bg-white placeholder-[#717a6d]";
+  const labelClass = "block text-[11px] font-bold uppercase tracking-widest text-[#41493e] mb-2 ml-1 opacity-80";
 
   return (
     <div className="bg-white rounded-2xl border border-[#c0c9bb] shadow-ambient-1 overflow-hidden">
@@ -98,7 +99,7 @@ export default function PropertyFilters({ filters = {}, onFilterChange, onReset,
         {/* Status */}
         <div>
           <label className={labelClass}>Listing Type</label>
-          <div className="flex rounded-xl border-2 border-[#c0c9bb] overflow-hidden">
+          <div className="flex rounded-xl border-2 border-[#c0c9bb] overflow-hidden p-1 bg-[#f5f3f3]">
             {[
               { value: '', label: 'All' },
               { value: 'sale', label: 'Sale' },
@@ -108,10 +109,10 @@ export default function PropertyFilters({ filters = {}, onFilterChange, onReset,
                 key={option.value}
                 type="button"
                 onClick={() => handleChange('status', option.value)}
-                className={`flex-1 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                className={`flex-1 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all ${
                   localFilters.status === option.value
-                    ? 'bg-[#1b5e20] text-white'
-                    : 'text-[#41493e] hover:bg-[#f5f3f3]'
+                    ? 'bg-[#1b5e20] text-white shadow-sm'
+                    : 'text-[#41493e] hover:bg-[#e4e2e1]'
                 }`}
               >
                 {option.label}
@@ -231,25 +232,29 @@ export default function PropertyFilters({ filters = {}, onFilterChange, onReset,
         </div>
 
         {/* Reset & Apply Buttons */}
-        <div className="flex flex-col gap-2 pt-2">
+        <div className="flex flex-col gap-3 pt-4 border-t border-[#c0c9bb]/50">
           {activeFilterCount > 0 && (
-            <button
-              type="button"
+            <Button
+              variant="text"
               onClick={handleReset}
-              className="w-full flex items-center justify-center gap-2 py-3 border-2 border-[#c0c9bb] rounded-xl text-sm font-semibold text-[#41493e] hover:bg-[#f0eded] transition-colors"
+              fullWidth
+              size="md"
+              icon="restart_alt"
+              className="text-[#41493e]"
             >
-              <span className="material-symbols-outlined text-[18px]">restart_alt</span>
               Reset Filters
-            </button>
+            </Button>
           )}
           
-          <button
-            type="button"
+          <Button
             onClick={onApply}
-            className="lg:hidden w-full flex items-center justify-center gap-2 py-3 bg-[#1b5e20] rounded-xl text-sm font-semibold text-white hover:bg-[#00450d] transition-colors shadow-sm"
+            className="lg:hidden"
+            fullWidth
+            size="lg"
+            icon="check"
           >
             Apply Filters
-          </button>
+          </Button>
         </div>
       </div>
     </div>

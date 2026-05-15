@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from './Header';
+import Navbar from './Navbar';
 import Footer from './Footer';
 
 // Pages that don't show the Header (auth pages)
@@ -17,11 +17,11 @@ export default function Layout() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
-      {!hideHeader && <Header />}
+      {/* Navbar (formerly Header) */}
+      {!hideHeader && <Navbar />}
 
       {/* Main Content Area */}
-      <main className={`flex-1 ${!hideHeader ? 'pt-16' : ''}`}>
+      <main className={`flex-1 ${!hideHeader ? 'pt-[72px]' : ''}`}>
         <Outlet />
       </main>
 

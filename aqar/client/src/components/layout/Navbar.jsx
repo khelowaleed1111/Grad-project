@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
+import Button from '../ui/Button';
 
 const NAV_LINKS = [
   { label: 'Properties', labelAr: 'العقارات', to: '/search' },
@@ -87,7 +88,7 @@ export default function Navbar() {
           {/* Language toggle */}
           <button
             onClick={toggleLang}
-            className="flex items-center gap-1 text-[#41493e] hover:text-[#00450d] transition-colors text-xs font-bold uppercase tracking-widest"
+            className="flex items-center gap-1 text-[#41493e] hover:text-[#00450d] transition-colors text-xs font-bold uppercase tracking-widest px-2"
           >
             <span className="material-symbols-outlined text-[18px]">language</span>
             {lang === 'en' ? 'EN/AR' : 'AR/EN'}
@@ -102,27 +103,18 @@ export default function Navbar() {
                 <span className="material-symbols-outlined text-[18px]">dashboard</span>
                 {user?.role === 'admin' ? 'Admin' : 'Dashboard'}
               </Link>
-              <button
-                onClick={handleLogout}
-                className="text-xs font-bold uppercase tracking-widest text-[#00450d] border border-[#00450d] px-4 py-2 rounded-full hover:bg-[#00450d] hover:text-white transition-all"
-              >
+              <Button onClick={handleLogout} variant="outline" size="sm">
                 Sign Out
-              </button>
+              </Button>
             </div>
           ) : (
             <>
-              <Link
-                to="/login"
-                className="text-xs font-bold uppercase tracking-widest text-[#00450d] border border-[#00450d] px-4 py-2 rounded-full hover:bg-[#00450d]/5 transition-colors"
-              >
+              <Button to="/login" variant="text" size="sm">
                 Sign In
-              </Link>
-              <Link
-                to="/dashboard/listings/new"
-                className="text-xs font-bold uppercase tracking-widest bg-[#1b5e20] text-[#90d689] px-6 py-2 rounded-full hover:bg-[#00450d] transition-colors hover:-translate-y-0.5 transform shadow-sm"
-              >
+              </Button>
+              <Button to="/dashboard/listings/new" size="sm" icon="add_business">
                 List Property
-              </Link>
+              </Button>
             </>
           )}
         </div>
@@ -141,58 +133,54 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-[#fbf9f8] border-t border-[#c0c9bb] shadow-ambient-2">
-          <div className="flex flex-col py-3">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setMenuOpen(false)}
-                className="px-6 py-3 text-sm font-medium text-[#41493e] hover:text-[#00450d] hover:bg-[#f0eded] transition-colors"
-              >
-                {lang === 'ar' ? link.labelAr : link.label}
-              </Link>
-            ))}
-            <div className="border-t border-[#c0c9bb] mt-2 pt-2 px-6 flex flex-col gap-2">
+        <div className="md:hidden bg-[#fbf9f8] border-t border-[#c0c9bb] shadow-ambient-2 animate-in slide-in-from-top duration-300">
+          <div className="flex flex-col p-6 gap-6">
+            <div className="flex flex-col gap-1">
+              {NAV_LINKS.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={() => setMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                      isActive
+                        ? 'bg-[#1b5e20]/10 text-[#00450d]'
+                        : 'text-[#41493e] hover:bg-[#f0eded]'
+                    }`
+                  }
+                >
+                  {lang === 'ar' ? link.labelAr : link.label}
+                </NavLink>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-3">
               {isAuthenticated ? (
                 <>
-                  <Link
-                    to={getDashboardLink()}
-                    onClick={() => setMenuOpen(false)}
-                    className="py-2 text-sm font-medium text-[#41493e]"
-                  >
-                    Dashboard
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="py-2 text-sm font-medium text-red-600 text-left"
-                  >
+                  <Button to={getDashboardLink()} onClick={() => setMenuOpen(false)} variant="outline" fullWidth icon="dashboard">
+                    {user?.role === 'admin' ? 'Admin Panel' : 'Dashboard'}
+                  </Button>
+                  <Button onClick={handleLogout} variant="text" fullWidth className="text-red-600">
                     Sign Out
-                  </button>
+                  </Button>
                 </>
               ) : (
                 <>
-                  <Link
-                    to="/login"
-                    onClick={() => setMenuOpen(false)}
-                    className="py-2 text-sm font-medium text-[#00450d]"
-                  >
+                  <Button to="/login" onClick={() => setMenuOpen(false)} variant="outline" fullWidth>
                     Sign In
-                  </Link>
-                  <Link
-                    to="/register"
-                    onClick={() => setMenuOpen(false)}
-                    className="py-2 text-sm font-medium text-[#00450d]"
-                  >
-                    Register
-                  </Link>
+                  </Button>
+                  <Button to="/register" onClick={() => setMenuOpen(false)} fullWidth>
+                    Get Started
+                  </Button>
                 </>
               )}
+              
               <button
                 onClick={toggleLang}
-                className="py-2 text-xs font-bold uppercase tracking-widest text-[#41493e] text-left"
+                className="flex items-center justify-center gap-2 py-3 text-xs font-bold uppercase tracking-widest text-[#41493e] border-t border-[#c0c9bb] mt-2"
               >
-                Switch to {lang === 'en' ? 'العربية' : 'English'}
+                <span className="material-symbols-outlined text-[18px]">language</span>
+                {lang === 'en' ? 'Switch to العربية' : 'Switch to English'}
               </button>
             </div>
           </div>

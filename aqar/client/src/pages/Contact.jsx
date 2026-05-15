@@ -1,90 +1,139 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import React from 'react';
+import Button from '../components/ui/Button';
 
 export default function Contact() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-6">Contact Us</h1>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="min-h-screen bg-[#fbf9f8] pt-24 pb-16">
+      <div className="max-w-[1140px] mx-auto px-6">
+        <div className="text-center mb-12">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#fcab28] mb-2">Get in Touch</p>
+          <h1 className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-[#1b1c1c]">Contact Us</h1>
+          <p className="text-[#41493e] mt-4 max-w-2xl mx-auto">
+            Have questions about a property or need help with your listing? Our team of real estate experts is here to assist you.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Contact Information */}
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
-            
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Mail className="w-6 h-6 text-green-700 mt-1" />
-                <div>
-                  <h3 className="font-medium text-gray-900">Email</h3>
-                  <p className="text-gray-600">khelowaleed@gmail.com</p>
-                </div>
-              </div>
+          <div className="lg:col-span-5 space-y-8">
+            <div className="bg-white rounded-2xl border border-[#c0c9bb] p-8 shadow-ambient-1">
+              <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c] mb-8">Contact Information</h2>
               
-              <div className="flex items-start gap-3">
-                <Phone className="w-6 h-6 text-green-700 mt-1" />
-                <div>
-                  <h3 className="font-medium text-gray-900">Phone</h3>
-                  <p className="text-gray-600">01125474066</p>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#e8f5e9] flex items-center justify-center flex-shrink-0">
+                    <span className="material-symbols-outlined text-[#1b5e20]">mail</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#41493e] mb-1">Email Us</h3>
+                    <p className="text-lg font-medium text-[#1b1c1c]">khelowaleed@gmail.com</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#fff8e1] flex items-center justify-center flex-shrink-0">
+                    <span className="material-symbols-outlined text-[#fcab28]">phone_iphone</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#41493e] mb-1">Call Us</h3>
+                    <p className="text-lg font-medium text-[#1b1c1c]">01125474066</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#f3f4f6] flex items-center justify-center flex-shrink-0">
+                    <span className="material-symbols-outlined text-[#41493e]">location_on</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-[#41493e] mb-1">Visit Us</h3>
+                    <p className="text-lg font-medium text-[#1b1c1c]">Cairo, Egypt</p>
+                  </div>
                 </div>
               </div>
-              
-              <div className="flex items-start gap-3">
-                <MapPin className="w-6 h-6 text-green-700 mt-1" />
-                <div>
-                  <h3 className="font-medium text-gray-900">Address</h3>
-                  <p className="text-gray-600">Cairo, Egypt</p>
-                </div>
+            </div>
+
+            <div className="bg-[#1b5e20] rounded-2xl p-8 text-white shadow-ambient-2 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10">
+                <span className="material-symbols-outlined text-[120px]">support_agent</span>
               </div>
+              <h3 className="font-['Playfair_Display'] text-xl font-bold mb-2 relative z-10">24/7 Support</h3>
+              <p className="text-white/80 text-sm leading-relaxed relative z-10">
+                Our support team is available around the clock to help you with any technical issues or inquiries.
+              </p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-[#c0c9bb] p-8 md:p-10 shadow-ambient-2">
+            <h2 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c] mb-8">Send us a Message</h2>
             
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Name
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="text-xs font-bold uppercase tracking-widest text-[#41493e] ml-1">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-4 py-3 bg-[#f5f3f3] border-2 border-transparent rounded-xl focus:bg-white focus:border-[#1b5e20] outline-none transition-all"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-[#41493e] ml-1">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-3 bg-[#f5f3f3] border-2 border-transparent rounded-xl focus:bg-white focus:border-[#1b5e20] outline-none transition-all"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="space-y-1.5">
+                <label htmlFor="subject" className="text-xs font-bold uppercase tracking-widest text-[#41493e] ml-1">
+                  Subject
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="Your name"
+                  id="subject"
+                  className="w-full px-4 py-3 bg-[#f5f3f3] border-2 border-transparent rounded-xl focus:bg-white focus:border-[#1b5e20] outline-none transition-all"
+                  placeholder="How can we help?"
                 />
               </div>
               
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="your@email.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                  Message
+              <div className="space-y-1.5">
+                <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-[#41493e] ml-1">
+                  Your Message
                 </label>
                 <textarea
                   id="message"
-                  rows="4"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  placeholder="Your message..."
+                  rows="5"
+                  className="w-full px-4 py-3 bg-[#f5f3f3] border-2 border-transparent rounded-xl focus:bg-white focus:border-[#1b5e20] outline-none transition-all resize-none"
+                  placeholder="Write your message here..."
+                  required
                 ></textarea>
               </div>
               
-              <button
+              <Button
                 type="submit"
-                className="w-full bg-green-700 text-white py-2 px-4 rounded-lg hover:bg-green-800 transition-colors font-medium"
+                size="xl"
+                fullWidth
+                icon="send"
               >
                 Send Message
-              </button>
+              </Button>
             </form>
           </div>
         </div>

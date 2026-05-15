@@ -9,6 +9,7 @@ import PropertyGallery from '../components/property/PropertyGallery';
 import MapView from '../components/map/MapView';
 import Spinner from '../components/ui/Spinner';
 import { toast } from 'react-toastify';
+import Button from '../components/ui/Button';
 
 const formatPrice = (p, status) =>
   new Intl.NumberFormat('en-EG', { style: 'currency', currency: 'EGP', maximumFractionDigits: 0 }).format(p) +
@@ -226,14 +227,23 @@ export default function PropertyDetail() {
             {/* Action buttons */}
             {property.owner?.phone && (
               <div className="grid grid-cols-2 gap-3">
-                <a href={`tel:${property.owner.phone}`}
-                  className="bg-[#1b5e20] text-white py-3 rounded-xl font-semibold hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 text-sm">
-                  <span className="material-symbols-outlined text-[18px]">call</span> Call
-                </a>
-                <a href={`https://wa.me/${property.owner.phone.replace(/\D/g, '')}`} target="_blank" rel="noreferrer"
-                  className="bg-[#25D366] text-white py-3 rounded-xl font-semibold hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 text-sm">
+                <Button
+                  href={`tel:${property.owner.phone}`}
+                  size="md"
+                  icon="call"
+                  className="bg-[#1b5e20]"
+                >
+                  Call
+                </Button>
+                <Button
+                  href={`https://wa.me/${property.owner.phone.replace(/\D/g, '')}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  size="md"
+                  className="bg-[#25D366] border-none hover:bg-[#1fb355]"
+                >
                   WhatsApp
-                </a>
+                </Button>
               </div>
             )}
 
@@ -265,12 +275,16 @@ export default function PropertyDetail() {
                 <label className="absolute text-xs text-[#717a6d] top-1 left-3">Message</label>
                 {errors.message && <p className="text-[#ba1a1a] text-xs mt-0.5">{errors.message.message}</p>}
               </div>
-              <button type="submit" disabled={mutation.isPending}
-                className="w-full bg-[#835400] text-white py-3 rounded-xl font-semibold hover:-translate-y-0.5 shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-60">
-                {mutation.isPending
-                  ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  : <><span className="material-symbols-outlined text-[18px]">send</span> Send Inquiry</>}
-              </button>
+              <Button
+                type="submit"
+                isLoading={mutation.isPending}
+                fullWidth
+                size="lg"
+                variant="secondary"
+                icon="send"
+              >
+                Send Inquiry
+              </Button>
             </form>
           </div>
         </div>
@@ -279,15 +293,25 @@ export default function PropertyDetail() {
       {/* Mobile Sticky Action Bar */}
       {property.owner?.phone && (
         <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-[#c0c9bb] p-4 pb-safe shadow-ambient-3 flex gap-3">
-          <a href={`tel:${property.owner.phone}`}
-            className="flex-1 bg-[#1b5e20] text-white py-4 rounded-2xl font-bold hover:bg-[#00450d] transition-colors flex items-center justify-center gap-2 shadow-sm">
-            <span className="material-symbols-outlined text-[20px]">call</span>
+          <Button
+            href={`tel:${property.owner.phone}`}
+            fullWidth
+            size="xl"
+            icon="call"
+            className="rounded-2xl"
+          >
             Call
-          </a>
-          <a href={`https://wa.me/${property.owner.phone.replace(/\D/g, '')}`} target="_blank" rel="noreferrer"
-            className="flex-1 bg-[#25D366] text-white py-4 rounded-2xl font-bold hover:opacity-95 transition-opacity flex items-center justify-center gap-2 shadow-sm">
+          </Button>
+          <Button
+            href={`https://wa.me/${property.owner.phone.replace(/\D/g, '')}`}
+            target="_blank"
+            rel="noreferrer"
+            fullWidth
+            size="xl"
+            className="bg-[#25D366] border-none hover:bg-[#1fb355] rounded-2xl"
+          >
             WhatsApp
-          </a>
+          </Button>
         </div>
       )}
     </div>

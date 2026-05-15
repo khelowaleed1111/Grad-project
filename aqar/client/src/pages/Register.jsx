@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import Button from '../components/ui/Button';
 
 const schema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -184,13 +185,16 @@ export default function Register() {
               {errors.confirmPassword && <p className="text-[#ba1a1a] text-xs mt-1">{errors.confirmPassword.message}</p>}
             </div>
 
-            <button
+            <Button
               type="submit"
-              disabled={loading}
-              className="w-full py-3.5 bg-[#fcab28] text-[#694300] font-bold rounded-xl hover:bg-[#ffb957] transition-all hover:-translate-y-0.5 shadow-sm disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
+              variant="accent"
+              isLoading={loading}
+              fullWidth
+              size="lg"
+              className="mt-2"
             >
-              {loading ? <div className="w-5 h-5 border-2 border-[#694300]/30 border-t-[#694300] rounded-full animate-spin" /> : 'Create Account'}
-            </button>
+              Create Account
+            </Button>
           </form>
 
           <p className="mt-4 text-center text-xs text-[#41493e]">

@@ -6,6 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
+import Button from '../components/ui/Button';
+
 const schema = z.object({
   email: z.string().email('Enter a valid email'),
   password: z.string().min(8, 'Password must be at least 8 characters'),
@@ -152,17 +154,15 @@ export default function Login() {
               </div>
 
               {/* Submit */}
-              <button
+              <Button
                 type="submit"
-                disabled={loading}
-                className="w-full h-14 bg-[#1b5e20] text-white rounded-lg font-semibold text-base hover:bg-[#00450d] transition-all hover:-translate-y-0.5 shadow-sm disabled:opacity-60 flex items-center justify-center gap-2"
+                isLoading={loading}
+                fullWidth
+                size="xl"
+                iconRight="arrow_forward"
               >
-                {loading ? (
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                ) : (
-                  <>Sign In <span className="material-symbols-outlined text-[20px]">arrow_forward</span></>
-                )}
-              </button>
+                Sign In
+              </Button>
             </form>
 
 

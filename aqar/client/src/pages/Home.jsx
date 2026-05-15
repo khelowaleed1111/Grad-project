@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { propertiesApi } from '../api/propertiesApi';
 import PropertyCard from '../components/property/PropertyCard';
 import Spinner from '../components/ui/Spinner';
+import Button from '../components/ui/Button';
 
 const HERO_BG = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1600';
 
@@ -94,12 +95,12 @@ export default function Home() {
                   <option key={c} value={c}>{c}</option>
                 ))}
               </select>
-              <button
+              <Button
                 type="submit"
-                className="bg-[#fcab28] text-[#694300] rounded-full p-3 hover:bg-[#ffb957] transition-colors flex items-center justify-center hover:-translate-y-0.5 transform shadow-sm flex-shrink-0"
-              >
-                <span className="material-symbols-outlined">search</span>
-              </button>
+                variant="accent"
+                className="rounded-full h-12 w-12 md:h-10 md:w-10 p-0 flex-shrink-0"
+                icon="search"
+              />
             </div>
           </form>
 
@@ -107,13 +108,15 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="text-white/80 text-sm mr-1">Popular:</span>
             {['New Cairo', 'Zamalek', 'North Coast', 'Sheikh Zayed'].map((city) => (
-              <button
+              <Button
                 key={city}
                 onClick={() => navigate(`/search?city=${city}`)}
-                className="bg-white/20 hover:bg-white/30 border border-white/30 text-white backdrop-blur-sm px-3 py-1 rounded-full text-sm transition-colors"
+                variant="glass"
+                size="sm"
+                className="text-[10px] md:text-xs"
               >
                 {city}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
@@ -202,19 +205,25 @@ export default function Home() {
           <p className="text-white/80 text-lg max-w-xl mx-auto mb-10">
             Reach thousands of verified buyers and renters across Egypt. Join Aqar and list your property for free.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center w-full px-4">
-            <Link
+          <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mx-auto px-4">
+            <Button
               to="/register"
-              className="w-full sm:w-auto text-center bg-[#fcab28] text-[#694300] px-8 py-4 rounded-full font-bold hover:bg-[#ffb957] transition-all hover:-translate-y-0.5 shadow-sm"
+              variant="accent"
+              size="xl"
+              fullWidth
+              className="sm:w-auto"
             >
               Get Started Free
-            </Link>
-            <Link
+            </Button>
+            <Button
               to="/search"
-              className="w-full sm:w-auto text-center bg-white/10 border border-white/30 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
+              variant="glass"
+              size="xl"
+              fullWidth
+              className="sm:w-auto"
             >
               Browse Properties
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

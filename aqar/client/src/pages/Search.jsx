@@ -6,6 +6,7 @@ import PropertyCard from '../components/property/PropertyCard';
 import PropertyFilters from '../components/property/PropertyFilters';
 import MapView from '../components/map/MapView';
 import Spinner from '../components/ui/Spinner';
+import Button from '../components/ui/Button';
 
 const SORT_OPTIONS = [
   { value: 'newest', label: 'Newest First' },
@@ -128,16 +129,18 @@ export default function Search() {
 
           <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0 no-scrollbar">
             {/* Mobile filter button */}
-            <button
+            <Button
               onClick={() => setMobileFiltersOpen(true)}
-              className="lg:hidden flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-[#c0c9bb] text-xs font-bold uppercase tracking-wider text-[#41493e] hover:bg-[#f0eded] whitespace-nowrap"
+              variant="outline"
+              size="sm"
+              icon="tune"
+              className="lg:hidden whitespace-nowrap"
             >
-              <span className="material-symbols-outlined text-[18px]">tune</span>
               Filters
               {Object.values(filters).filter(v => v !== '' && v !== 1 && v !== 'newest' && v !== null).length > 0 && (
                 <span className="w-2 h-2 bg-[#1b5e20] rounded-full"></span>
               )}
-            </button>
+            </Button>
 
             {/* Status toggle */}
             <div className="flex rounded-full border border-[#c0c9bb] overflow-hidden flex-shrink-0">
@@ -164,15 +167,15 @@ export default function Search() {
             </select>
 
             {/* Map toggle */}
-            <button
+            <Button
               onClick={() => setShowMap(!showMap)}
-              className={`flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border text-xs font-bold uppercase tracking-wider transition-colors flex-shrink-0 ${
-                showMap ? 'bg-[#1b5e20] text-white border-[#1b5e20]' : 'border-[#c0c9bb] text-[#41493e] hover:bg-[#f0eded]'
-              }`}
+              variant={showMap ? 'primary' : 'outline'}
+              size="sm"
+              icon="map"
+              className="flex-shrink-0"
             >
-              <span className="material-symbols-outlined text-[18px]">map</span>
               Map
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -253,12 +256,13 @@ export default function Search() {
                 <span className="material-symbols-outlined text-[64px] text-[#c0c9bb] block mb-4">search_off</span>
                 <h3 className="font-['Playfair_Display'] text-2xl font-bold text-[#1b1c1c] mb-2">No properties found</h3>
                 <p className="text-[#41493e] mb-6">Try adjusting your filters or search a different city.</p>
-                <button
+                <Button
                   onClick={handleFilterReset}
-                  className="bg-[#1b5e20] text-white px-6 py-3 rounded-full font-medium hover:bg-[#00450d] transition-colors"
+                  size="lg"
+                  icon="refresh"
                 >
                   Clear Filters
-                </button>
+                </Button>
               </div>
             ) : (
               <>
@@ -270,25 +274,27 @@ export default function Search() {
                 {/* Pagination */}
                 {totalPages > 1 && (
                   <div className="flex items-center justify-center gap-2">
-                    <button
+                    <Button
                       disabled={filters.page <= 1}
                       onClick={() => setFilters((f) => ({ ...f, page: f.page - 1 }))}
-                      className="flex items-center gap-1 px-4 py-2 border border-[#c0c9bb] rounded-lg text-sm text-[#41493e] hover:bg-[#f0eded] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                      variant="outline"
+                      size="sm"
+                      icon="chevron_left"
                     >
-                      <span className="material-symbols-outlined text-[18px]">chevron_left</span>
                       Prev
-                    </button>
+                    </Button>
                     <span className="text-sm text-[#41493e] px-4">
                       Page <span className="font-bold text-[#00450d]">{filters.page}</span> of {totalPages}
                     </span>
-                    <button
+                    <Button
                       disabled={filters.page >= totalPages}
                       onClick={() => setFilters((f) => ({ ...f, page: f.page + 1 }))}
-                      className="flex items-center gap-1 px-4 py-2 border border-[#c0c9bb] rounded-lg text-sm text-[#41493e] hover:bg-[#f0eded] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                      variant="outline"
+                      size="sm"
+                      iconRight="chevron_right"
                     >
                       Next
-                      <span className="material-symbols-outlined text-[18px]">chevron_right</span>
-                    </button>
+                    </Button>
                   </div>
                 )}
               </>

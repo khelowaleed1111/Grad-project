@@ -8,6 +8,7 @@ import { useAuth } from '../../context/AuthContext';
 import PropertyCard from '../../components/property/PropertyCard';
 import Spinner from '../../components/ui/Spinner';
 import { toast } from 'react-toastify';
+import Button from '../../components/ui/Button';
 
 const TABS = [
   { id: 'overview', label: 'Overview', icon: 'dashboard' },
@@ -82,11 +83,22 @@ export default function UserDashboard() {
             <p className="text-sm text-[#41493e] mt-1 capitalize">{user?.role} Account</p>
           </div>
           {['owner', 'agent', 'buyer'].includes(user?.role) && (
-            <Link to="/dashboard/listings/new"
-              className="flex items-center gap-2 bg-[#1b5e20] text-white px-5 py-3 rounded-xl font-semibold hover:bg-[#00450d] transition-all hover:-translate-y-0.5 shadow-sm text-sm">
-              <span className="material-symbols-outlined text-[18px]">add</span>
+            <Button
+              to="/dashboard/listings/new"
+              size="sm"
+              icon="add"
+              className="md:hidden"
+            />
+          )}
+          {['owner', 'agent', 'buyer'].includes(user?.role) && (
+            <Button
+              to="/dashboard/listings/new"
+              size="md"
+              icon="add"
+              className="hidden md:flex"
+            >
               New Listing
-            </Link>
+            </Button>
           )}
         </div>
 
@@ -116,13 +128,15 @@ export default function UserDashboard() {
           </aside>
 
           {/* Mobile tabs */}
-          <div className="md:hidden w-full mb-4 flex gap-2 overflow-x-auto">
+          <div className="md:hidden w-full mb-6 flex gap-2 overflow-x-auto no-scrollbar pb-1">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
-                className={`flex-shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
-                  tab === t.id ? 'bg-[#1b5e20] text-white' : 'border border-[#c0c9bb] text-[#41493e]'
+                className={`flex-shrink-0 flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-widest transition-all ${
+                  tab === t.id 
+                    ? 'bg-[#1b5e20] text-white shadow-md' 
+                    : 'bg-white border border-[#c0c9bb] text-[#41493e]'
                 }`}>
-                <span className="material-symbols-outlined text-[16px]">{t.icon}</span>
+                <span className="material-symbols-outlined text-[18px]">{t.icon}</span>
                 {t.label}
               </button>
             ))}
@@ -163,10 +177,9 @@ export default function UserDashboard() {
                     <span className="material-symbols-outlined text-[64px] text-[#c0c9bb] block mb-4">add_home</span>
                     <h3 className="font-semibold text-[#1b1c1c] mb-2">No listings yet</h3>
                     <p className="text-sm text-[#41493e] mb-5">Start by creating your first property listing.</p>
-                    <Link to="/dashboard/listings/new"
-                      className="bg-[#1b5e20] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#00450d] transition-colors text-sm">
+                    <Button to="/dashboard/listings/new" icon="add_home">
                       Create Listing
-                    </Link>
+                    </Button>
                   </div>
                 )}
               </div>
@@ -319,12 +332,14 @@ export default function UserDashboard() {
                     <input type="tel" value={profileForm.phone} onChange={(e) => setProfileForm(f => ({ ...f, phone: e.target.value }))}
                       className="w-full px-4 py-3 border-2 border-[#c0c9bb] rounded-xl text-[#1b1c1c] focus:outline-none focus:border-[#1b5e20]" />
                   </div>
-                  <button type="submit" disabled={profileMutation.isPending}
-                    className="bg-[#1b5e20] text-white py-3 rounded-xl font-semibold hover:bg-[#00450d] transition-colors disabled:opacity-60 flex items-center justify-center gap-2">
-                    {profileMutation.isPending
-                      ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      : 'Save Changes'}
-                  </button>
+                  <Button
+                    type="submit"
+                    isLoading={profileMutation.isPending}
+                    fullWidth
+                    size="lg"
+                  >
+                    Save Changes
+                  </Button>
                 </form>
               </div>
             )}

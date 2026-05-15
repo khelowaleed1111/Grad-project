@@ -7,6 +7,7 @@ import { useMutation } from '@tanstack/react-query';
 import { propertiesApi } from '../../api/propertiesApi';
 import { toast } from 'react-toastify';
 import { LocationPicker } from '../../components/map';
+import Button from '../../components/ui/Button';
 
 const schema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters'),
@@ -415,26 +416,38 @@ export default function AddProperty() {
           </div>
 
           {/* Navigation buttons */}
-          <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center justify-between mt-8 gap-4">
             {step > 0 ? (
-              <button type="button" onClick={() => setStep((s) => s - 1)}
-                className="flex items-center gap-2 px-5 py-3 border border-[#c0c9bb] rounded-xl text-sm font-medium text-[#41493e] hover:bg-[#f0eded] transition-colors">
-                <span className="material-symbols-outlined text-[18px]">arrow_back</span>Previous
-              </button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setStep((s) => s - 1)}
+                icon="arrow_back"
+                className="flex-1 sm:flex-none"
+              >
+                Previous
+              </Button>
             ) : <div />}
 
             {step < STEPS.length - 1 ? (
-              <button type="button" onClick={nextStep}
-                className="flex items-center gap-2 px-6 py-3 bg-[#1b5e20] text-white rounded-xl text-sm font-semibold hover:bg-[#00450d] transition-all hover:-translate-y-0.5 shadow-sm">
-                Continue <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-              </button>
+              <Button
+                type="button"
+                onClick={nextStep}
+                iconRight="arrow_forward"
+                className="flex-1 sm:flex-none"
+              >
+                Continue
+              </Button>
             ) : (
-              <button type="submit" disabled={mutation.isPending}
-                className="flex items-center gap-2 px-8 py-3 bg-[#fcab28] text-[#694300] rounded-xl text-sm font-bold hover:bg-[#ffb957] transition-all hover:-translate-y-0.5 shadow-sm disabled:opacity-60">
-                {mutation.isPending
-                  ? <div className="w-4 h-4 border-2 border-[#694300]/30 border-t-[#694300] rounded-full animate-spin" />
-                  : <><span className="material-symbols-outlined text-[18px]">send</span>Submit Listing</>}
-              </button>
+              <Button
+                type="submit"
+                variant="accent"
+                isLoading={mutation.isPending}
+                icon="send"
+                className="flex-1 sm:flex-none px-8"
+              >
+                Submit Listing
+              </Button>
             )}
           </div>
         </form>
