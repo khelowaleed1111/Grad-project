@@ -200,7 +200,7 @@ export default function PendingApprovals() {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       <Link
                         to={`/properties/${property._id}`}
                         target="_blank"

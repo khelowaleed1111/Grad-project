@@ -161,7 +161,7 @@ export default function AdminDashboard() {
           </aside>
 
           {/* Mobile tabs */}
-          <div className="md:hidden w-full mb-4 flex gap-2 overflow-x-auto pb-2">
+          <div className="md:hidden w-full mb-4 flex gap-2 overflow-x-auto no-scrollbar pb-2">
             {NAV_ITEMS.map((item) => {
               const isExternal = item.id === 'pending' || item.id === 'users';
               const Component = isExternal ? Link : 'button';

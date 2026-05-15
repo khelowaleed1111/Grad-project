@@ -117,12 +117,12 @@ export default function UserManagement() {
             </div>
 
             {/* Role Filter */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
               {['', 'buyer', 'owner', 'agent', 'admin'].map((role) => (
                 <button
                   key={role || 'all'}
                   onClick={() => setRoleFilter(role)}
-                  className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors ${
+                  className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors whitespace-nowrap ${
                     roleFilter === role
                       ? 'bg-[#1b5e20] text-white'
                       : 'border-2 border-[#c0c9bb] text-[#41493e] hover:bg-[#f5f3f3]'
