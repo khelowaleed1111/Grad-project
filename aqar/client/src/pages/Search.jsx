@@ -48,7 +48,7 @@ export default function Search() {
   // Sync filters → URL
   useEffect(() => {
     const params = {};
-    Object.entries(filters).forEach(([k, v]) => { if (v !== '' && v !== 1) params[k] = v; });
+    Object.entries(filters).forEach(([k, v]) => { if (v !== '' && v !== null && v !== undefined && !(k === 'page' && v === 1)) params[k] = v; });
     setSearchParams(params, { replace: true });
   }, [filters, setSearchParams]);
 

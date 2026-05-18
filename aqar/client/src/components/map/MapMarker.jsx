@@ -15,9 +15,11 @@ const MapMarker = ({ property, onClick, clusterer }) => {
   const [showInfo, setShowInfo] = useState(false);
   const navigate = useNavigate();
 
+  // GeoJSON format: { type: 'Point', coordinates: [lng, lat] }
+  const geoCoords = property.location?.coordinates?.coordinates;
   const position = {
-    lat: property.location.coordinates.lat,
-    lng: property.location.coordinates.lng,
+    lat: geoCoords?.[1] ?? 30.0444,
+    lng: geoCoords?.[0] ?? 31.2357,
   };
 
   // Custom marker icon based on property status
@@ -110,7 +112,7 @@ const MapMarker = ({ property, onClick, clusterer }) => {
               {/* Location */}
               <div className="flex items-center text-gray-600 text-xs mb-2">
                 <span className="material-symbols-outlined text-sm mr-1">location_on</span>
-                <span className="line-clamp-1">{property.location.city}</span>
+                <span className="line-clamp-1">{property.location?.city}</span>
               </div>
 
               {/* Property Info */}

@@ -5,9 +5,9 @@ import { toast } from 'react-toastify';
 import Button from '../ui/Button';
 
 const NAV_LINKS = [
-  { label: 'Properties', labelAr: 'العقارات', to: '/search' },
-  { label: 'About', labelAr: 'عن أقار', to: '/about' },
-  { label: 'Contact', labelAr: 'تواصل معنا', to: '/contact' },
+  { label: 'Properties', to: '/search' },
+  { label: 'About', to: '/about' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Navbar() {
@@ -15,20 +15,12 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lang, setLang] = useState('en');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const toggleLang = () => {
-    const next = lang === 'en' ? 'ar' : 'en';
-    setLang(next);
-    document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = next;
-  };
 
   const handleLogout = () => {
     logout();
@@ -78,21 +70,13 @@ export default function Navbar() {
                 }`
               }
             >
-              {lang === 'ar' ? link.labelAr : link.label}
+              {link.label}
             </NavLink>
           ))}
         </div>
 
         {/* Desktop trailing actions */}
         <div className="hidden md:flex items-center gap-3">
-          {/* Language toggle */}
-          <button
-            onClick={toggleLang}
-            className="flex items-center gap-1 text-[#41493e] hover:text-[#00450d] transition-colors text-xs font-bold uppercase tracking-widest px-2"
-          >
-            <span className="material-symbols-outlined text-[18px]">language</span>
-            {lang === 'en' ? 'EN/AR' : 'AR/EN'}
-          </button>
 
           {isAuthenticated ? (
             <div className="flex items-center gap-3">
@@ -149,7 +133,7 @@ export default function Navbar() {
                     }`
                   }
                 >
-                  {lang === 'ar' ? link.labelAr : link.label}
+                  {link.label}
                 </NavLink>
               ))}
             </div>
@@ -174,14 +158,7 @@ export default function Navbar() {
                   </Button>
                 </>
               )}
-              
-              <button
-                onClick={toggleLang}
-                className="flex items-center justify-center gap-2 py-3 text-xs font-bold uppercase tracking-widest text-[#41493e] border-t border-[#c0c9bb] mt-2"
-              >
-                <span className="material-symbols-outlined text-[18px]">language</span>
-                {lang === 'en' ? 'Switch to العربية' : 'Switch to English'}
-              </button>
+
             </div>
           </div>
         </div>

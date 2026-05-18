@@ -160,7 +160,9 @@ const MapView = ({
         {(clusterer) => (
           <>
             {properties.map((property) => {
-              if (property.location?.coordinates?.lat && property.location?.coordinates?.lng) {
+              // GeoJSON format: { type: 'Point', coordinates: [lng, lat] }
+              const coords = property.location?.coordinates?.coordinates;
+              if (Array.isArray(coords) && coords.length === 2) {
                 return (
                   <MapMarker
                     key={property._id}
